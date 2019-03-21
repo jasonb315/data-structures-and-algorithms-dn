@@ -33,7 +33,7 @@ It repeatedly narrows an array by half to the left or right based on weather or 
 
 ## Visuals
 ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search.jpg)
-![capture](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search_capture.jpg)
+![capture](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search_capture.JPG)
 <!--
 ##### Method
 
