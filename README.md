@@ -29,12 +29,11 @@ person = 'Jason Burns'
 
 ## Description
 In computer science, binary search is also known as half-interval search.
-It repeatedly narrows an array by half to the left or right based on weather or not he middle point is higher, lower than the search key,
-until the key is found or not.
+It repeatedly narrows an array by half to the left or right based on weather or not he middle point is higher, lower than the search key, until the key is found or not.
 
 ## Visuals
 ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search.jpg)
-
+![capture](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search_capture.jpg)
 <!--
 ##### Method
 
