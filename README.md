@@ -34,6 +34,8 @@ It repeatedly narrows an array by half to the left or right based on weather or 
 ## Visuals
 ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search.jpg)
 ![capture](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search_capture.JPG)
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/BinarySearch)
 <!--
 ##### Method
 
@@ -56,6 +58,7 @@ It repeatedly narrows an array by half to the left or right based on weather or 
 ## Change Log
 
 1.0 20MAR2019 readme setup
+
 1.1 21MAR2019 binary search added
 
 ------------------------------
