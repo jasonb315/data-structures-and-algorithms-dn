@@ -2,9 +2,9 @@
 
 namespace BinarySearch
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string appName = "ATM";
             string appVersion = "1.0.0";
@@ -40,7 +40,7 @@ namespace BinarySearch
         /// <param name="arr">int arr</param>
         /// <param name="key">int key</param>
         /// <returns>int index or -1</returns>
-        static int BinarySearch(int[] arr, int key)
+        public static int BinarySearch(int[] arr, int key)
         {
             int min = 0;
             int max = arr.Length - 1;
