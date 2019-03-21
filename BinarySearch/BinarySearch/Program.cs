@@ -17,44 +17,64 @@ namespace BinarySearch
             int arrLen = Convert.ToInt32(inputStr);
             int[] arr = new int[arrLen];
 
-            foreach(int i in arr)
+            Console.WriteLine("Enter sorted array values one at a time");
+            for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine("Enter sorted array values");
                 string iStr = Console.ReadLine();
-                int iVal = Convert.ToInt32(inputStr);
+                int iVal = Convert.ToInt32(iStr);
                 arr[i] = iVal;
+                //Console.WriteLine($"arr[i]{arr[i]}");
             }
 
             Console.WriteLine("Enter search key");
             string keyStr = Console.ReadLine();
-            int keyVal = Convert.ToInt32(inputStr);
-            int key = arrLen;
+            int key = Convert.ToInt32(keyStr);
 
             int iReturn = BinarySearch(arr, key);
-            Console.WriteLine(iReturn);
+            Console.WriteLine($"F(x) returns: {iReturn}");
 
         }
-        static int BinarySearch(int[]arr, int key)
+        /// <summary>
+        ///     Log n search for array index of given search key
+        /// </summary>
+        /// <param name="arr">int arr</param>
+        /// <param name="key">int key</param>
+        /// <returns>int index or -1</returns>
+        static int BinarySearch(int[] arr, int key)
         {
             int min = 0;
             int max = arr.Length - 1;
-            int mid = 0;
+            int mid = (min + max) / 2;
+
+            //Console.WriteLine($"ini min {min}");
+            //Console.WriteLine($"ini mid {mid}");
+            //Console.WriteLine($"ini max {max}");
+
+            if (arr[min] == key)
+            {
+                return min;
+            }
+            if (arr[max] == key)
+            {
+                return max;
+            }
 
             while (min <= max)
             {
                 mid = (min + max) / 2;
+                //Console.WriteLine($"while mid {mid}");
 
-                if (arr[mid] < key)
+                if (arr[mid] == key)
+                {
+                    return mid;
+                }
+                else if (arr[mid] < key)
                 {
                     min = mid + 1;
                 }
-                else if (arr[mid] > key)
-                {
-                    max = mid - 1;
-                }
                 else
                 {
-                    return mid;
+                    max = mid - 1;
                 }
             }
             return -1;
