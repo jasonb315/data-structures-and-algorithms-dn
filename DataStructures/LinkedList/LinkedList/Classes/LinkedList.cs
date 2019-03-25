@@ -55,25 +55,44 @@ namespace LinkedList.Classes
                     currentNode.Next = newNode;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine(e.Message);
             }
         }
 
-        public void Includes()
+        public bool Includes(int Key)
         {
             // bool for key
             try
             {
-
+                if(Head != null)
+                {
+                    return false;
+                }
+                else
+                {
+                    Node currentNode = Head;
+                    while(currentNode != null)
+                    {
+                        if (currentNode.Data == Key)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            currentNode = currentNode.Next;
+                        }
+                    }
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine(e.Message);
+                return false;
             }
+            return false;
+
         }
 
         public void Print()
