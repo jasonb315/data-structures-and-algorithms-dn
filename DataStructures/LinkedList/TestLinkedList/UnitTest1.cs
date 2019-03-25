@@ -1,0 +1,98 @@
+using System;
+using Xunit;
+using LinkedList.Classes;
+using System.Collections.Generic;
+
+namespace TestLinkedList
+{
+    public class UnitTest1
+    {
+        [Fact]
+        public void InstantiateAnEmptyList()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            Assert.IsType<SinglyLinkedList>(list);
+            Assert.Null(list.Head);
+        }
+
+        [Fact]
+        public void CanInsertHead()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(5);
+            Assert.Equal(5, list.Head.Data);
+            
+        }
+
+        [Fact]
+        public void CanInsertBeforeHead()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(5);
+            list.Insert(3);
+            Assert.Equal(3, list.Head.Data);
+        }
+
+        [Fact]
+        public void MultipleAppend()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Append(3);
+            list.Append(2);
+            list.Append(1);
+            Assert.Equal(1, list.Head.Next.Next.Data);
+
+        }
+
+        [Fact]
+        public void HeadRemainsFirst()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Append(3);
+            list.Append(2);
+            list.Append(1);
+            Assert.Equal(3, list.Head.Data);
+            list.Insert(7);
+            Assert.Equal(7, list.Head.Data);
+        }
+
+        [Fact]
+        public void IncludesReturnsTrueForFoundData()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Append(3);
+            list.Append(2);
+            list.Append(1);
+            Assert.True(list.Includes(3));
+            Assert.True(list.Includes(2));
+            Assert.True(list.Includes(1));
+        }
+
+        [Fact]
+        public void IncludesReturnsFalseForNAData()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Append(3);
+            list.Append(2);
+            list.Append(1);
+            Assert.False(list.Includes(7));
+            Assert.False(list.Includes(7));
+            Assert.False(list.Includes(7));
+        }
+
+        [Fact]
+        public void ValueCollectionReturnForReadThrough()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Append(7);
+            list.Append(7);
+            list.Append(7);
+            List<int> output = list.ReadThrough();
+            Assert.IsType<List<int>>(output);
+            foreach (var data in output)
+            {
+                Assert.Equal(7, data);
+            }
+        }
+    }
+}
