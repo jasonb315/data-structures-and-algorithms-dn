@@ -92,7 +92,6 @@ namespace LinkedList.Classes
                 return false;
             }
             return false;
-
         }
 
         public void Print()
@@ -100,14 +99,32 @@ namespace LinkedList.Classes
             //read off
             try
             {
+                List<int> outList = new List<int>();
+
+                if(Head == null)
+                {
+                    Console.WriteLine("Head is null");
+                }
+                else
+                {
+                    Node currentNode = Head;
+                    while(currentNode != null)
+                    {
+                        outList.Add(currentNode.Data);
+                        currentNode = currentNode.Next;
+                    }
+                }
+
+                foreach (var data in outList)
+                {
+                    Console.Write(data + " ");
+                }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine(e.Message);
             }
         }
-
     }
 }
