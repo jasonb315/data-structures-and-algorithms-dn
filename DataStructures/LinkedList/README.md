@@ -32,4 +32,6 @@ In computer science, a linked list is a linear collection of data elements, whos
 ## Change Log
 1.0.0 25MAR2019 Initial submit
 
+1.1.0 25MAR2019 Node given constructor method
+
 ------------------------------
