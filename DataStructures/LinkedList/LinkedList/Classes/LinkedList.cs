@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LinkedList.Classes;
-
 
 namespace LinkedList.Classes
 {
-    class LinkedList
+    public class SinglyLinkedList
     {
         public Node Head { get; set; }
 
@@ -66,7 +64,7 @@ namespace LinkedList.Classes
             // bool for key
             try
             {
-                if(Head != null)
+                if(Head == null)
                 {
                     return false;
                 }
@@ -94,17 +92,19 @@ namespace LinkedList.Classes
             return false;
         }
 
-        public void Print()
+        public List<int> ReadThrough()
         {
-            //read off
+            List<int> outList = new List<int>();
+
             try
             {
-                List<int> outList = new List<int>();
 
                 if(Head == null)
                 {
                     Console.WriteLine("Head is null");
+                    return null;
                 }
+
                 else
                 {
                     Node currentNode = Head;
@@ -113,18 +113,20 @@ namespace LinkedList.Classes
                         outList.Add(currentNode.Data);
                         currentNode = currentNode.Next;
                     }
-                }
 
-                foreach (var data in outList)
-                {
-                    Console.Write(data + " ");
+                    foreach (var data in outList)
+                    {
+                        Console.Write(data + " ");
+                    }
                 }
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+            
+            return outList;
+            
         }
     }
 }

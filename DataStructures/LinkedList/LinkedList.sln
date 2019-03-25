@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{744190EC-89A8-4F4B-9271-09E55A1EF22D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{744190EC-89A8-4F4B-9271-09E55A1EF22D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLinkedList", "TestLinkedList\TestLinkedList.csproj", "{1D435F7F-2212-4AF9-8DA6-597EA6F4C110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLinkedList", "TestLinkedList\TestLinkedList.csproj", "{1D435F7F-2212-4AF9-8DA6-597EA6F4C110}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
