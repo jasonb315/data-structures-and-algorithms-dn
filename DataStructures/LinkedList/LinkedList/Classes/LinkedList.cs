@@ -8,6 +8,10 @@ namespace LinkedList.Classes
     {
         public Node Head { get; set; }
 
+        /// <summary>
+        ///     Insert a new Node at Head
+        /// </summary>
+        /// <param name="Val">int new Node val</param>
         public void Insert(int Val)
         {
             //new node to head
@@ -32,6 +36,10 @@ namespace LinkedList.Classes
             }
         }
 
+        /// <summary>
+        ///     Append new Node to tail
+        /// </summary>
+        /// <param name="Val">int new Node val</param>
         public void Append(int Val)
         {
             // new node to tail
@@ -59,6 +67,11 @@ namespace LinkedList.Classes
             }
         }
 
+        /// <summary>
+        ///     Search LinkedList for included Node Val by Key
+        /// </summary>
+        /// <param name="Key">int search val</param>
+        /// <returns>bool</returns>
         public bool Includes(int Key)
         {
             // bool for key
@@ -92,6 +105,10 @@ namespace LinkedList.Classes
             return false;
         }
 
+        /// <summary>
+        ///     ReadsThrough Nodes, collect values, return list
+        /// </summary>
+        /// <returns>List of Node values</returns>
         public List<int> ReadThrough()
         {
             List<int> outList = new List<int>();
