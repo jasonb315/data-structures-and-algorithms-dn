@@ -17,8 +17,8 @@ namespace LinkedList.Classes
             //new node to head
             try
             {
-                Node newNode = new Node();
-                newNode.Data = Val;
+                Node newNode = new Node(Val);
+                //newNode.Data = Val;
 
                 if (Head == null)
                 {
@@ -45,8 +45,8 @@ namespace LinkedList.Classes
             // new node to tail
             try
             {
-                Node newNode = new Node();
-                newNode.Data = Val;
+                Node newNode = new Node(Val);
+                // newNode.Data = Val;
                 if(Head == null)
                 {
                     Head = newNode;

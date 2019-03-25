@@ -28,9 +28,6 @@ namespace LinkedList
             IncludesDemo();
             Console.WriteLine();
 
-
-            //Console.WriteLine("READTHROUGH");
-
         }
 
         static void InsertDemo()

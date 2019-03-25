@@ -8,5 +8,13 @@ namespace LinkedList.Classes
     {
         public int Data { get; set; }
         public Node Next { get; set; }
+
+        public Node(int val)
+        {
+            Next = null;
+            Data = val;
+        }
     }
+
+    
 }
