@@ -17,8 +17,8 @@ namespace LinkedList.Classes
             //new node to head
             try
             {
-                Node newNode = new Node();
-                newNode.Data = Val;
+                Node newNode = new Node(Val);
+                //newNode.Data = Val;
 
                 if (Head == null)
                 {
@@ -45,8 +45,8 @@ namespace LinkedList.Classes
             // new node to tail
             try
             {
-                Node newNode = new Node();
-                newNode.Data = Val;
+                Node newNode = new Node(Val);
+                // newNode.Data = Val;
                 if(Head == null)
                 {
                     Head = newNode;
@@ -144,6 +144,109 @@ namespace LinkedList.Classes
             
             return outList;
             
+        }
+
+        /// <summary>
+        ///     Places a node with a given int before a node with target int
+        /// </summary>
+        /// <param name="targetVal">int node val to place after</param>
+        /// <param name="insertVal">int node cal to be inserted</param>
+        /// <returns>bool status of insert</returns>
+        public bool InsertBeforeVal(int targetVal, int insertVal)
+        {
+            Node leadRef = null;
+            Node tailRef = null;
+
+            // no nodes
+            if (Head == null)
+            {
+                return false;
+            }
+            // head node is target
+            else if (Head.Data == targetVal)
+            {
+                Insert(insertVal);
+                return true;
+            }
+            // head node isn't trget, and there's no more to check
+            else if (Head.Data != targetVal && Head.Next == null)
+            {
+                return false;
+            }
+            // there is a head an a head.next, followed by n nodes
+            else
+            {
+                Node newNode = new Node(insertVal);
+                tailRef = Head;
+                leadRef = Head.Next;
+
+                while (leadRef != null)
+                {
+                    if (leadRef.Data == targetVal)
+                    {
+                        newNode.Next = leadRef;
+                        tailRef.Next = newNode;
+                        return true;
+                    }
+                    tailRef = leadRef;
+                    leadRef = leadRef.Next;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Places a node with a given int after a node with target int
+        /// </summary>
+        /// <param name="targetVal">int node val to place after</param>
+        /// <param name="insertVal">int node cal to be inserted</param>
+        /// <returns>bool status of insert</returns>
+        public bool InsertAfterVal(int targetVal, int insertVal)
+        {
+            Node leadRef = null;
+            Node tailRef = null;
+
+            if (Head == null)
+            {
+                return false;
+            }
+            else if (Head.Data == targetVal)
+            {
+                Append(insertVal);
+                return true;
+            }
+            else if (Head.Data != targetVal && Head.Next == null)
+            {
+                return false;
+            }
+            else
+            {
+                Node newNode = new Node(insertVal);
+                tailRef = Head;
+                leadRef = Head.Next;
+
+                while (leadRef != null)
+                {
+                    if (leadRef.Data == targetVal)
+                    {
+                        if (leadRef.Next == null)
+                        {
+                            Append(insertVal);
+                            return true;
+                        }
+                        tailRef = leadRef;
+                        leadRef = leadRef.Next;
+                        tailRef.Next = newNode;
+                        newNode.Next = leadRef;
+                        return true;
+                    }
+                    tailRef = leadRef;
+                    leadRef = leadRef.Next;
+                }
+
+                return false;
+            }
+
         }
     }
 }
