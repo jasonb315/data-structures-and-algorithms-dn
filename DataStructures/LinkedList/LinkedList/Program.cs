@@ -28,6 +28,13 @@ namespace LinkedList
             IncludesDemo();
             Console.WriteLine();
 
+            Console.WriteLine("INSERT AFTER");
+            //IncludesDemo();
+            Console.WriteLine();
+
+            Console.WriteLine("INSERT AFTER");
+            //IncludesDemo();
+            Console.WriteLine();
         }
 
         static void InsertDemo()
@@ -103,6 +110,32 @@ namespace LinkedList
             Console.WriteLine();
             Console.WriteLine($"3: {pos}");
             Console.WriteLine($"7: {neg}");
+        }
+
+        static void InsertBeforeDemo()
+        {
+            SinglyLinkedList ll = new SinglyLinkedList();
+            ll.Append(3);
+            ll.Append(1);
+            ll.Append(5);
+            ll.ReadThrough();
+            Console.WriteLine("insert before 1, a 10");
+            ll.InsertBeforeVal(1, 10);
+            ll.ReadThrough();
+            Console.WriteLine();
+        }
+
+        static void InsertAfterDemo()
+        {
+            SinglyLinkedList ll = new SinglyLinkedList();
+            ll.Append(3);
+            ll.Append(1);
+            ll.Append(5);
+            ll.ReadThrough();
+            Console.WriteLine("insert after 1, a 10");
+            ll.InsertAfterVal(1, 10);
+            ll.ReadThrough();
+            Console.WriteLine();
         }
     }
 }

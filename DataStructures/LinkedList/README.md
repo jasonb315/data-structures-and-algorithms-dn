@@ -18,6 +18,10 @@ In computer science, a linked list is a linear collection of data elements, whos
 | Append | Adds a new `Node` to the tail of `Linked List` | O(n) | O(1) | myList.Append(99) |
 | Includes | Takes in a value and returns a boolean depending on if the value is in the `LinkedList` | O(n) | O(1) | myList.Includes(99) |
 | ReadThrough | Prints the `Linked List` to the console | O(n) | O(1) | myList.ReadThrough() |
+| InsertBefore | Insert a node(val) before a node of a given search value | O(n) | O(1) | myList.InsertBefore(3) |
+| InsertAfter | Insert a node(val) after a node of a given search value | O(n) | O(1) | myList.InsertAfter(3) |
+
+
 
 
 

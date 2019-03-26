@@ -24,7 +24,7 @@ person = 'Jason Burns'
 
 #### Data Structures
 
-1. [binary_search](#binary_search)
+1. [singly_linked_list](#singly_linked_list)
 
 
 ------------------------------

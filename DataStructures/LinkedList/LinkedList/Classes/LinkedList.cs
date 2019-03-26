@@ -146,6 +146,12 @@ namespace LinkedList.Classes
             
         }
 
+        /// <summary>
+        ///     Places a node with a given int before a node with target int
+        /// </summary>
+        /// <param name="targetVal">int node val to place after</param>
+        /// <param name="insertVal">int node cal to be inserted</param>
+        /// <returns>bool status of insert</returns>
         public bool InsertBeforeVal(int targetVal, int insertVal)
         {
             Node leadRef = null;
@@ -189,6 +195,12 @@ namespace LinkedList.Classes
             return false;
         }
 
+        /// <summary>
+        ///     Places a node with a given int after a node with target int
+        /// </summary>
+        /// <param name="targetVal">int node val to place after</param>
+        /// <param name="insertVal">int node cal to be inserted</param>
+        /// <returns>bool status of insert</returns>
         public bool InsertAfterVal(int targetVal, int insertVal)
         {
             Node leadRef = null;
