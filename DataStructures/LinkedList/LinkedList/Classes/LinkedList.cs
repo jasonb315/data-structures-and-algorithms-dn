@@ -148,8 +148,6 @@ namespace LinkedList.Classes
 
         public bool InsertBeforeVal(int targetVal, int insertVal)
         {
-
-            
             Node leadRef = null;
             Node tailRef = null;
 
@@ -172,15 +170,14 @@ namespace LinkedList.Classes
             // there is a head an a head.next, followed by n nodes
             else
             {
+                Node newNode = new Node(insertVal);
                 tailRef = Head;
                 leadRef = Head.Next;
-                // this shit fucky
+
                 while (leadRef != null)
                 {
-                    //leadRef.Data != targetVal &&
                     if (leadRef.Data == targetVal)
                     {
-                        Node newNode = new Node(insertVal);
                         newNode.Next = leadRef;
                         tailRef.Next = newNode;
                         return true;
@@ -192,8 +189,51 @@ namespace LinkedList.Classes
             return false;
         }
 
-        public void InsertAfterVal(int targetVal)
+        public bool InsertAfterVal(int targetVal, int insertVal)
         {
+            Node leadRef = null;
+            Node tailRef = null;
+
+            if (Head == null)
+            {
+                return false;
+            }
+            else if (Head.Data == targetVal)
+            {
+                Append(insertVal);
+                return true;
+            }
+            else if (Head.Data != targetVal && Head.Next == null)
+            {
+                return false;
+            }
+            else
+            {
+                Node newNode = new Node(insertVal);
+                tailRef = Head;
+                leadRef = Head.Next;
+
+                while (leadRef != null)
+                {
+                    if (leadRef.Data == targetVal)
+                    {
+                        if (leadRef.Next == null)
+                        {
+                            Append(insertVal);
+                            return true;
+                        }
+                        tailRef = leadRef;
+                        leadRef = leadRef.Next;
+                        tailRef.Next = newNode;
+                        newNode.Next = leadRef;
+                        return true;
+                    }
+                    tailRef = leadRef;
+                    leadRef = leadRef.Next;
+                }
+
+                return false;
+            }
 
         }
     }
