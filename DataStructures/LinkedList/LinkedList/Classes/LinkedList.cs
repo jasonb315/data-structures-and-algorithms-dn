@@ -145,5 +145,56 @@ namespace LinkedList.Classes
             return outList;
             
         }
+
+        public bool InsertBeforeVal(int targetVal, int insertVal)
+        {
+
+            
+            Node leadRef = null;
+            Node tailRef = null;
+
+            // no nodes
+            if (Head == null)
+            {
+                return false;
+            }
+            // head node is target
+            else if (Head.Data == targetVal)
+            {
+                Insert(insertVal);
+                return true;
+            }
+            // head node isn't trget, and there's no more to check
+            else if (Head.Data != targetVal && Head.Next == null)
+            {
+                return false;
+            }
+            // there is a head an a head.next, followed by n nodes
+            else
+            {
+                tailRef = Head;
+                leadRef = Head.Next;
+                // this shit fucky
+                while (leadRef != null)
+                {
+                    //leadRef.Data != targetVal &&
+                    if (leadRef.Data == targetVal)
+                    {
+                        Node newNode = new Node(insertVal);
+                        newNode.Next = leadRef;
+                        tailRef.Next = newNode;
+                        return true;
+                    }
+                    tailRef = leadRef;
+                    leadRef = leadRef.Next;
+                }
+            }
+            return false;
+        }
+
+        public void InsertAfterVal(int targetVal)
+        {
+
+        }
     }
 }
