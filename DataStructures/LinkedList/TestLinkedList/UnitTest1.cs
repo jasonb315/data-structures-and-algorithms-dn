@@ -124,5 +124,35 @@ namespace TestLinkedList
             List<int> outList = list.ReadThrough();
             Assert.Equal(1, outList[0]);
         }
+
+        [Fact]
+        void InsertAfterInsertsAfter()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(4);
+            list.Insert(6);
+            list.Insert(8);
+            list.InsertAfterVal(6, 7);
+            List<int> output = list.ReadThrough();
+            Assert.Equal(7, output[2]);
+        }
+
+        [Fact]
+        void InsertAfterReturnsFalseOnNoHead()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            bool output = list.InsertAfterVal(1, 1);
+            Assert.False(output);
+        }
+
+        [Fact]
+        void InsertAfterInsertsAfterSingleNode()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(4);
+            bool output = list.InsertAfterVal(4, 1);
+            List<int> outList = list.ReadThrough();
+            Assert.Equal(1, outList[1]);
+        }
     }
 }
