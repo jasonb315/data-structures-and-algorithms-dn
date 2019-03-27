@@ -29,11 +29,15 @@ namespace LinkedList
             Console.WriteLine();
 
             Console.WriteLine("INSERT AFTER");
-            //IncludesDemo();
+            InsertAfterDemo();
             Console.WriteLine();
 
-            Console.WriteLine("INSERT AFTER");
-            //IncludesDemo();
+            Console.WriteLine("INSERT BEFORE");
+            InsertBeforeDemo();
+            Console.WriteLine();
+
+            Console.WriteLine("KTH FROM END");
+            KthFromEndDemo();
             Console.WriteLine();
         }
 
@@ -64,7 +68,6 @@ namespace LinkedList
             ll.Insert(6);
             ll.ReadThrough();
             Console.WriteLine();
-
         }
 
         static void AppendDemo()
@@ -136,6 +139,17 @@ namespace LinkedList
             ll.InsertAfterVal(1, 10);
             ll.ReadThrough();
             Console.WriteLine();
+        }
+
+        static void KthFromEndDemo()
+        {
+            SinglyLinkedList ll = new SinglyLinkedList();
+            ll.Append(3);
+            ll.Append(1);
+            ll.Append(5);
+            ll.ReadThrough();
+            int x = ll.KthFromEnd(1);
+            Console.WriteLine($"return first from end: {x}");
         }
     }
 }

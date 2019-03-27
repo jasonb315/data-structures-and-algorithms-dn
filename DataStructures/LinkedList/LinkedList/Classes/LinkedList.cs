@@ -248,5 +248,49 @@ namespace LinkedList.Classes
             }
 
         }
+
+        /// <summary>
+        ///     Given a value K, return Kth from the end of the linked list
+        /// </summary>
+        /// <param name="k">int k</param>
+        /// <returns>Value in Node Kth from end</returns>
+        public int KthFromEnd(int k)
+        {
+            try
+            {
+                if (Head == null || k < 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    Node leadRef = Head;
+                    for (int i = 0; i < k; i++)
+                    {
+                        leadRef = leadRef.Next;
+                        //if k > n
+                        if (leadRef == null)
+                        {
+                            return -1;
+                        }
+                    }
+                    // establish distance and move together to end
+                    Node tailRef = Head;
+                    while(leadRef.Next != null)
+                    {
+                        leadRef = leadRef.Next;
+                        tailRef = tailRef.Next;
+                    }
+                    return tailRef.Data;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            
+        }
     }
 }
