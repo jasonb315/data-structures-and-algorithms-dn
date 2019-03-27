@@ -39,7 +39,6 @@ namespace LinkedList
             Console.WriteLine("KTH FROM END");
             KthFromEndDemo();
             Console.WriteLine();
-
         }
 
         static void InsertDemo()
@@ -69,7 +68,6 @@ namespace LinkedList
             ll.Insert(6);
             ll.ReadThrough();
             Console.WriteLine();
-
         }
 
         static void AppendDemo()

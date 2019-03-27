@@ -249,6 +249,11 @@ namespace LinkedList.Classes
 
         }
 
+        /// <summary>
+        ///     Given a value K, return Kth from the end of the linked list
+        /// </summary>
+        /// <param name="k">int k</param>
+        /// <returns>Value in Node Kth from end</returns>
         public int KthFromEnd(int k)
         {
             try
