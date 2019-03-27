@@ -154,5 +154,62 @@ namespace TestLinkedList
             List<int> outList = list.ReadThrough();
             Assert.Equal(1, outList[1]);
         }
+
+        [Fact]
+        void KLargerThenN()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(4);
+            list.Insert(6);
+            list.Insert(8);
+            int x = list.KthFromEnd(99);
+            Assert.Equal(-1, x);
+        }
+
+        [Fact]
+        void KEqualsN()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(4);
+            list.Insert(6);
+            list.Insert(8);
+            int x = list.KthFromEnd(2);
+            Assert.Equal(8, x);
+        }
+        
+        [Fact]
+        void KIsNegative()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(2);
+            list.Insert(4);
+            list.Insert(6);
+            list.Insert(8);
+            list.Insert(10);
+            int x = list.KthFromEnd(-2);
+            Assert.Equal(-1, x);
+        }
+
+        [Fact]
+        void ListofSizeOne()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(1);
+            int x = list.KthFromEnd(1);
+            Assert.Equal(-1, x);
+        }
+
+        [Fact]
+        void HappyPath()
+        {
+            SinglyLinkedList list = new SinglyLinkedList();
+            list.Insert(2);
+            list.Insert(4);
+            list.Insert(6);
+            list.Insert(8);
+            list.Insert(10);
+            int x = list.KthFromEnd(2);
+            Assert.Equal(6, x);
+        }
     }
 }
