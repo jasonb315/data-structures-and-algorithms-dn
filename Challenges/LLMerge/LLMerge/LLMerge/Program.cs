@@ -7,7 +7,35 @@ namespace LLMerge
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("list1:");
+            SinglyLinkedList list1 = new SinglyLinkedList();
+            list1.Append(1);
+            list1.Append(2);
+            list1.Append(3);
+            list1.Append(4);
+            list1.Append(5);
+
+
+            list1.ReadThrough();
+
+            Console.WriteLine();
+            Console.WriteLine("list2:");
+            SinglyLinkedList list2 = new SinglyLinkedList();
+            list2.Append(10);
+            list2.Append(20);
+            list2.Append(30);
+            list2.Append(40);
+            list2.Append(50);
+
+            list2.ReadThrough();
+            Console.WriteLine();
+
+            Console.WriteLine();
+            Console.WriteLine("Merge list1 and list2: list3:");
+            SinglyLinkedList list3 = new SinglyLinkedList();
+            list3.Head = LLMerge(list1, list2);
+            list3.ReadThrough();
+            Console.WriteLine();
         }
 
         public static Node LLMerge(SinglyLinkedList A, SinglyLinkedList B)
@@ -54,7 +82,12 @@ namespace LLMerge
                     B2 = B2.Next;
                     
                 }
-                if(A2 != null && B2 == null)
+                if (A2 == null && B2 == null)
+                {
+                    A1.Next = B1;
+                    return A.Head;
+                }
+                if (A2 != null && B2 == null)
                 {
                     A1.Next = B1;
                     B1.Next = A2;
