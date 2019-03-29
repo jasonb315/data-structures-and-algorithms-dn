@@ -3,9 +3,9 @@ using LinkedList.Classes;
 
 namespace LLMerge
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("list1:");
             SinglyLinkedList list1 = new SinglyLinkedList();
@@ -13,9 +13,7 @@ namespace LLMerge
             list1.Append(2);
             list1.Append(3);
             list1.Append(4);
-            // list1.Append(5);
-
-
+            list1.Append(5);
             list1.ReadThrough();
 
             Console.WriteLine();
@@ -82,7 +80,7 @@ namespace LLMerge
                     B2 = B2.Next;
                     
                 }
-                if (A2 == null && B2 == null)
+                if ((A2 == null && B2 == null) || (A2 == null && B2 != null))
                 {
                     A1.Next = B1;
                     return A.Head;
@@ -91,11 +89,6 @@ namespace LLMerge
                 {
                     A1.Next = B1;
                     B1.Next = A2;
-                    return A.Head;
-                }
-                if(A2 == null && B2 != null)
-                {
-                    A1.Next = B1;
                     return A.Head;
                 }
             }
