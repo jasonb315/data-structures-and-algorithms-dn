@@ -36,6 +36,13 @@ namespace LLMerge
             Console.WriteLine();
         }
 
+
+        /// <summary>
+        ///     Given two linked lists, merge them together. 
+        /// </summary>
+        /// <param name="A">SinglyLinkedList A</param>
+        /// <param name="B">SinglyLinkedList B</param>
+        /// <returns>ListA.Head</returns>
         public static Node LLMerge(SinglyLinkedList A, SinglyLinkedList B)
         {
             try
