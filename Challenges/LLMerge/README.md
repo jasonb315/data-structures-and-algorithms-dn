@@ -11,7 +11,7 @@ Given two linked lists, zip them together.
 
 Edge Cases:
 
-One or the other list.Hed is null
+One or the other list.Head is null
 
 Both list.Head are null
 
