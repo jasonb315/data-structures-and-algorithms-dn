@@ -22,7 +22,7 @@ Both list.Head are null
 ------------------------------
 
 ## Visuals
-<!-- ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/binary_search.jpg) -->
+![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/ll_merge/Challenges/LLMerge/LLMerge/assets/Capture.JPG)
 
 
 ------------------------------
