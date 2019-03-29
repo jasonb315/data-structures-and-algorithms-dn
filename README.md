@@ -60,6 +60,8 @@ In computer science, a linked list is a linear collection of data elements, whos
 
 1.2 25MAR2019 singly linked list added
 
+1.3 29MAR2019 linked list merge
+
 ------------------------------
 
 ## Thankyou
@@ -67,6 +69,8 @@ In computer science, a linked list is a linear collection of data elements, whos
 Wikipedia
 
 Stack Overflow
+
+Dan, Shannon, and Ian
 
 <!-- 
 ## Methods
