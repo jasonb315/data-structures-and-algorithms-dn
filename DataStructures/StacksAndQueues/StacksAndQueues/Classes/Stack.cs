@@ -13,6 +13,10 @@ namespace StacksAndQueues.Classes
             top = null;
         }
 
+        /// <summary>
+        ///     Add Node w/data to top of stack
+        /// </summary>
+        /// <param name="data">data object</param>
         public void Push(object data)
         {
             Node newNode = new Node(data);
@@ -29,13 +33,20 @@ namespace StacksAndQueues.Classes
             }
 
         }
+
+        /// <summary>
+        ///     Remove and return top of stack
+        /// </summary>
+        /// <returns>top data object</returns>
         public object Pop()
         {
             if (top is Node)
             {
                 Node returnNode = top;
+                // sever for garbage collection
                 returnNode.prev.next = null;
                 returnNode.prev = null;
+                // return top nodes data object
                 return returnNode.data;
             }
             else
@@ -43,6 +54,11 @@ namespace StacksAndQueues.Classes
                 return null;
             }
         }
+
+        /// <summary>
+        ///     Look at the top nodes data without mutating stack
+        /// </summary>
+        /// <returns>top nodes data</returns>
         public object Peek()
         {
             if (top is Node)
