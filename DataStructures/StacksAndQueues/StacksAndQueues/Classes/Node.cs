@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StacksAndQueues.Classes
 {
-    class Node
+    public class Node
     {
         public object data { get; set; }
         public Node next { get; set; }
