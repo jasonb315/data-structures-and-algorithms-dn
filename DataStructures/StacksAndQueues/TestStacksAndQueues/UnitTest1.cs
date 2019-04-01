@@ -64,13 +64,64 @@ namespace TestStacksAndQueues
             object peeked = stack.Peek();
             Assert.Equal(5, peeked);
         }
+
+        [Fact]
+        public void QueueIni()
+        {
+            Queue queue = new Queue();
+            Assert.IsType<Queue>(queue);
+        }
+
+        [Fact]
+        public void QueueEnqueueToEmpty()
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(5);
+            Assert.Equal(5, queue.head.data);
+        }
+
+        [Fact]
+        public void QueueMultipleEnqueue()
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(3);
+            queue.Enqueue(1);
+            queue.Enqueue(5);
+            Assert.Equal(5, queue.head.prev.prev.data);
+        }
+
+        [Fact]
+        public void QueueDequeue()
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(3);
+            queue.Enqueue(1);
+            queue.Enqueue(5);
+            object dequeued = queue.Dequeue();
+            Assert.Equal(3, dequeued);
+        }
+
+        [Fact]
+        public void QueueMultipleDequeue()
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(3);
+            queue.Enqueue(1);
+            queue.Enqueue(5);
+            object dequeued = queue.Dequeue();
+            object dequeued2 = queue.Dequeue();
+            Assert.Equal(1, dequeued2);
+        }
+
+        [Fact]
+        public void QueuePeek()
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(3);
+            queue.Enqueue(1);
+            queue.Enqueue(5);
+            object dequeued = queue.Peek();
+            Assert.Equal(3, dequeued);
+        }
     }
 }
-
-
-//Can successfully enqueue onto a queue 
-//Can successfully enqueue multiple items into a queue
-//Can successfully dequeue off of a queue the expected value
-//Can successfully peek into a queue, seeing the expected value
-//Can successfully empty a queue after multiple dequeues
-//Can successfully instantiate an empty queue
