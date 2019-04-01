@@ -58,7 +58,7 @@ namespace StacksAndQueues.Classes
         /// <summary>
         ///     Returns the head Nodes object
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Head Node object</returns>
         public object Dequeue()
         {
             if (head is Node)
