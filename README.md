@@ -26,6 +26,8 @@ person = 'Jason Burns'
 
 1. [singly_linked_list](#singly_linked_list)
 
+1. [stack_queue](#stack_queue)
+
 
 ------------------------------
 
@@ -39,12 +41,20 @@ It repeatedly narrows an array by half to the left or right based on weather or 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/BinarySearch)
 
 <a id="singly_linked_list"></a>
-# Binary Search
+# Singly Linked List
 
 ## Description
 In computer science, a linked list is a linear collection of data elements, whose order is not given by their physical placement in memory.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/LinkedList)
+
+<a id="stack_queue"></a>
+# Stack & Queue
+
+## Description
+Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues)
 
 <!--
 ![name](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/[name].jpg)
@@ -61,6 +71,8 @@ In computer science, a linked list is a linear collection of data elements, whos
 1.2 25MAR2019 singly linked list added
 
 1.3 29MAR2019 linked list merge
+
+1.4 1APR2019 stack and queue
 
 ------------------------------
 
