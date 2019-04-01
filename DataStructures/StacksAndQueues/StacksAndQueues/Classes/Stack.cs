@@ -4,9 +4,9 @@ using System.Text;
 
 namespace StacksAndQueues.Classes
 {
-    class Stack
+    public class Stack
     {
-        Node top { get; set; }
+        public Node top { get; set; }
 
         public Stack()
         {
