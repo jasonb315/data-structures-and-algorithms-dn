@@ -6,5 +6,13 @@ namespace StacksAndQueues.Classes
 {
     class Node
     {
+        public object data { get; set; }
+        public Node next { get; set; }
+        public Node prev { get; set; }
+
+        public Node(object d)
+        {
+            data = d;
+        }
     }
 }
