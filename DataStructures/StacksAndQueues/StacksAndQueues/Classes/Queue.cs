@@ -72,6 +72,7 @@ namespace StacksAndQueues.Classes
                 if (head.prev is null)
                 {
                     head = null;
+                    tail = null;
                 }
                 // more than one Node in Queue
                 else
