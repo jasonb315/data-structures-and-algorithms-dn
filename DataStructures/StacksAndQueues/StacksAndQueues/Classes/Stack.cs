@@ -43,6 +43,7 @@ namespace StacksAndQueues.Classes
             if (top is Node)
             {
                 Node returnNode = top;
+                top = returnNode.prev;
                 // sever for garbage collection
                 returnNode.prev.next = null;
                 returnNode.prev = null;
