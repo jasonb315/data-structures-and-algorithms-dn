@@ -21,18 +21,25 @@ The order in which elements come off a stack gives rise to its alternative name,
 
 ------------------------------
 
-## Methods
+## Stack Methods
 
-<!-- | Method | Summary | Big O Time | Big O Space | Example | 
+| Method | Summary | Big O Time | Big O Space | Example | 
 | :----------- | :----------- | :-------------: | :-------------: | :----------- |
-| Insert | Adds a new `Node` to the head of `Linked List` | O(1) | O(1) | myList.Insert(99) | -->
+| Peek | Looks at and returns the head of the structure without mutating it | O(1) | O(1) | myStack.Peek() |
+| Push | Place a new Node with data at the top of the stack | O(1) | O(1) | myStack.Push(oject) |
+| Pop | Removes a Node fro mthe top of the stack and returns it's data | O(1) | O(1) | myStack.Pop() |
+
+## Queue Methods
+
+| Method | Summary | Big O Time | Big O Space | Example | 
+| :----------- | :----------- | :-------------: | :-------------: | :----------- |
+| Peek | Looks at and returns the head of the structure without mutating it | O(1) | O(1) | myQueue.Peek() |
+| Enqueue | Place a new Node with data at the tail of the queue | O(1) | O(1) | myList.Enqueue(object) |
+| Dequeue | Remove a Node with data from the head of the queue and return it's data | O(1) | O(1) | myList.Dequeue() |
 
 ------------------------------
-
-## DEMO
+<!-- ## DEMO -->
 <!-- ![singly_linked_list_0](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/singly_linked_list_0.JPG) <br> -->
-
-
 ------------------------------
 
 ## Change Log
