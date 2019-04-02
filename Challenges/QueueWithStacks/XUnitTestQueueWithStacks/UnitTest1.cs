@@ -8,7 +8,7 @@ namespace XUnitTestQueueWithStacks
         [Fact]
         public void Test1()
         {
-
+            PseudoQueue
         }
     }
 }

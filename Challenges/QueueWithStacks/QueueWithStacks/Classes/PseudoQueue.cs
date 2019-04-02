@@ -7,8 +7,8 @@ namespace QueueWithStacks.Classes
 {
     public class PseudoQueue
     {
-        public static Queue EnQueue = new Queue();
-        public static Queue DeQueue = new Queue();
+        public static Stack EnQueue = new Stack();
+        public static Stack DeQueue = new Stack();
 
         // flip only on method change between consecutive calls
         public static bool EQing = true;
@@ -20,13 +20,12 @@ namespace QueueWithStacks.Classes
                 Flip();
                 EQing = true;
             }
-            EnQueue.Enqueue(data);
-
+            EnQueue.Push(data);
         }
 
         public static object Dequeue()
         {
-            if (EnQueue.head == null && DeQueue.head == null)
+            if (EnQueue.top == null && DeQueue.top == null)
             {
                 Console.WriteLine("nothing in queue");
                 return null;
@@ -39,36 +38,35 @@ namespace QueueWithStacks.Classes
                     EQing = false;
                 }
                 object returnData;
-                returnData = DeQueue.Dequeue();
+                returnData = DeQueue.Pop();
                 return returnData;
             }
-            
         }
 
         public static void Flip()
         {
-            if (EnQueue.head == null && DeQueue.head == null)
+            if (EnQueue.top == null && DeQueue.top == null)
             {
                 Console.WriteLine("nothing in queue");
             }
 
             // flip into DeQueue
-            if (EnQueue.head != null && DeQueue.head == null)
+            if (EnQueue.top != null && DeQueue.top == null)
             {
-                while (EnQueue.head != null)
+                while (EnQueue.top != null)
                 {
-                    object flipData = EnQueue.Dequeue();
-                    DeQueue.Enqueue(flipData);
+                    object flipData = EnQueue.Pop();
+                    DeQueue.Push(flipData);
                 }
             }
 
             // flip into EnQueue
-            if (EnQueue.head == null && DeQueue.head != null)
+            if (EnQueue.top == null && DeQueue.top != null)
             {
-                while (DeQueue.head != null)
+                while (DeQueue.top != null)
                 {
-                    object flipData = DeQueue.Dequeue();
-                    EnQueue.Enqueue(flipData);
+                    object flipData = DeQueue.Pop();
+                    EnQueue.Push(flipData);
                 }
             }
 
