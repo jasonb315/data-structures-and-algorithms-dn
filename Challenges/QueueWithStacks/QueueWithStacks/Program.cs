@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace StacksAndQueues
+namespace QueueWithStacks
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
