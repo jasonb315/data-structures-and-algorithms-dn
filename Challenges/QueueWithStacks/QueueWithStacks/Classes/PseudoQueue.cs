@@ -7,8 +7,8 @@ namespace QueueWithStacks.Classes
 {
     public class PseudoQueue
     {
-        public static Stack EnQueue = new Stack();
-        public static Stack DeQueue = new Stack();
+        public Stack EnQueue = new Stack();
+        public Stack DeQueue = new Stack();
 
         // flip only on method change between consecutive calls
         public static bool EQing = true;
@@ -23,7 +23,7 @@ namespace QueueWithStacks.Classes
             EnQueue.Push(data);
         }
 
-        public static object Dequeue()
+        public object Dequeue()
         {
             if (EnQueue.top == null && DeQueue.top == null)
             {
@@ -43,7 +43,7 @@ namespace QueueWithStacks.Classes
             }
         }
 
-        public static void Flip()
+        public void Flip()
         {
             if (EnQueue.top == null && DeQueue.top == null)
             {
@@ -51,22 +51,20 @@ namespace QueueWithStacks.Classes
             }
 
             // flip into DeQueue
-            if (EnQueue.top != null && DeQueue.top == null)
+            else if(EnQueue.top != null && DeQueue.top == null)
             {
                 while (EnQueue.top != null)
                 {
-                    object flipData = EnQueue.Pop();
-                    DeQueue.Push(flipData);
+                    DeQueue.Push(EnQueue.Pop());
                 }
             }
 
             // flip into EnQueue
-            if (EnQueue.top == null && DeQueue.top != null)
+            else if (EnQueue.top == null && DeQueue.top != null)
             {
                 while (DeQueue.top != null)
                 {
-                    object flipData = DeQueue.Pop();
-                    EnQueue.Push(flipData);
+                    EnQueue.Push(DeQueue.Pop());
                 }
             }
 
