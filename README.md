@@ -17,10 +17,11 @@ person = 'Jason Burns'
 
 1. [selection_sort](#selection_sort) -->
 
-
-#### Algorithms <br>
+#### Algorithms/Challenges
 
 1. [binary_search](#binary_search)
+
+1. []
 
 #### Data Structures
 
