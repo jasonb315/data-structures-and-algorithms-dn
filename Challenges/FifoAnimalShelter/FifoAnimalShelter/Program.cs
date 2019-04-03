@@ -44,9 +44,10 @@ namespace FifoAnimalShelter
                 shelter.Enqueue(animal);
             }
 
+
             while (true)
             {
-                Console.WriteLine("Weocome to Rainin' Cats and Dogs!");
+                Console.WriteLine("Welcome to Rainin' Cats and Dogs!");
                 Console.WriteLine("1] Adopt");
                 Console.WriteLine("2] Deopt");
                 string selectAction = Console.ReadLine();
@@ -64,6 +65,8 @@ namespace FifoAnimalShelter
                         Cat adopteeCat = (Cat)shelter.Dequeue("cat");
                         Console.WriteLine("Cat with tag: " + adopteeCat.ID + " says " + adopteeCat.MakeNoise() + "[Thanks for atopting me!]");
                         Console.ReadLine();
+                        Console.Clear();
+
                     }
 
                     if (selectType == "2")
@@ -71,29 +74,45 @@ namespace FifoAnimalShelter
                         Dog adopteeDog = (Dog)shelter.Dequeue("dog");
                         Console.WriteLine("Dog with tag: " + adopteeDog.ID + " says " + adopteeDog.MakeNoise() + "[Thanks for atopting me!]");
                         Console.ReadLine();
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        Console.WriteLine("I'm sorry, what?");
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                 }
                 else if (selectAction == "2")
                 {
-                    Console.WriteLine("Deopt: cat or dog?");
-
+                    Console.WriteLine("Adopt: Cat or Dog?");
+                    Console.WriteLine("1] Cat");
+                    Console.WriteLine("2] Dog");
                     string selectType = Console.ReadLine();
 
-                    if (selectType == "cat")
+
+                    if (selectType == "1")
                     {
                         Cat deCat = new Cat();
                         Console.WriteLine(deCat.MakeNoise() + " [bye!]");
                         shelter.Enqueue(deCat);
+                        Console.ReadLine();
+                        Console.Clear();
+
                     }
-                    else if (selectType == "dog")
+                    else if (selectType == "2")
                     {
                         Dog deDog = new Dog();
                         Console.WriteLine(deDog.MakeNoise() + " [bye!]");
                         shelter.Enqueue(deDog);
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                     else
                     {
                         Console.WriteLine("Um.. cat or dog?");
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                     Console.ReadLine();
 
