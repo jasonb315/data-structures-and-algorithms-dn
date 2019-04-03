@@ -14,25 +14,69 @@ namespace FifoAnimalShelter.Classes
 
         public void Enqueue(Animal ani)
         {
-            ani.ID = tagID;
+            if (ani.MakeNoise() == "Meow")
+            {
+                ani.ID = tagID;
+                cats.Enqueue(ani);
+
+            }
+            else if (ani.MakeNoise() == "Woof")
+            {
+                ani.ID = tagID;
+                dogs.Enqueue(ani);
+            }
             tagID++;
-            dogs.Enqueue(ani);
+
         }
 
         public Animal Dequeue(string species)
         {
             if ( species.ToLower() == "dog" )
             {
-
+                if (dogs.head != null)
+                {
+                    return (Dog)dogs.Dequeue();
+                }
+                else
+                {
+                    return null;
+                }
             }
             else if ( species.ToLower() == "cat")
             {
+                if (cats.head != null)
+                {
+                    return (Cat)cats.Dequeue();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            // return animal waiting longest
+            else if (dogs.head != null && cats.head != null)
+            {
+                Animal checkDog = (Dog)dogs.Peek();
+                int dogTag = checkDog.ID;
 
+                Animal checkCat = (Cat)cats.Peek();
+                int catTag = checkCat.ID;
+
+                if (dogTag > catTag)
+                {
+                    return (Dog)dogs.Dequeue();
+                }
+                else if (dogTag < catTag)
+                {
+                    return (Cat)cats.Dequeue();
+                }
             }
             else
             {
-
+                Console.WriteLine("Please select a \"cat\" or \"dog\"");
             }
+
+            return null;
 
         }
     }
