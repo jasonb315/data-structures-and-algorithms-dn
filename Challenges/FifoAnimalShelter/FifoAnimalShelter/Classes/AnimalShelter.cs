@@ -12,6 +12,10 @@ namespace FifoAnimalShelter.Classes
         public int tagID = 0;
         // no vars passed on instantiation
 
+        /// <summary>
+        ///     Adds an Animal to it's respective Queue
+        /// </summary>
+        /// <param name="ani">Animal ani</param>
         public void Enqueue(Animal ani)
         {
             if (ani.MakeNoise() == "Meow")
@@ -29,6 +33,11 @@ namespace FifoAnimalShelter.Classes
 
         }
 
+        /// <summary>
+        ///     Returns an animal from the respective Queue
+        /// </summary>
+        /// <param name="species">requested Animal type</param>
+        /// <returns>Animal of type requested</returns>
         public Animal Dequeue(string species)
         {
             if ( species.ToLower() == "dog" )

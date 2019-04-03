@@ -19,6 +19,9 @@ namespace FifoAnimalShelter
             FifoAnimalShelter();
         }
 
+        /// <summary>
+        ///     Instantiates and runs an AnimalShelter instance for CLI
+        /// </summary>
         static void FifoAnimalShelter()
         {
             AnimalShelter shelter = new AnimalShelter();
