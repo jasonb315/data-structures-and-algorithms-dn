@@ -16,15 +16,25 @@ namespace MultiBracketValidation
 
         public static bool MultiBracketValidation(string input)
         {
-            Queue bracketQueue = new Queue();
+            Stack bracketQueue = new Stack();
 
             var bracketPairs = new Dictionary<string, string>() { {"{", "}"}, {"[", "]"}, {"(", ")"} };
 
             foreach (char item in input)
             {
-                if (bracketPairs.ContainsKey(item.ToString()))
+                string i = item.ToString();
+                if (bracketPairs.ContainsKey(i))
                 {
-                    Console.WriteLine("Ding");
+                    // stack { { [ ( ...
+                    bracketQueue.Push(i);
+                }
+                else if (bracketPairs.ContainsValue(i))
+                {
+                    string peek = (string)bracketQueue.Peek();
+                    if (bracketPairs[peek] == i)
+                    {
+                        bracketQueue.Pop();
+                    }
                 }
             }
             return true;
