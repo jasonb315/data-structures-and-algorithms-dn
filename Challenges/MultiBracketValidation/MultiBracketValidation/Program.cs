@@ -4,19 +4,25 @@ using System.Collections.Generic;
 
 namespace MultiBracketValidation
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            MultiBracketValidation("[{The {quick([{ }])brown} fox}]");
+            //MultiBracketValidationMethod("[{The {quick([{ }])brown} fox}]");
+            MultiBracketValidationMethod("]]]]]]]]]]]]]]");
         }
 
-        public static bool MultiBracketValidation(string input)
+        /// <summary>
+        ///     Reads a sting to verify bracket pair matching
+        /// </summary>
+        /// <param name="input">string input</param>
+        /// <returns>bool</returns>
+        public static bool MultiBracketValidationMethod(string input)
         {
             Stack bracketQueue = new Stack();
-
             var bracketPairs = new Dictionary<string, string>() { {"{", "}"}, {"[", "]"}, {"(", ")"} };
+            int closeCount = 0;
 
             foreach (char item in input)
             {
@@ -28,15 +34,27 @@ namespace MultiBracketValidation
                 }
                 else if (bracketPairs.ContainsValue(i))
                 {
-                    string peek = (string)bracketQueue.Peek();
-                    if (bracketPairs[peek] == i)
+                    if(bracketQueue.Count == 0)
                     {
-                        bracketQueue.Pop();
-                    }
-                    else
-                    {
-                        Console.WriteLine("false");
                         return false;
+                    }
+                    closeCount++;
+                    Console.WriteLine(closeCount);
+
+                    if (bracketQueue.Count > 0)
+                    {
+                        string peek = (string)bracketQueue.Peek();
+                        if (bracketPairs[peek] == i)
+                        {
+                            bracketQueue.Pop();
+                            closeCount--;
+                            Console.WriteLine(closeCount);
+                        }
+                        else
+                        {
+                            Console.WriteLine("false");
+                            return false;
+                        }
                     }
                 }
                 else
@@ -44,8 +62,18 @@ namespace MultiBracketValidation
                     continue;
                 }
             }
-            Console.WriteLine("true");
-            return true;
+            if(bracketQueue.Count > 0)
+            {
+                return false;
+            }
+            else if(closeCount == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
