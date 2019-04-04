@@ -21,7 +21,7 @@ Curly Brackets : {}
 ------------------------------
 
 ## Visuals
-![testBracketValidation](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/testBracketValidation.JPG)
+![testBracketValidation](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/testMultiBracket.JPG)
 
 ------------------------------
 
