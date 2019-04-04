@@ -12,8 +12,6 @@ namespace MultiBracketValidation
             MultiBracketValidation("[{The {quick([{ }])brown} fox}]");
         }
 
-    
-
         public static bool MultiBracketValidation(string input)
         {
             Stack bracketQueue = new Stack();
@@ -35,8 +33,18 @@ namespace MultiBracketValidation
                     {
                         bracketQueue.Pop();
                     }
+                    else
+                    {
+                        Console.WriteLine("false");
+                        return false;
+                    }
+                }
+                else
+                {
+                    continue;
                 }
             }
+            Console.WriteLine("true");
             return true;
         }
     }
