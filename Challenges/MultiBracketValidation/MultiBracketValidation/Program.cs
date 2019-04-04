@@ -39,7 +39,6 @@ namespace MultiBracketValidation
                         return false;
                     }
                     closeCount++;
-                    Console.WriteLine(closeCount);
 
                     if (bracketQueue.Count > 0)
                     {
@@ -48,11 +47,9 @@ namespace MultiBracketValidation
                         {
                             bracketQueue.Pop();
                             closeCount--;
-                            Console.WriteLine(closeCount);
                         }
                         else
                         {
-                            Console.WriteLine("false");
                             return false;
                         }
                     }
