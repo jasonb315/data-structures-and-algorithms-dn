@@ -20,7 +20,7 @@ namespace QueueWithStacks.Classes
             }
             EnQueue.Push(data);
         }
-
+         
         public object Dequeue()
         {
             if (EnQueue.top == null && DeQueue.top == null)
