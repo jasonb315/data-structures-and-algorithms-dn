@@ -21,6 +21,7 @@ namespace BinaryTree.Classes
                 nodeAccumulator.Clear();
             }
 
+            // recursive
             PreOrderWalk(Root);
 
             T[] returnArray = new T[nodeAccumulator.Count];
@@ -34,6 +35,10 @@ namespace BinaryTree.Classes
             return returnArray;
         }
 
+        /// <summary>
+        ///     recursive walk down tree with operation
+        /// </summary>
+        /// <param name="node">current node</param>
         public static void PreOrderWalk(BTNode<T> node)
         {
             nodeAccumulator.Add(node.Data);
@@ -58,6 +63,7 @@ namespace BinaryTree.Classes
                 nodeAccumulator.Clear();
             }
 
+            // recursive
             InOrderWalk(Root);
 
             T[] returnArray = new T[nodeAccumulator.Count];
@@ -71,6 +77,10 @@ namespace BinaryTree.Classes
             return returnArray;
         }
 
+        /// <summary>
+        ///     recursive walk down tree with operation
+        /// </summary>
+        /// <param name="node">current node</param>
         private static void InOrderWalk(BTNode<T> node)
         {
             if (node.Left != null)
@@ -95,6 +105,7 @@ namespace BinaryTree.Classes
                 nodeAccumulator.Clear();
             }
 
+            // recursive
             PostOrderWalk(Root);
 
             T[] returnArray = new T[nodeAccumulator.Count];
@@ -108,6 +119,10 @@ namespace BinaryTree.Classes
             return returnArray;
         }
 
+        /// <summary>
+        ///     recursive walk down tree with operation
+        /// </summary>
+        /// <param name="node">current node</param>
         private static void PostOrderWalk(BTNode<T> node)
         {
             if (node.Left != null)
