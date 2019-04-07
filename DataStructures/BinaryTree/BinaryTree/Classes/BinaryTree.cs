@@ -10,9 +10,12 @@ namespace BinaryTree.Classes
 
         public static List<T> nodeAccumulator = new List<T>();
 
-        public static List<T> PreOrder()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static T[] PreOrder()
         {
-
             if(nodeAccumulator.Count > 0)
             {
                 nodeAccumulator.Clear();
@@ -20,30 +23,36 @@ namespace BinaryTree.Classes
 
             PreOrderWalk(Root);
 
-            return nodeAccumulator;
+            T[] returnArray = new T[nodeAccumulator.Count];
 
+            int i = 0;
+            foreach (var item in nodeAccumulator)
+            {
+                returnArray[i++] = item;
+            }
+
+            return returnArray;
         }
 
         public static void PreOrderWalk(BTNode<T> node)
         {
-
             nodeAccumulator.Add(node.Data);
-
             if (node.Left != null)
             {
                 PreOrderWalk(node.Left);
             }
-
             if (node.Right != null)
             {
                 PreOrderWalk(node.Right);
             }
-
         }
         
-        private static List<T> InOrder()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private static T[] InOrder()
         {
-
             if (nodeAccumulator.Count > 0)
             {
                 nodeAccumulator.Clear();
@@ -51,30 +60,36 @@ namespace BinaryTree.Classes
 
             InOrderWalk(Root);
 
-            return nodeAccumulator;
+            T[] returnArray = new T[nodeAccumulator.Count];
 
+            int i = 0;
+            foreach (var item in nodeAccumulator)
+            {
+                returnArray[i++] = item;
+            }
+
+            return returnArray;
         }
 
         private static void InOrderWalk(BTNode<T> node)
         {
-
             if (node.Left != null)
             {
                 InOrderWalk(node.Left);
             }
-
             nodeAccumulator.Add(node.Data);
-
             if (node.Right != null)
             {
                 InOrderWalk(node.Right);
             }
-
         }
 
-        public static List<T> PostOrder()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static T[] PostOrder()
         {
-
             if (nodeAccumulator.Count > 0)
             {
                 nodeAccumulator.Clear();
@@ -82,25 +97,28 @@ namespace BinaryTree.Classes
 
             PostOrderWalk(Root);
 
-            return nodeAccumulator;
+            T[] returnArray = new T[nodeAccumulator.Count];
 
+            int i = 0;
+            foreach (var item in nodeAccumulator)
+            {
+                returnArray[i++] = item;
+            }
+
+            return returnArray;
         }
 
         private static void PostOrderWalk(BTNode<T> node)
         {
-
             if (node.Left != null)
             {
                 PostOrderWalk(node.Left);
             }
-
             if (node.Right != null)
             {
                 PostOrderWalk(node.Right);
             }
-
             nodeAccumulator.Add(node.Data);
-
         }
     }
 
