@@ -6,6 +6,7 @@ namespace BinaryTree.Classes
 {
     public class BTNode<T>
     {
+        public int ID { get; set; }
         public T Data { get; set; }
         public BTNode<T> Left { get; set; }
         public BTNode<T> Right { get; set; }

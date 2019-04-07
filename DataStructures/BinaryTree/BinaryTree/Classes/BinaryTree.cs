@@ -136,10 +136,4 @@ namespace BinaryTree.Classes
             nodeAccumulator.Add(node.Data);
         }
     }
-
-
-    // pre order
-    // in order
-    // post order
-
 }
