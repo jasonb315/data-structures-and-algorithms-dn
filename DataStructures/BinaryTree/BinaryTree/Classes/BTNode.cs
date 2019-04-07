@@ -7,8 +7,8 @@ namespace BinaryTree.Classes
     public class BTNode<T>
     {
         public T Data { get; set; }
-        public BTNode Left { get; set; }
-        public BTNode Right { get; set; }
+        public BTNode<T> Left { get; set; }
+        public BTNode<T> Right { get; set; }
 
         public BTNode(T data)
         {
