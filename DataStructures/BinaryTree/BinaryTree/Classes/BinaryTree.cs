@@ -42,6 +42,7 @@ namespace BinaryTree.Classes
         public static void PreOrderWalk(BTNode<T> node)
         {
             nodeAccumulator.Add(node.Data);
+
             if (node.Left != null)
             {
                 PreOrderWalk(node.Left);
