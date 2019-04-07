@@ -11,9 +11,9 @@ namespace BinaryTree.Classes
         public static List<T> nodeAccumulator = new List<T>();
 
         /// <summary>
-        /// 
+        ///     PreOrder collection of node data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>preordered array</returns>
         public static T[] PreOrder()
         {
             if(nodeAccumulator.Count > 0)
@@ -46,11 +46,11 @@ namespace BinaryTree.Classes
                 PreOrderWalk(node.Right);
             }
         }
-        
+
         /// <summary>
-        /// 
+        ///     InOrder collection of node data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>preordered array</returns>
         private static T[] InOrder()
         {
             if (nodeAccumulator.Count > 0)
@@ -85,9 +85,9 @@ namespace BinaryTree.Classes
         }
 
         /// <summary>
-        /// 
+        ///     PostOrder collection of node data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>preordered array</returns>
         public static T[] PostOrder()
         {
             if (nodeAccumulator.Count > 0)
