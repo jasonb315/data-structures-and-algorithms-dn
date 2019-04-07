@@ -4,12 +4,10 @@ using System.Text;
 
 namespace BinaryTree.Classes
 {
-    public class BinaryTree<T>
+    public class BinarySearchTree<T>
     {
         public BTNode<T> Root { get; set; }
     }
-    // pre order
-    // in order
-    // post order
-
+    // add
+    // contains
 }
