@@ -130,6 +130,7 @@ namespace XUnitTestTree
             BTNode<int> node6 = new BTNode<int>(6);
             BTNode<int> node7 = new BTNode<int>(7);
 
+
             tree.Root = node1;
             node1.Left = node2;
             node1.Right = node3;
