@@ -28,8 +28,8 @@ The stack should flip over between Enqueue and Dequeue so that push on one and p
 
 ------------------------------
 
-<!-- ## Visuals
-![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/ll_merge/Challenges/LLMerge/LLMerge/assets/Capture.JPG) -->
+## Visuals
+![Queue Stack](https://github.com/jasonb315/data_structures_and_algorithms-py/blob/master/assets/queue_with_stacks.jpg)
 
 ------------------------------
 
