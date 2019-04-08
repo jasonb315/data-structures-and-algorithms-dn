@@ -15,9 +15,10 @@ namespace BinaryTree.Classes
 
         }
 
-        public BinaryTree(BTNode<T> root)
+        public BinaryTree(T root)
         {
-            Root = root;
+            BTNode<T> node = new BTNode<T>(root);
+            Root = node;
         }
 
         /// <summary>
