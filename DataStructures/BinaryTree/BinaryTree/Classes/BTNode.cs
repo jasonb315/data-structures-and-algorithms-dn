@@ -15,6 +15,8 @@ namespace BinaryTree.Classes
         public BTNode(T data)
         {
             Data = data;
+            Left = null;
+            Right = null;
         }
     }
 }

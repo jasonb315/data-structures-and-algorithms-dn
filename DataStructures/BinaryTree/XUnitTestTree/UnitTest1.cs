@@ -19,6 +19,27 @@ namespace XUnitTestTree
             BinarySearchTree<BTNode<int>> tree = new BinarySearchTree<BTNode<int>>();
             Assert.IsType<BinarySearchTree<BTNode<int>>>(tree);
         }
+
+        [Fact]
+        public void BTNodeInstantiation()
+        {
+            //BinaryTree<BTNode<int>> tree = new BinaryTree<BTNode<int>>();
+            BTNode<int> node = new BTNode<int>(3);
+            //tree.Root = node;
+            Assert.Equal(3, node.Data);
+        }
+
+        [Fact]
+        public void BTNodeRoot()
+        {
+            BinaryTree<BTNode<int>> tree = new BinaryTree<BTNode<int>>();
+            BTNode<int> node = new BTNode<int>(3);
+            tree.Root = node;
+
+
+          //  tree.Root = new BTNode<int>(6);
+          //  Assert.Equal(3, node.Data);
+        }
     }
 }
 

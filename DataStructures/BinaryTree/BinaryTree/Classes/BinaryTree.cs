@@ -6,17 +6,27 @@ namespace BinaryTree.Classes
 {
     public class BinaryTree<T>
     {
-        public static BTNode<T> Root { get; set; }
+        public BTNode<T> Root { get; set; }
 
-        public static List<T> nodeAccumulator = new List<T>();
+        public List<T> nodeAccumulator = new List<T>();
+
+        public BinaryTree()
+        {
+
+        }
+
+        public BinaryTree(BTNode<T> root)
+        {
+            Root = root;
+        }
 
         /// <summary>
         ///     PreOrder collection of node data
         /// </summary>
         /// <returns>preordered array</returns>
-        public static T[] PreOrder()
+        public T[] PreOrder()
         {
-            if(nodeAccumulator.Count > 0)
+            if (nodeAccumulator.Count > 0)
             {
                 nodeAccumulator.Clear();
             }
@@ -39,7 +49,7 @@ namespace BinaryTree.Classes
         ///     recursive walk down tree with operation
         /// </summary>
         /// <param name="node">current node</param>
-        private static void PreOrderWalk(BTNode<T> node)
+        private void PreOrderWalk(BTNode<T> node)
         {
             nodeAccumulator.Add(node.Data);
 
@@ -57,7 +67,7 @@ namespace BinaryTree.Classes
         ///     InOrder collection of node data
         /// </summary>
         /// <returns>preordered array</returns>
-        public static T[] InOrder()
+        public T[] InOrder()
         {
             if (nodeAccumulator.Count > 0)
             {
@@ -82,7 +92,7 @@ namespace BinaryTree.Classes
         ///     recursive walk down tree with operation
         /// </summary>
         /// <param name="node">current node</param>
-        private static void InOrderWalk(BTNode<T> node)
+        private void InOrderWalk(BTNode<T> node)
         {
             if (node.Left != null)
             {
@@ -99,7 +109,7 @@ namespace BinaryTree.Classes
         ///     PostOrder collection of node data
         /// </summary>
         /// <returns>preordered array</returns>
-        public static T[] PostOrder()
+        public T[] PostOrder()
         {
             if (nodeAccumulator.Count > 0)
             {
@@ -124,7 +134,7 @@ namespace BinaryTree.Classes
         ///     recursive walk down tree with operation
         /// </summary>
         /// <param name="node">current node</param>
-        private static void PostOrderWalk(BTNode<T> node)
+        private void PostOrderWalk(BTNode<T> node)
         {
             if (node.Left != null)
             {
