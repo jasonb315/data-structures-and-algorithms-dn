@@ -39,7 +39,7 @@ namespace BinaryTree.Classes
         ///     recursive walk down tree with operation
         /// </summary>
         /// <param name="node">current node</param>
-        public static void PreOrderWalk(BTNode<T> node)
+        private static void PreOrderWalk(BTNode<T> node)
         {
             nodeAccumulator.Add(node.Data);
 
@@ -57,7 +57,7 @@ namespace BinaryTree.Classes
         ///     InOrder collection of node data
         /// </summary>
         /// <returns>preordered array</returns>
-        private static T[] InOrder()
+        public static T[] InOrder()
         {
             if (nodeAccumulator.Count > 0)
             {

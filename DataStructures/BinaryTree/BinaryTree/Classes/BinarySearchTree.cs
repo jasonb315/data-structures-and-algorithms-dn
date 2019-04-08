@@ -31,7 +31,10 @@ namespace BinaryTree.Classes
 
                 while (true)
                 {
-
+                    if (newNode.ID == currentNode.ID)
+                    {
+                        return;
+                    }
                     if (newNode.ID > currentNode.ID && currentNode.Right == null)
                     {
                         currentNode.Right = newNode;
