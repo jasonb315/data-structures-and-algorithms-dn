@@ -6,7 +6,7 @@ namespace BinaryTree.Classes
 {
     public class BinarySearchTree<T>
     {
-        public static BTNode<T> Root { get; set; }
+        public BTNode<T> Root { get; set; }
 
         /// <summary>
         ///     Conditionally places new node in tree based on given ID val

@@ -25,8 +25,8 @@ dequeue(pref): returns either a dog or a cat. If pref is not "dog" or "cat" then
 
 ------------------------------
 
-<!-- ## Visuals
-![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/ll_merge/Challenges/LLMerge/LLMerge/assets/Capture.JPG) -->
+## Visuals
+![Animal Shelter](https://github.com/jasonb315/data_structures_and_algorithms-py/blob/master/assets/fifo_animal_shelter.jpg)
 
 
 ------------------------------
