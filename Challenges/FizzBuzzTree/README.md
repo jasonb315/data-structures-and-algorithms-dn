@@ -31,7 +31,7 @@ For explicitly-typed languages: Ensure your node values are of type Object, to h
 ------------------------------
 
 ## Visuals
-<!-- ![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/Challenges/LLMerge/LLMerge/assets/Capture.JPG) -->
+![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztree.JPG)
 
 
 ------------------------------
