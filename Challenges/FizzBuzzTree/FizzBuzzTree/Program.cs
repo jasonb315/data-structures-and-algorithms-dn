@@ -4,7 +4,7 @@ using System;
 
 namespace FizzBuzzTree
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -26,6 +26,7 @@ namespace FizzBuzzTree
             node3.Left = node6;
             node3.Right = node7;
 
+            Console.WriteLine("Initial tree values in preorder:");
             object[] output = tree.PreOrder();
             foreach (var item in output)
             {
@@ -35,8 +36,9 @@ namespace FizzBuzzTree
             Console.WriteLine();
             Console.WriteLine("-----------------------");
 
-            BinaryTree<object> treeMutated = FizzBuzzTree(tree);
+            BinaryTree<object> treeMutated = FizzBuzzTreeFunction(tree);
 
+            Console.WriteLine("Mutated tree values in preorder:");
             object[] postOutput = treeMutated.PreOrder();
             foreach (var item in postOutput)
             {
@@ -54,7 +56,7 @@ namespace FizzBuzzTree
         /// </summary>
         /// <param name="tree">BinaryTree<object> tree</param>
         /// <returns>FizzBuzzTree</returns>
-        public static BinaryTree<object> FizzBuzzTree(BinaryTree<object> tree)
+        public static BinaryTree<object> FizzBuzzTreeFunction(BinaryTree<object> tree)
         {
             FizzBuzzTreeWalk(tree.Root);
             return tree;
@@ -64,7 +66,7 @@ namespace FizzBuzzTree
         ///     Traversal and mutation
         /// </summary>
         /// <param name="node">BTNode<object> node</param>
-        private static void FizzBuzzTreeWalk(BTNode<object> node)
+        public static void FizzBuzzTreeWalk(BTNode<object> node)
         {
             if ((int)node.Data % 15 == 0)
             {

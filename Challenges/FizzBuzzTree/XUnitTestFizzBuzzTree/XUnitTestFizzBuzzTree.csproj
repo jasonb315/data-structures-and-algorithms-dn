@@ -16,4 +16,10 @@
     <ProjectReference Include="..\FizzBuzzTree\FizzBuzzTree.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="BinaryTree">
+      <HintPath>..\..\..\DataStructures\BinaryTree\BinaryTree\bin\Debug\netcoreapp2.2\BinaryTree.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
