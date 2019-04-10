@@ -156,11 +156,11 @@ namespace BinaryTree.Classes
             while(queue.Count > 0)
             {
                 BTNode<T> popNode = queue.Dequeue();
-                if (popNode.Left)
+                if (popNode.Left != null)
                 {
                     queue.Enqueue(popNode.Left);
                 }
-                if (popNode.Right)
+                if (popNode.Right != null)
                 {
                     queue.Enqueue(popNode.Right);
                 }
