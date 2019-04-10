@@ -147,5 +147,26 @@ namespace BinaryTree.Classes
             }
             nodeAccumulator.Add(node.Data);
         }
+
+        private static List<T> BreadthFirst()
+        {
+            List<T> rList = new List<T>();
+            Queue<T> queue = new Queue<T>();
+            queue.Enqueue(Root);
+            while(queue.Count > 0)
+            {
+                BTNode<T> popNode = queue.Dequeue();
+                if (popNode.Left)
+                {
+                    queue.Enqueue(popNode.Left);
+                }
+                if (popNode.Right)
+                {
+                    queue.Enqueue(popNode.Right);
+                }
+                rList.Add(popNode.Data);
+            }
+            return rList;
+        }
     }
 }
