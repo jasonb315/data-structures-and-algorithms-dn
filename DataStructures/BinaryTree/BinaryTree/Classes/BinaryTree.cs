@@ -205,11 +205,13 @@ namespace BinaryTree.Classes
         ///     Breadth first traversal using queue
         /// </summary>
         /// <returns>List<T></returns>
-        private static List<T> BreadthFirst()
+        public List<T> BreadthFirst()
         {
             List<T> rList = new List<T>();
-            Queue<T> queue = new Queue<T>();
+            Queue<BTNode<T>> queue = new Queue<BTNode<T>>();
+
             queue.Enqueue(Root);
+
             while(queue.Count > 0)
             {
                 BTNode<T> popNode = queue.Dequeue();

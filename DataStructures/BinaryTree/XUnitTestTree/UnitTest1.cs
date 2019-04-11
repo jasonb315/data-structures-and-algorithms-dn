@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using BinaryTree.Classes;
+using System.Collections.Generic;
 
 namespace XUnitTestTree
 {
@@ -167,6 +168,32 @@ namespace XUnitTestTree
 
             int[] output = tree.PostOrder();
             int[] expected = new int[] { 4, 5, 2, 6, 7, 3, 1 };
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void BreadthFirstTraversal()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+
+            BTNode<int> node1 = new BTNode<int>(1);
+            BTNode<int> node2 = new BTNode<int>(2);
+            BTNode<int> node3 = new BTNode<int>(3);
+            BTNode<int> node4 = new BTNode<int>(4);
+            BTNode<int> node5 = new BTNode<int>(5);
+            BTNode<int> node6 = new BTNode<int>(6);
+            BTNode<int> node7 = new BTNode<int>(7);
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            List<int> output = tree.BreadthFirst();
+            int[] expected = new int[] { 1,2,3,4,5,6,7 };
             Assert.Equal(expected, output);
         }
 
