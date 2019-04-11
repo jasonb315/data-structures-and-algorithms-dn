@@ -18,6 +18,7 @@ A binary tree is a tree data structure in which each node has at most two childr
 | PreOrder | PreOrder collection of node data | O(n) | O(n) | tree.PreOrder() |
 | InOrder | InOrder collection of node data | O(n) | O(n) | tree.InOrder(oject) |
 | PostOrder | PostOrder collection of node data | O(n) | O(n) | tree.PostOrder() |
+| BreadthFirst | BreadthFirst list of node data | O(n) | O(n) | tree.BreadthFirst() |
 | FindMaxVal | Checks tree for max value given that Data is cast as a numeric type | O(n) | O(1) | tree.FindMaxVal() |
 
 ## Binary Search Tree
@@ -38,4 +39,4 @@ A binary tree is a tree data structure in which each node has at most two childr
 
 1.0.1 10APR2019 Readme
 
-1.1.0 11APR2019 FindMaxVal
+1.1.0 11APR2019 FindMaxVal. Fixed merge conflict with previous assignment; regathered to master for next assignment.
