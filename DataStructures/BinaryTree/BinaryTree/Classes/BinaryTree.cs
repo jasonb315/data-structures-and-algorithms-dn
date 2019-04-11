@@ -201,6 +201,29 @@ namespace BinaryTree.Classes
             nodeAccumulator.Add(node.Data);
         }
 
-        
+        /// <summary>
+        ///     Breadth first traversal using queue
+        /// </summary>
+        /// <returns>List<T></returns>
+        private static List<T> BreadthFirst()
+        {
+            List<T> rList = new List<T>();
+            Queue<T> queue = new Queue<T>();
+            queue.Enqueue(Root);
+            while(queue.Count > 0)
+            {
+                BTNode<T> popNode = queue.Dequeue();
+                if (popNode.Left != null)
+                {
+                    queue.Enqueue(popNode.Left);
+                }
+                if (popNode.Right != null)
+                {
+                    queue.Enqueue(popNode.Right);
+                }
+                rList.Add(popNode.Data);
+            }
+            return rList;
+        }
     }
 }
