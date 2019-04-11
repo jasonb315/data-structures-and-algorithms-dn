@@ -169,5 +169,83 @@ namespace XUnitTestTree
             int[] expected = new int[] { 4, 5, 2, 6, 7, 3, 1 };
             Assert.Equal(expected, output);
         }
+
+        [Fact]
+        public void FindMaxValExpected()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+
+            BTNode<int> node1 = new BTNode<int>(1);
+            BTNode<int> node2 = new BTNode<int>(2);
+            BTNode<int> node3 = new BTNode<int>(3);
+            BTNode<int> node4 = new BTNode<int>(4);
+            BTNode<int> node5 = new BTNode<int>(5);
+            BTNode<int> node6 = new BTNode<int>(6);
+            BTNode<int> node7 = new BTNode<int>(7);
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            double output = tree.FindMaxVal();
+            double expected = 7;
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void FindMaxValExpectedRoot()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+
+            BTNode<int> node1 = new BTNode<int>(10);
+            BTNode<int> node2 = new BTNode<int>(2);
+            BTNode<int> node3 = new BTNode<int>(3);
+            BTNode<int> node4 = new BTNode<int>(4);
+            BTNode<int> node5 = new BTNode<int>(5);
+            BTNode<int> node6 = new BTNode<int>(6);
+            BTNode<int> node7 = new BTNode<int>(7);
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            double output = tree.FindMaxVal();
+            double expected = 10;
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void FindMaxValExpectedStringVals()
+        {
+            BinaryTree<string> tree = new BinaryTree<string>();
+
+            BTNode<string> node1 = new BTNode<string>("x");
+            BTNode<string> node2 = new BTNode<string>("x");
+            BTNode<string> node3 = new BTNode<string>("x");
+            BTNode<string> node4 = new BTNode<string>("x");
+            BTNode<string> node5 = new BTNode<string>("x");
+            BTNode<string> node6 = new BTNode<string>("x");
+            BTNode<string> node7 = new BTNode<string>("x");
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            double output = tree.FindMaxVal();
+            double expected = Double.NegativeInfinity;
+            Assert.Equal(expected, output);
+        }
     }
 }
