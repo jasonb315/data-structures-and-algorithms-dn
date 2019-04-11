@@ -10,15 +10,56 @@ namespace BinaryTree.Classes
 
         public List<T> nodeAccumulator = new List<T>();
 
+        double maxVal = Double.NegativeInfinity;
+
         public BinaryTree()
         {
 
         }
 
-        public BinaryTree(T root)
+        /// <summary>
+        ///     Override instantiation; if a number, keep track of highest
+        /// </summary>
+        /// <param name="rootVal"></param>
+        public BinaryTree(T rootVal)
         {
-            BTNode<T> node = new BTNode<T>(root);
+            BTNode<T> node = new BTNode<T>(rootVal);
+
+            Type T = rootVal.GetType();
+            if (T.Equals(typeof(int)) || T.Equals(typeof(double)))
+            {
+                maxVal = Convert.ToInt32(rootVal);
+            }
+
             Root = node;
+        }
+
+        public double FindMaxVal()
+        {
+            FindMaxVal(Root);
+            return maxVal;
+        }
+
+        private void FindMaxVal(BTNode<T> node)
+        {
+
+            Type T = node.Data.GetType();
+            if (T.Equals(typeof(int)) || T.Equals(typeof(double)))
+            {
+                if (maxVal < Convert.ToDouble(node.Data))
+                {
+                    maxVal = Convert.ToDouble(node.Data);
+                }
+            }
+
+            if (node.Left != null)
+            {
+                FindMaxVal(node.Left);
+            }
+            if (node.Right != null)
+            {
+                FindMaxVal(node.Right);
+            }
         }
 
         /// <summary>
@@ -147,5 +188,7 @@ namespace BinaryTree.Classes
             }
             nodeAccumulator.Add(node.Data);
         }
+
+        
     }
 }
