@@ -5,7 +5,7 @@
 
 ------------------------------
 
-## QUEUE
+## About
 
 A binary tree is a tree data structure in which each node has at most two children, which are referred to as the and the. A recursive definition using just set theory notions is that a binary tree is a tuple, where L and R are binary trees or the empty set and S is a singleton set. Some authors allow the binary tree to be the empty set as well.
 
@@ -15,9 +15,9 @@ A binary tree is a tree data structure in which each node has at most two childr
 
 | Method | Summary | Big O Time | Big O Space | Example | 
 | :----------- | :----------- | :-------------: | :-------------: | :----------- |
-| Peek | Looks at and returns the head of the structure without mutating it | O(1) | O(1) | myStack.Peek() |
-| Push | Place a new Node with data at the top of the stack | O(1) | O(1) | myStack.Push(oject) |
-| Pop | Removes a Node fro mthe top of the stack and returns it's data | O(1) | O(1) | myStack.Pop() |
+| PreOrder | PreOrder collection of node data | O(n) | O(n) | tree.PreOrder() |
+| InOrder | InOrder collection of node data | O(n) | O(n) | tree.InOrder(oject) |
+| PostOrder | PostOrder collection of node data | O(n) | O(n) | tree.PostOrder() |
 
 ## Binary Search Tree
 
@@ -33,4 +33,6 @@ A binary tree is a tree data structure in which each node has at most two childr
 
 ## Change Log
 
-1.0.0 1APR2019 Initial submit
+1.0.0 8APR2019 Initial submit
+
+1.0.0 10APR2019 Readme
