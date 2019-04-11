@@ -222,6 +222,9 @@ namespace XUnitTestTree
             Assert.Equal(expected, output);
         }
 
+        /// <summary>
+        ///     maxVal defaulted to -inf, stays that way in the event of non-numeric type
+        /// </summary>
         [Fact]
         public void FindMaxValExpectedStringVals()
         {

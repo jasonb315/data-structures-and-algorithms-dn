@@ -34,12 +34,20 @@ namespace BinaryTree.Classes
             Root = node;
         }
 
+        /// <summary>
+        ///     Calls recursive check for max Data val given that Data is numeric type
+        /// </summary>
+        /// <returns>Max Data val</returns>
         public double FindMaxVal()
         {
             FindMaxVal(Root);
             return maxVal;
         }
 
+        /// <summary>
+        ///     Recursively checks node Data against maxVal
+        /// </summary>
+        /// <param name="node">node</param>
         private void FindMaxVal(BTNode<T> node)
         {
 
@@ -50,6 +58,10 @@ namespace BinaryTree.Classes
                 {
                     maxVal = Convert.ToDouble(node.Data);
                 }
+            }
+            else
+            {
+                return;
             }
 
             if (node.Left != null)
