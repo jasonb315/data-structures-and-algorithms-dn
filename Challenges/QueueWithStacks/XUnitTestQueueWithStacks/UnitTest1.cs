@@ -25,9 +25,10 @@ namespace XUnitTestQueueWithStacks
         public void Dequeue()
         {
             PseudoQueue pq = new PseudoQueue();
-            pq.Enqueue(100);
-            var x = pq.Dequeue();
-            Assert.Equal(100, x);
+            pq.Enqueue(50);
+            pq.Dequeue();
+            Assert.Null(pq.DeQueue.top);
+            Assert.Null(pq.EnQueue.top);
         }
 
         [Fact]
