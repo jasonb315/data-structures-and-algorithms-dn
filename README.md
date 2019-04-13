@@ -21,11 +21,21 @@ person = 'Jason Burns'
 
 1. [binary_search](#binary_search)
 
-1. []
+1. [FifoAnimalShelter](#FifoAnimalShelter)
+
+1. [FizzBuzzTree](#FizzBuzzTree)
+
+1. [LinkedListMerge](#LLMerge)
+
+1. [MultiBracketValidation](#MultiBracketValidation)
+
+1. [QueueWithStacks](#QueueWithStacks)
 
 #### Data Structures
 
 1. [singly_linked_list](#singly_linked_list)
+
+1. [BinaryTree](#BinaryTree)
 
 1. [stack_queue](#stack_queue)
 
@@ -33,15 +43,65 @@ person = 'Jason Burns'
 ------------------------------
 
 <a id="binary_search"></a>
+
 # Binary Search
 
 ## Description
-In computer science, binary search is also known as half-interval search.
+Binary search on an array/list of sorted values, also known as half-interval search.
 It repeatedly narrows an array by half to the left or right based on weather or not he middle point is higher, lower than the search key, until the key is found or not.
 
-[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/BinarySearch)
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/BinarySearch)
 
+<a id="FifoAnimalShelter"></a>
+
+# Fifo Animal Shelter
+
+## Description
+Animal Shelter class that takes in cat and dog objects. A visitor(CLI) can adopt/dedopt a cat or dog.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/FifoAnimalShelter)
+
+<a id="FizzBuzzTree"></a>
+
+# Fizz Buzz Tree
+
+## Description
+Method which takes in a tree of int values, and replaces values with fizz, buzz, or fizzbuzz.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/FizzBuzzTree)
+
+<a id="LLMerge"></a>
+
+# Linked List Merge
+
+## Description
+Given two linked lists, zip them together.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/LLMerge)
+
+<a id="MultiBracketValidation"></a>
+
+# Multi Bracket Validation
+
+## Description
+Take a string as its only argument, and should return a boolean representing whether or not the brackets in the string are balanced.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/MultiBracketValidation)
+
+<a id="QueueWithStacks"></a>
+
+# Queue With Stacks
+
+## Description
+PseudoQueue class: a Queue made with two stacks.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/QueueWithStacks)
+
+
+
+-----------------------------------------------------------
 <a id="singly_linked_list"></a>
+
 # Singly Linked List
 
 ## Description
@@ -49,7 +109,17 @@ In computer science, a linked list is a linear collection of data elements, whos
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/LinkedList)
 
+<a id="BinaryTree"></a>
+
+# Binary Tree
+
+## Description
+tree data structure in which each node has at most two children
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/BinaryTree)
+
 <a id="stack_queue"></a>
+
 # Stack & Queue
 
 ## Description
@@ -75,6 +145,8 @@ Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 
 1.4 1APR2019 stack and queue
 
+2.0 13APR2019 *readme overhaul*
+
 ------------------------------
 
 ## Thankyou
@@ -83,7 +155,7 @@ Wikipedia
 
 Stack Overflow
 
-Dan, Shannon, and Ian
+Dan, and Ian.
 
 <!-- 
 ## Methods
