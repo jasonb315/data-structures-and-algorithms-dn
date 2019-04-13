@@ -1,12 +1,13 @@
 ------------------------------
 
-# Linked List
+# Binary Search
 #### *Author: Jason Burns*
 
 ------------------------------
 
 ## Description
-In computer science, a linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference to the next node in the sequence. -wikipediam
+Binary search on an array/list of sorted values, also known as half-interval search.
+It repeatedly narrows an array by half to the left or right based on weather or not he middle point is higher, lower than the search key, until the key is found or not.
 
 ------------------------------
 
