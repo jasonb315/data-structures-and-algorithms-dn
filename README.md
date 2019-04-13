@@ -44,9 +44,9 @@ person = 'Jason Burns'
 
 <a id="binary_search"></a>
 
-# Binary Search
+## Binary Search
 
-## Description
+### Description
 Binary search on an array/list of sorted values, also known as half-interval search.
 It repeatedly narrows an array by half to the left or right based on weather or not he middle point is higher, lower than the search key, until the key is found or not.
 
@@ -54,45 +54,45 @@ It repeatedly narrows an array by half to the left or right based on weather or 
 
 <a id="FifoAnimalShelter"></a>
 
-# Fifo Animal Shelter
+## Fifo Animal Shelter
 
-## Description
+### Description
 Animal Shelter class that takes in cat and dog objects. A visitor(CLI) can adopt/dedopt a cat or dog.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/FifoAnimalShelter)
 
 <a id="FizzBuzzTree"></a>
 
-# Fizz Buzz Tree
+## Fizz Buzz Tree
 
-## Description
+### Description
 Method which takes in a tree of int values, and replaces values with fizz, buzz, or fizzbuzz.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/FizzBuzzTree)
 
 <a id="LLMerge"></a>
 
-# Linked List Merge
+## Linked List Merge
 
-## Description
+### Description
 Given two linked lists, zip them together.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/LLMerge)
 
 <a id="MultiBracketValidation"></a>
 
-# Multi Bracket Validation
+## Multi Bracket Validation
 
-## Description
+### Description
 Take a string as its only argument, and should return a boolean representing whether or not the brackets in the string are balanced.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/MultiBracketValidation)
 
 <a id="QueueWithStacks"></a>
 
-# Queue With Stacks
+## Queue With Stacks
 
-## Description
+### Description
 PseudoQueue class: a Queue made with two stacks.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/Challenges/QueueWithStacks)
@@ -102,27 +102,27 @@ PseudoQueue class: a Queue made with two stacks.
 -----------------------------------------------------------
 <a id="singly_linked_list"></a>
 
-# Singly Linked List
+## Singly Linked List
 
-## Description
+### Description
 In computer science, a linked list is a linear collection of data elements, whose order is not given by their physical placement in memory.
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/LinkedList)
 
 <a id="BinaryTree"></a>
 
-# Binary Tree
+## Binary Tree
 
-## Description
+### Description
 tree data structure in which each node has at most two children
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/BinaryTree)
 
 <a id="stack_queue"></a>
 
-# Stack & Queue
+## Stack & Queue
 
-## Description
+### Description
 Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues)
