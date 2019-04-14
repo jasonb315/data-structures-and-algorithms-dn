@@ -31,12 +31,19 @@ For explicitly-typed languages: Ensure your node values are of type Object, to h
 ------------------------------
 
 ## Visuals
-![Merge Lists](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztree.JPG)
+
+![fizzbuzztree](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztreewb.JPG)
+
+![fizzbuzztree](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztree.JPG)
+
+
 
 
 ------------------------------
 
 ## Change Log
-1.0.0 9MAR2019 *Initial submission*
+1.0.0 9APR2019 *Initial submission*
+
+1.1.0 14APR2019 whiteboard img added
 
 ------------------------------
