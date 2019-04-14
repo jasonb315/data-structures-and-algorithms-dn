@@ -32,7 +32,7 @@ For explicitly-typed languages: Ensure your node values are of type Object, to h
 
 ## Visuals
 
-![fizzbuzztree](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztreewb.JPG)
+![fizzbuzztree](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztreewb.jpg)
 
 ![fizzbuzztree](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/fizzbuzztree.JPG)
 
