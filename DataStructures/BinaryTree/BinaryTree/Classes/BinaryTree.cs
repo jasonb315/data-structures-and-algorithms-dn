@@ -227,5 +227,52 @@ namespace BinaryTree.Classes
             }
             return rList;
         }
+
+        public int treeLevels { get; set; }
+
+        public int levelCount()
+        {
+            treeLevels = 0;
+            _walk(Root, 1);
+            return treeLevels;
+        }
+
+        private void _walk(BTNode<T> node, int level)
+        {
+            if (node.Left != null)
+            {
+                _walk(node.Left, level + 1);
+            }
+            if (node.Right != null)
+            {
+                _walk(node.Right, level + 1);
+            }
+            else if (node.Left == null && node.Right == null)
+            {
+                if (level > treeLevels)
+                {
+                    treeLevels = level;
+                }
+            }
+        }
+
+        public int levelCountAlt(BTNode<T> root)
+        {
+            int leftHeight = 0;
+            int rightHeight = 0;
+
+            if (root.Left != null)
+            {
+                leftHeight = levelCountAlt(root.Left);
+            }
+            if (root.Right != null)
+            {
+                rightHeight = levelCountAlt(root.Right);
+            }
+
+            int max = Math.Max(leftHeight, rightHeight);
+
+            return max + 1;
+        }
     }
 }

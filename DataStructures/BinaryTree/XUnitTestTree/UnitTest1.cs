@@ -277,5 +277,61 @@ namespace XUnitTestTree
             double expected = Double.NegativeInfinity;
             Assert.Equal(expected, output);
         }
+
+        [Fact]
+        public void levelCountWorks()
+        {
+            BinaryTree<string> tree = new BinaryTree<string>();
+
+            // level 1
+            BTNode<string> node1 = new BTNode<string>("x");
+            // level 2
+            BTNode<string> node2 = new BTNode<string>("x");
+            BTNode<string> node3 = new BTNode<string>("x");
+            // level 3
+            BTNode<string> node4 = new BTNode<string>("x");
+            BTNode<string> node5 = new BTNode<string>("x");
+            BTNode<string> node6 = new BTNode<string>("x");
+            BTNode<string> node7 = new BTNode<string>("x");
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            int levels = tree.levelCount();
+            Assert.Equal(3, levels);
+        }
+
+        [Fact]
+        public void levelCountAltWorks()
+        {
+            BinaryTree<string> tree = new BinaryTree<string>();
+
+            // level 1
+            BTNode<string> node1 = new BTNode<string>("x");
+            // level 2
+            BTNode<string> node2 = new BTNode<string>("x");
+            BTNode<string> node3 = new BTNode<string>("x");
+            // level 3
+            BTNode<string> node4 = new BTNode<string>("x");
+            BTNode<string> node5 = new BTNode<string>("x");
+            BTNode<string> node6 = new BTNode<string>("x");
+            BTNode<string> node7 = new BTNode<string>("x");
+
+            tree.Root = node1;
+            node1.Left = node2;
+            node1.Right = node3;
+            node2.Left = node4;
+            node2.Right = node5;
+            node3.Left = node6;
+            node3.Right = node7;
+
+            int levels = tree.levelCountAlt(tree.Root);
+            Assert.Equal(3, levels);
+        }
     }
 }
