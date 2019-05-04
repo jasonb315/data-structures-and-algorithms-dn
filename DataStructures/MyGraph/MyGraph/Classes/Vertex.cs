@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyGraph.Classes
 {
-    class Vertex<T>
+    public class Vertex<T>
     {
         public T Data { get; set; }
 
