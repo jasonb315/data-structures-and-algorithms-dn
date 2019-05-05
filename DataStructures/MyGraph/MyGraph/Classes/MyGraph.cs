@@ -130,6 +130,7 @@ namespace MyGraph.Classes
             List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
             List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);
 
+            // do not mutate collected lists:d
             List<Tuple<Vertex<T>, int>> pointing = new List<Tuple<Vertex<T>, int>>();
 
             foreach (var edge in pointedToFrom)
