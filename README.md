@@ -39,6 +39,8 @@ person = 'Jason Burns'
 
 1. [stack_queue](#stack_queue)
 
+1. [graph](#graph)
+
 
 ------------------------------
 
@@ -127,6 +129,15 @@ Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 
 [See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues)
 
+<a id="stack_queue"></a>
+
+## Graph
+
+### Description
+A Graph is a set of Vertices connected by Edges, which can be directed or undirected.
+
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/Graph)
+
 <!--
 ![name](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/[name].jpg)
 -->
@@ -146,6 +157,8 @@ Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 1.4 1APR2019 stack and queue
 
 2.0 13APR2019 *readme overhaul*
+
+2.1 4MAY2019 graph added
 
 ------------------------------
 
