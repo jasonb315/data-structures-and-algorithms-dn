@@ -70,7 +70,7 @@ namespace MyGraph.Classes
         /// </summary>
         /// <param name="a">Key Vertex</param>
         /// <returns>In the form of: List<Tuple<Vertex<T></returns>
-        public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> GetNeighborsPointingTo(Vertex<T> a)
         {
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
 
@@ -85,14 +85,41 @@ namespace MyGraph.Classes
                 }
             }
 
-            Console.WriteLine($"Neighbors of {a.Data}:");
+            Console.WriteLine($"Neighbors pointing to [{a.Data}]:");
             foreach (var item in neighbors)
             {
                 Console.WriteLine($"Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
             }
+
             return neighbors;
-            // collection of nodes from a given node. include weight in return
         }
+
+        /// <summary>
+        ///     Reports all the vertices that are pointed to from a given vertex.
+        /// </summary>
+        /// <param name="a">Key Vertex</param>
+        /// <returns>In the form of: List<Tuple<Vertex<T></returns>
+        public List<Tuple<Vertex<T>, int>> GetNeighborsPointingFrom(Vertex<T> a)
+        {
+            //Data format: Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList
+            List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
+            foreach (var edge in AdjacencyList[a])
+            {
+                Tuple<Vertex<T>,int> connection = new Tuple<Vertex<T>,int>(edge.Vertex, edge.Weight);
+                neighbors.Add(connection);
+            }
+
+            Console.WriteLine($"Neighbors [{a.Data}] point to:");
+            foreach (var item in neighbors)
+            {
+                Console.WriteLine($"Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
+            }
+
+            return neighbors;
+        }
+
+        // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
+        // ! Comparison of output from programatic determination of type vs count can be used to calculate proportions of connection types.
 
         /// <summary>
         ///     Get the quantity of vertices

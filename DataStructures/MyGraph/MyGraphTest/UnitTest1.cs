@@ -116,7 +116,7 @@ namespace MyGraphTest
         }
 
         [Fact]
-        public void GetNeighbors()
+        public void UndirectedGetNeighborsPointingTo()
         {
             MyGraph<string> graph = new MyGraph<string>();
             graph.AddVertex("A");
@@ -141,10 +141,161 @@ namespace MyGraphTest
             {
                 if (pair.Key.Data == "A")
                 {
-                    List<Tuple<Vertex<string>, int>> neighbors = graph.GetNeighbors(pair.Key);
+                    List<Tuple<Vertex<string>, int>> neighbors = graph.GetNeighborsPointingTo(pair.Key);
                     Assert.Equal("B", neighbors[0].Item1.Data);
                 }
             }
         }
+
+        [Fact]
+        public void UndirectedGetNeighborsPointingToReciprocalTest()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+            graph.AddVertex("A");
+            graph.AddVertex("B");
+
+            Vertex<string> vertRef = null;
+            Vertex<string> vertRef2 = null;
+
+            foreach (var pair in graph.AdjacencyList)
+            {
+                if (pair.Key.Data == "A")
+                {
+                    vertRef = pair.Key;
+                }
+                if (pair.Key.Data == "B")
+                {
+                    vertRef2 = pair.Key;
+                }
+            }
+
+            graph.AddUndirectedEdge(vertRef, vertRef2, 1);
+
+            foreach (var pair in graph.AdjacencyList)
+            {
+                if (pair.Key.Data == "B")
+                {
+                    List<Tuple<Vertex<string>, int>> neighbors = graph.GetNeighborsPointingTo(pair.Key);
+                    Assert.Equal("A", neighbors[0].Item1.Data);
+                }
+            }
+        }
+
+        // in retrospect I should have made functions that return a graph of a certain type to simplify test setups
+
+        [Fact]
+        public void DirectedGetNeighborsPointingToA()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(b, c, 5);
+            graph.AddDirectedEdge(c, d, 5);
+            graph.AddDirectedEdge(d, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighborsPointingTo(a);
+            Assert.Single(pointingToA);
+        }
+
+        [Fact]
+        public void DirectedGetNeighborsPointingToB()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(b, c, 5);
+            graph.AddDirectedEdge(c, d, 5);
+            graph.AddDirectedEdge(d, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToB = graph.GetNeighborsPointingTo(b);
+            Assert.Single(pointingToB);
+        }
+
+        [Fact]
+        public void DirectedGetNeighborsPointingToC()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(b, c, 5);
+            graph.AddDirectedEdge(c, d, 5);
+            graph.AddDirectedEdge(d, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToC = graph.GetNeighborsPointingTo(c);
+            Assert.Single(pointingToC);
+        }
+
+        [Fact]
+        public void DirectedGetNeighborsPointingToD()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(b, c, 5);
+            graph.AddDirectedEdge(c, d, 5);
+            graph.AddDirectedEdge(d, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToD = graph.GetNeighborsPointingTo(d);
+            Assert.Single(pointingToD);
+        }
+
+        [Fact]
+        public void DirectedGetNeighborsPointingFromA()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(a, c, 5);
+            graph.AddDirectedEdge(a, d, 5);
+            graph.AddDirectedEdge(c, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighborsPointingFrom(a);
+            Assert.Equal(3, pointingToA.Count);
+        }
+
+        [Fact]
+        public void DirectedGetNeighborsPointingFromC()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(a, c, 5);
+            graph.AddDirectedEdge(a, d, 5);
+            graph.AddDirectedEdge(c, a, 1);
+
+            List<Tuple<Vertex<string>, int>> pointingToC = graph.GetNeighborsPointingFrom(c);
+            Assert.Single(pointingToC);
+        }
+
     }
 }
