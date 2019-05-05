@@ -59,11 +59,20 @@ namespace MyGraph.Classes
                     }
                 }
             }
+
+            Console.WriteLine($"Neighbors of {a.Data}:");
+            foreach (var item in neighbors)
+            {
+                Console.WriteLine($"Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
+            }
             return neighbors;
             // collection of nodes from a given node. include weight in return
         }
 
-        // Size()
+        public int Size()
+        {
+            return _size;
+        }
 
         public void Print()
         {
