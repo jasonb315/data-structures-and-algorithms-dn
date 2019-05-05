@@ -297,5 +297,23 @@ namespace MyGraphTest
             Assert.Single(pointingToC);
         }
 
+        [Fact]
+        public void DirectedGetAllNeighbors()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var a = graph.AddVertex("a");
+            var b = graph.AddVertex("b");
+            var c = graph.AddVertex("c");
+            var d = graph.AddVertex("d");
+
+            graph.AddDirectedEdge(d, a, 5);
+            graph.AddDirectedEdge(a, b, 5);
+            graph.AddDirectedEdge(a, c, 5);
+
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetAllNeighbors(a);
+            Assert.Equal(3, pointingToA.Count);
+        }
+
     }
 }

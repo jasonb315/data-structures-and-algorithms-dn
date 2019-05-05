@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MyGraph.Classes
@@ -116,6 +117,30 @@ namespace MyGraph.Classes
             }
 
             return neighbors;
+        }
+
+        /// <summary>
+        ///     Gathers all connections regardless of direction, from a key vrtex.
+        ///     Not for impure directed graphs.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public List<Tuple<Vertex<T>, int>> GetAllNeighbors(Vertex<T> a)
+        {
+            List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
+            List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);
+
+            List<Tuple<Vertex<T>, int>> pointing = new List<Tuple<Vertex<T>, int>>();
+
+            foreach (var edge in pointedToFrom)
+            {
+                pointing.Add(edge);
+            }
+            foreach (var edge in pointingTo)
+            {
+                pointing.Add(edge);
+            }
+            return pointing;
         }
 
         // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
