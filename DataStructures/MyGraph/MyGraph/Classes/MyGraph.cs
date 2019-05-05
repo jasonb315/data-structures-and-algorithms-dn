@@ -8,11 +8,17 @@ namespace MyGraph.Classes
     {
         public Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList { get; set; }
         public int _size = 0;
+
         public MyGraph()
         {
             AdjacencyList = new Dictionary<Vertex<T>, List<Edge<T>>>();
         }
 
+        /// <summary>
+        ///     Adds a Vertex to the graph.
+        /// </summary>
+        /// <param name="data">The contents of the Vertex</param>
+        /// <returns>The vertex added</returns>
         public Vertex<T> AddVertex(T data)
         {
             Vertex<T> vertex = new Vertex<T>(data);
@@ -21,17 +27,33 @@ namespace MyGraph.Classes
             return vertex;
         }
 
+        /// <summary>
+        ///     Adds a directed edge from the first vertex passed in to the second
+        /// </summary>
+        /// <param name="a">Vertex</param>
+        /// <param name="b">Vertex</param>
+        /// <param name="weight">The weight of the edge</param>
         public void AddDirectedEdge(Vertex<T> a, Vertex<T> b, int weight)
         {
             AdjacencyList[a].Add(new Edge<T> { Weight = weight, Vertex = b });
         }
 
+        /// <summary>
+        ///     Adds a mutual connection between two vertices
+        /// </summary>
+        /// <param name="a">first Vertex</param>
+        /// <param name="b">second Vertex</param>
+        /// <param name="weight"></param>
         public void AddUndirectedEdge(Vertex<T> a, Vertex<T> b, int weight)
         {
             AddDirectedEdge(a, b, weight);
             AddDirectedEdge(b, a, weight);
         }
 
+        /// <summary>
+        ///     Collects a list of the vertices in the graph
+        /// </summary>
+        /// <returns>List of Vertices in graph</returns>
         public List<Vertex<T>> GetVertices()
         {
             List<Vertex<T>> verts = new List<Vertex<T>>();
@@ -40,11 +62,14 @@ namespace MyGraph.Classes
             {
                 verts.Add(vert);
             }
-            
             return verts;
-            // returns all nodes in graph as a list
         }
 
+        /// <summary>
+        ///     Reports all the vertices that point to a given vertex.
+        /// </summary>
+        /// <param name="a">Key Vertex</param>
+        /// <returns>In the form of: List<Tuple<Vertex<T></returns>
         public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
         {
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
@@ -69,11 +94,18 @@ namespace MyGraph.Classes
             // collection of nodes from a given node. include weight in return
         }
 
+        /// <summary>
+        ///     Get the quantity of vertices
+        /// </summary>
+        /// <returns>quantity of vertices</returns>
         public int Size()
         {
             return _size;
         }
 
+        /// <summary>
+        ///     Prints out the AdjacencyList.
+        /// </summary>
         public void Print()
         {
             foreach (var vertex in AdjacencyList)
