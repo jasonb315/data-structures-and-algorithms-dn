@@ -20,7 +20,7 @@ In mathematics, graph theory is the study of graphs, which are mathematical stru
 | GetVertices | Collects a list of the vertices in the graph. | O(n) | O(n) | ```MyGraph.GetVertices()``` |
 | GetNeighborsPointingTo | Reports all the vertices that point to a given vertex. | O(n<sup>2</sup>) | O(n) | ```MyGraph.GetNeighborsPointingTo(vert1)``` |
 | GetNeighborsPointingFrom | Reports all the vertices that are pointed to from a given vertex. | O(n) | O(n) | ```MyGraph.GetNeighborsPointingFrom(vert1)``` |
-| GetAllNeighbors | Gathers all connections regardless of direction, from a key vertex. | O(n) | O(n) | ```MyGraph.GetAllNeighbors(vert1)``` |
+| GetNeighbors | Gathers all connections regardless of direction, from a key vertex. | O(n) | O(n) | ```MyGraph.GetNeighbors(vert1)``` |
 | Size | Get the quantity of vertices. | O(1) | O(1) | ```MyGraph.Size()``` |
 | Print | Prints out the AdjacencyList. | O(n<sup>2</sup>) | O(1) | ```MyGraph.Print()``` |
 
