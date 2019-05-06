@@ -25,15 +25,18 @@ namespace MyGraph
             graph.AddUndirectedEdge(f, g, 5);
             graph.AddUndirectedEdge(g, a, 5);
 
-            graph.AddDirectedEdge(a, b, 1);
+            graph.AddDirectedEdge(a, c, 1);
             
 
             graph.Print();
 
-            Console.WriteLine();
-            graph.GetNeighborsPointingTo(a);
-            Console.WriteLine();
-            graph.GetNeighborsPointingFrom(a);
+            //graph.GetNeighborsPointingTo(a);
+            //graph.GetNeighborsPointingFrom(a);
+            //both run by:
+            graph.GetNeighbors(a);
+
+
+
 
         }
     }
