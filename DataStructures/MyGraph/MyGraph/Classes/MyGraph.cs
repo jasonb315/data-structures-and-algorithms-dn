@@ -73,6 +73,7 @@ namespace MyGraph.Classes
         /// <returns>In the form of: List<Tuple<Vertex<T></returns>
         public List<Tuple<Vertex<T>, int>> GetNeighborsPointingTo(Vertex<T> a)
         {
+            Console.WriteLine(" GetNeighborsPointingTo()");
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
 
             foreach (var adj in AdjacencyList)
@@ -86,12 +87,12 @@ namespace MyGraph.Classes
                 }
             }
 
-            Console.WriteLine($"Neighbors pointing to [{a.Data}]:");
+            Console.WriteLine($" Neighbors pointing to [{a.Data}]:");
             foreach (var item in neighbors)
             {
-                Console.WriteLine($"Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
+                Console.WriteLine($" Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
             }
-
+            Console.WriteLine();
             return neighbors;
         }
 
@@ -102,6 +103,8 @@ namespace MyGraph.Classes
         /// <returns>In the form of: List<Tuple<Vertex<T></returns>
         public List<Tuple<Vertex<T>, int>> GetNeighborsPointingFrom(Vertex<T> a)
         {
+            Console.WriteLine(" GetNeighborsPointingFrom()");
+
             //Data format: Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
             foreach (var edge in AdjacencyList[a])
@@ -110,12 +113,12 @@ namespace MyGraph.Classes
                 neighbors.Add(connection);
             }
 
-            Console.WriteLine($"Neighbors [{a.Data}] point to:");
+            Console.WriteLine($" Neighbors [{a.Data}] point to:");
             foreach (var item in neighbors)
             {
-                Console.WriteLine($"Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
+                Console.WriteLine($" Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
             }
-
+            Console.WriteLine();
             return neighbors;
         }
 
@@ -126,6 +129,7 @@ namespace MyGraph.Classes
         /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
         public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
         {
+            Console.WriteLine("GetNeighbors()");
             List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
             List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);
 
@@ -136,10 +140,13 @@ namespace MyGraph.Classes
             {
                 pointing.Add(edge);
             }
+            Console.WriteLine();
             foreach (var edge in pointingTo)
             {
                 pointing.Add(edge);
             }
+            Console.WriteLine();
+
             return pointing;
         }
 
@@ -169,6 +176,7 @@ namespace MyGraph.Classes
                 }
                 Console.WriteLine("null");
             }
+            Console.WriteLine();
         }
     }
 }
