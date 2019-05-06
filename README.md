@@ -136,7 +136,7 @@ Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 ### Description
 A Graph is a set of Vertices connected by Edges, which can be directed or undirected.
 
-[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/Graph)
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/MyGraph)
 
 <!--
 ![name](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/[name].jpg)
