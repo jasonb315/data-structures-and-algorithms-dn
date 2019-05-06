@@ -124,7 +124,7 @@ namespace MyGraph.Classes
         /// </summary>
         /// <param name="a">Vertex searching for</param>
         /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
-        public List<Tuple<Vertex<T>, int>> GetAllNeighbors(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
         {
             List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
             List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);

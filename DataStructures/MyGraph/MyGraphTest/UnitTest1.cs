@@ -311,7 +311,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(a, b, 5);
             graph.AddDirectedEdge(a, c, 5);
 
-            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetAllNeighbors(a);
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighbors(a);
             Assert.Equal(3, pointingToA.Count);
         }
 
