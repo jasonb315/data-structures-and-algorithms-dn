@@ -120,17 +120,16 @@ namespace MyGraph.Classes
         }
 
         /// <summary>
-        ///     Gathers all connections regardless of direction, from a key vrtex.
-        ///     Not for impure directed graphs.
+        ///     Gathers all connections regardless of direction, from a key vertex.
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">Vertex searching for</param>
+        /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
         public List<Tuple<Vertex<T>, int>> GetAllNeighbors(Vertex<T> a)
         {
             List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
             List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);
 
-            // do not mutate collected lists:d
+            // do not mutate collected lists:
             List<Tuple<Vertex<T>, int>> pointing = new List<Tuple<Vertex<T>, int>>();
 
             foreach (var edge in pointedToFrom)
