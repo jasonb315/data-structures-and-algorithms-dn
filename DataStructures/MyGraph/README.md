@@ -24,7 +24,7 @@ In mathematics, graph theory is the study of graphs, which are mathematical stru
 | Size | Get the quantity of vertices. | O(1) | O(1) | ```MyGraph.Size()``` |
 | Print | Prints out the AdjacencyList. | O(n<sup>2</sup>) | O(1) | ```MyGraph.Print()``` |
 
-<!-- ![singly_linked_list_0](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/singly_linked_list_0.JPG) <br> -->
+![Graph](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/GraphNeighbors.JPG) <br>
 
 ------------------------------
 
