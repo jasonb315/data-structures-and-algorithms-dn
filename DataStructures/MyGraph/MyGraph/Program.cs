@@ -33,11 +33,43 @@ namespace MyGraph
             //graph.GetNeighborsPointingTo(a);
             //graph.GetNeighborsPointingFrom(a);
             //both run by:
-            graph.GetNeighbors(a);
+            graph.GetNeighborsDirected(a);
 
+            MyGraph<string> graph1 = new MyGraph<string>();
 
+            var j = graph1.AddVertex("A");
+            var k = graph1.AddVertex("B");
+            var l = graph1.AddVertex("C");
+            var m = graph1.AddVertex("D");
+            var n = graph1.AddVertex("E");
+            var o = graph1.AddVertex("F");
 
+            graph1.AddUndirectedEdge(j, k, 5);
+            graph1.AddUndirectedEdge(k, l, 5);
+            graph1.AddUndirectedEdge(k, m, 5);
+            graph1.AddUndirectedEdge(l, n, 5);
+            graph1.AddUndirectedEdge(l, o, 5);
+            graph1.AddUndirectedEdge(m, o, 5);
 
+            graph1.DepthFirst(j);
+
+            MyGraph<string> graph2 = new MyGraph<string>();
+
+            var aa = graph2.AddVertex("aa");
+            var bb = graph2.AddVertex("bb");
+            var cc = graph2.AddVertex("cc");
+            var dd = graph2.AddVertex("dd");
+            var ee = graph2.AddVertex("ee");
+
+            graph2.AddUndirectedEdge(aa, bb, 5);
+            graph2.AddUndirectedEdge(aa, cc, 5);
+            graph2.AddUndirectedEdge(aa, dd, 5);
+
+            graph2.AddUndirectedEdge(bb, cc, 5);
+            graph2.AddUndirectedEdge(cc, dd, 5);
+            graph2.AddUndirectedEdge(dd, bb, 5);
+
+            Console.WriteLine(graph2.ClusteringCoefficientUndirected(aa));
         }
     }
 }
