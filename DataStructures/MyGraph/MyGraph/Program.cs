@@ -65,8 +65,8 @@ namespace MyGraph
             graph2.AddUndirectedEdge(aa, dd, 5);
 
             //graph2.AddUndirectedEdge(bb, cc, 5);
-            graph2.AddUndirectedEdge(cc, dd, 5);
-            graph2.AddUndirectedEdge(dd, bb, 5);
+            //graph2.AddUndirectedEdge(cc, dd, 5);
+            //graph2.AddUndirectedEdge(dd, bb, 5);
 
             Console.WriteLine(graph2.ClusteringCoefficientUndirected(aa));
         }

@@ -314,6 +314,97 @@ namespace MyGraphTest
             List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighborsDirected(a);
             Assert.Equal(3, pointingToA.Count);
         }
+        /// <summary>
+        /// ////////////////////////////////////
+        /// </summary>
+        [Fact]
+        public void ClusteringCoefficientUndirectedZeroRemoteConnections()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var aa = graph.AddVertex("aa");
+            var bb = graph.AddVertex("bb");
+            var cc = graph.AddVertex("cc");
+            var dd = graph.AddVertex("dd");
+
+            graph.AddUndirectedEdge(aa, bb, 5);
+            graph.AddUndirectedEdge(aa, cc, 5);
+            graph.AddUndirectedEdge(aa, dd, 5);
+
+            //graph.AddUndirectedEdge(bb, cc, 5);
+            //graph.AddUndirectedEdge(cc, dd, 5);
+            //graph.AddUndirectedEdge(dd, bb, 5);
+
+            decimal output = graph.ClusteringCoefficientUndirected(aa);
+            Assert.Equal(0, Math.Round(output, 2));
+        }
+
+        [Fact]
+        public void ClusteringCoefficientUndirectedOneConnection()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var aa = graph.AddVertex("aa");
+            var bb = graph.AddVertex("bb");
+            var cc = graph.AddVertex("cc");
+            var dd = graph.AddVertex("dd");
+
+            graph.AddUndirectedEdge(aa, bb, 5);
+            graph.AddUndirectedEdge(aa, cc, 5);
+            graph.AddUndirectedEdge(aa, dd, 5);
+
+            graph.AddUndirectedEdge(bb, cc, 5);
+            //graph.AddUndirectedEdge(cc, dd, 5);
+            //graph.AddUndirectedEdge(dd, bb, 5);
+
+            decimal output = graph.ClusteringCoefficientUndirected(aa);
+            Assert.Equal(0.33.ToString(), Math.Round(output, 2).ToString());
+        }
+
+        [Fact]
+        public void ClusteringCoefficientUndirectedTwoConnection()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var aa = graph.AddVertex("aa");
+            var bb = graph.AddVertex("bb");
+            var cc = graph.AddVertex("cc");
+            var dd = graph.AddVertex("dd");
+
+            graph.AddUndirectedEdge(aa, bb, 5);
+            graph.AddUndirectedEdge(aa, cc, 5);
+            graph.AddUndirectedEdge(aa, dd, 5);
+
+            graph.AddUndirectedEdge(bb, cc, 5);
+            graph.AddUndirectedEdge(cc, dd, 5);
+            //graph.AddUndirectedEdge(dd, bb, 5);
+
+            decimal output = graph.ClusteringCoefficientUndirected(aa);
+            Assert.Equal(0.67.ToString(), Math.Round(output, 2).ToString());
+        }
+
+        [Fact]
+        public void ClusteringCoefficientUndirectedFullConnection()
+        {
+            MyGraph<string> graph = new MyGraph<string>();
+
+            var aa = graph.AddVertex("aa");
+            var bb = graph.AddVertex("bb");
+            var cc = graph.AddVertex("cc");
+            var dd = graph.AddVertex("dd");
+
+            graph.AddUndirectedEdge(aa, bb, 5);
+            graph.AddUndirectedEdge(aa, cc, 5);
+            graph.AddUndirectedEdge(aa, dd, 5);
+
+            graph.AddUndirectedEdge(bb, cc, 5);
+            graph.AddUndirectedEdge(cc, dd, 5);
+            graph.AddUndirectedEdge(dd, bb, 5);
+
+            decimal output = graph.ClusteringCoefficientUndirected(aa);
+            Assert.Equal(1.ToString(), Math.Round(output, 2).ToString());
+        }
+
 
     }
 }

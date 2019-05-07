@@ -162,6 +162,12 @@ namespace MyGraph.Classes
             return OutDegree(a);
         }
 
+        /// <summary>
+        ///     The degree upon which a vertex's neighbors are connected to eachother:
+        ///     Fraction of actual among possible connections among neighbors of a target vertex.
+        /// </summary>
+        /// <param name="a">target Vertex of Graph</param>
+        /// <returns>Value from 0-1, 0 being no cluster interconnection and 1 being completely interconnected</returns>
         public decimal ClusteringCoefficientUndirected(Vertex<T> a)
         {
             int actualNeighbors = NeighborMutualEdgeCount(GetNeighborsUndirected(a))/2;
@@ -180,9 +186,6 @@ namespace MyGraph.Classes
             foreach (var firstOrderOrbit in t)
             {
                 List<Vertex<T>> visited = new List<Vertex<T>>();
-
-                // ? can you remove from a list being itterated through?
-                // error handling?
                 List<Tuple<Vertex<T>, int>> currentNeighbors = GetNeighborsUndirected(firstOrderOrbit.Item1);
                 foreach (var remoteOrbit in currentNeighbors)
                 {
@@ -197,14 +200,9 @@ namespace MyGraph.Classes
                         }
                     }
                 }
-                //t.Remove(firstOrderOrbit); err: cannot modify list len being enumerated
+
                 visited.Add(firstOrderOrbit.Item1);
 
-                // meh..? reusable.
-                //IQueryable<Tuple<Vertex<T>, int>> innerJoin = t.AsQueryable().Intersect(currentNeighbors);
-                //mutualConnectionCount += innerJoin.Count();
-                //visited.Add(tuple.Item1);
-                //t.Remove(tuple);
             }
             return mutualConnectionCount;
         }
@@ -293,3 +291,13 @@ namespace MyGraph.Classes
         }
     }
 }
+
+// cool junk
+
+// meh..? reusable.
+//IQueryable<Tuple<Vertex<T>, int>> innerJoin = t.AsQueryable().Intersect(currentNeighbors);
+//mutualConnectionCount += innerJoin.Count();
+//visited.Add(tuple.Item1);
+//t.Remove(tuple);
+
+//t.Remove(firstOrderOrbit); err: cannot modify list len being enumerated   
