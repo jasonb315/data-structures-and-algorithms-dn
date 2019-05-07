@@ -36,6 +36,21 @@ namespace MyGraph
             graph.GetNeighbors(a);
 
 
+            var j = graph.AddVertex("A");
+            var k = graph.AddVertex("B");
+            var l = graph.AddVertex("C");
+            var m = graph.AddVertex("D");
+            var n = graph.AddVertex("E");
+            var o = graph.AddVertex("F");
+
+            graph.AddUndirectedEdge(j, k, 5);
+            graph.AddUndirectedEdge(k, l, 5);
+            graph.AddUndirectedEdge(k, m, 5);
+            graph.AddUndirectedEdge(l, n, 5);
+            graph.AddUndirectedEdge(l, o, 5);
+            graph.AddUndirectedEdge(m, o, 5);
+
+            graph.DepthFirst(j);
 
 
         }

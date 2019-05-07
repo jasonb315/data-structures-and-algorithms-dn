@@ -141,7 +141,7 @@ namespace MyGraphTest
             {
                 if (pair.Key.Data == "A")
                 {
-                    List<Tuple<Vertex<string>, int>> neighbors = graph.GetNeighborsPointingTo(pair.Key);
+                    List<Tuple<Vertex<string>, int>> neighbors = graph.InDegree(pair.Key);
                     Assert.Equal("B", neighbors[0].Item1.Data);
                 }
             }
@@ -175,7 +175,7 @@ namespace MyGraphTest
             {
                 if (pair.Key.Data == "B")
                 {
-                    List<Tuple<Vertex<string>, int>> neighbors = graph.GetNeighborsPointingTo(pair.Key);
+                    List<Tuple<Vertex<string>, int>> neighbors = graph.InDegree(pair.Key);
                     Assert.Equal("A", neighbors[0].Item1.Data);
                 }
             }
@@ -198,7 +198,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(c, d, 5);
             graph.AddDirectedEdge(d, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighborsPointingTo(a);
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.InDegree(a);
             Assert.Single(pointingToA);
         }
 
@@ -217,7 +217,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(c, d, 5);
             graph.AddDirectedEdge(d, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToB = graph.GetNeighborsPointingTo(b);
+            List<Tuple<Vertex<string>, int>> pointingToB = graph.InDegree(b);
             Assert.Single(pointingToB);
         }
 
@@ -236,7 +236,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(c, d, 5);
             graph.AddDirectedEdge(d, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToC = graph.GetNeighborsPointingTo(c);
+            List<Tuple<Vertex<string>, int>> pointingToC = graph.InDegree(c);
             Assert.Single(pointingToC);
         }
 
@@ -255,7 +255,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(c, d, 5);
             graph.AddDirectedEdge(d, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToD = graph.GetNeighborsPointingTo(d);
+            List<Tuple<Vertex<string>, int>> pointingToD = graph.InDegree(d);
             Assert.Single(pointingToD);
         }
 
@@ -274,7 +274,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(a, d, 5);
             graph.AddDirectedEdge(c, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToA = graph.GetNeighborsPointingFrom(a);
+            List<Tuple<Vertex<string>, int>> pointingToA = graph.OutDegree(a);
             Assert.Equal(3, pointingToA.Count);
         }
 
@@ -293,7 +293,7 @@ namespace MyGraphTest
             graph.AddDirectedEdge(a, d, 5);
             graph.AddDirectedEdge(c, a, 1);
 
-            List<Tuple<Vertex<string>, int>> pointingToC = graph.GetNeighborsPointingFrom(c);
+            List<Tuple<Vertex<string>, int>> pointingToC = graph.OutDegree(c);
             Assert.Single(pointingToC);
         }
 

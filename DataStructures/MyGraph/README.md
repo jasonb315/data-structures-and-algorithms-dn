@@ -18,9 +18,10 @@ In mathematics, graph theory is the study of graphs, which are mathematical stru
 | AddDirectedEdge | Adds a directed edge from the first vertex passed in to the second. | O(1) | O(1) | ```MyGraph.AddDirectedEdge(vert1, vert2, weight)``` |
 | AddUndirectedEdge | Adds a mutual connection between two vertices. | O(1) | O(1) | ```MyGraph.AddUndirectedEdge(vert1, vert2, weight)``` |
 | GetVertices | Collects a list of the vertices in the graph. | O(n) | O(n) | ```MyGraph.GetVertices()``` |
-| GetNeighborsPointingTo | Reports all the vertices that point to a given vertex. | O(n<sup>2</sup>) | O(n) | ```MyGraph.GetNeighborsPointingTo(vert1)``` |
-| GetNeighborsPointingFrom | Reports all the vertices that are pointed to from a given vertex. | O(n) | O(n) | ```MyGraph.GetNeighborsPointingFrom(vert1)``` |
-| GetNeighbors | Gathers all connections regardless of direction, from a key vertex. | O(n) | O(n) | ```MyGraph.GetNeighbors(vert1)``` |
+| InDegree | Reports all the vertices that point to a given vertex. | O(n<sup>2</sup>) | O(n) | ```MyGraph.InDegree(vert1)``` |
+| OutDegree | Reports all the vertices that are pointed to from a given vertex. | O(n) | O(n) | ```MyGraph.OutDegree(vert1)``` |
+| GetNeighbors | Gathers all connections regardless of direction, from a key vertex. Undirected graphs produce duplicates | O(n) | O(n) | ```MyGraph.GetNeighbors(vert1)``` |
+| DepthFirst | Traversal outward from a given Vertex depth first | O(n<sup>2</sup>) | O(n) | ```MyGraph.DepthFirst(vert1)``` |
 | Size | Get the quantity of vertices. | O(1) | O(1) | ```MyGraph.Size()``` |
 | Print | Prints out the AdjacencyList. | O(n<sup>2</sup>) | O(1) | ```MyGraph.Print()``` |
 

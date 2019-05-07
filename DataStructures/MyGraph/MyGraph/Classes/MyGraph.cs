@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,7 +72,7 @@ namespace MyGraph.Classes
         /// </summary>
         /// <param name="a">Key Vertex</param>
         /// <returns>In the form of: List<Tuple<Vertex<T></returns>
-        public List<Tuple<Vertex<T>, int>> GetNeighborsPointingTo(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> InDegree(Vertex<T> a)
         {
             Console.WriteLine(" GetNeighborsPointingTo()");
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
@@ -101,7 +102,7 @@ namespace MyGraph.Classes
         /// </summary>
         /// <param name="a">Key Vertex</param>
         /// <returns>In the form of: List<Tuple<Vertex<T></returns>
-        public List<Tuple<Vertex<T>, int>> GetNeighborsPointingFrom(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> OutDegree(Vertex<T> a)
         {
             Console.WriteLine(" GetNeighborsPointingFrom()");
 
@@ -124,14 +125,15 @@ namespace MyGraph.Classes
 
         /// <summary>
         ///     Gathers all connections regardless of direction, from a key vertex.
+        ///     Not for use with undirected graphs with mutual edges: produces duplicates.
         /// </summary>
         /// <param name="a">Vertex searching for</param>
         /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
         public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
         {
             Console.WriteLine("GetNeighbors()");
-            List<Tuple<Vertex<T>, int>> pointingTo = GetNeighborsPointingTo(a);
-            List<Tuple<Vertex<T>, int>> pointedToFrom = GetNeighborsPointingFrom(a);
+            List<Tuple<Vertex<T>, int>> pointingTo = InDegree(a);
+            List<Tuple<Vertex<T>, int>> pointedToFrom = OutDegree(a);
 
             // do not mutate collected lists:
             List<Tuple<Vertex<T>, int>> pointing = new List<Tuple<Vertex<T>, int>>();
@@ -150,11 +152,82 @@ namespace MyGraph.Classes
             return pointing;
         }
 
+        public decimal ClusteringCoefficient(Vertex<T> a)
+        {
+            
+
+        }
+
+        public int MaxNeighborEdge()
+        {
+            List<Tuple<Vertex<T>, int>> neighbors = GetNeighbors(a);
+
+            
+            int edgeScaleA = 1;
+            int edgeScaleB = 3;
+
+            if (neighbors.Count < 3) { return 0; }
+            if (neighbors.Count == 3) { return 1; }
+
+            int maxNeighbors = MaxNeighborEdgeCalculation(1, 3, neighbors.Count);
+            int actualNeighbors = ActualNeighborEdge();
+
+        }
+
+        private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
+        {
+            if (i == 3) { return lead; }
+
+            return MaxNeighborEdgeCalculation(lead, (lead-tail+1+lead), i--);
+        }
+
+        public int ActualNeighborEdge()
+        {
+            int actualNeighbors = 0;
+
+        }
+
         // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
         // ! Comparison of output from programatic determination of type vs count can be used to calculate proportions of connection types.
 
         /// <summary>
-        ///     Get the quantity of vertices
+        ///     Traversal outward from a given Vertex depth first
+        /// </summary>
+        /// <returns>List<Vertex<T>> list of vertex depth first</returns>
+        public List<Vertex<T>> DepthFirst(Vertex<T> a)
+        {
+            Queue<Vertex<T>> inLine = new Queue<Vertex<T>>();
+            List<Vertex<T>> visited = new List<Vertex<T>>();
+            inLine.Enqueue(a);
+
+            while (inLine.TryPeek(out a))
+            {
+                Vertex<T> current = inLine.Dequeue();
+                if (!visited.Contains(current))
+                {
+                    visited.Add(current);
+                }
+                List<Tuple<Vertex<T>, int>> neighbors = OutDegree(current);
+                foreach (var edge in neighbors)
+                {
+                    if (!visited.Contains(edge.Item1))
+                    {
+                        inLine.Enqueue(edge.Item1);
+                    }
+                }
+            }
+
+            Console.WriteLine();
+            foreach (var item in visited)
+            {
+                Console.Write($"{item.Data}, ");
+            }
+
+            return visited;
+        }
+
+        /// <summary>
+        ///    Get the quantity of vertices
         /// </summary>
         /// <returns>quantity of vertices</returns>
         public int Size()
