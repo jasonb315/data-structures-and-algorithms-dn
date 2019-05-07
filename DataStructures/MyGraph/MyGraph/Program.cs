@@ -59,14 +59,15 @@ namespace MyGraph
             var bb = graph2.AddVertex("bb");
             var cc = graph2.AddVertex("cc");
             var dd = graph2.AddVertex("dd");
+            var ee = graph2.AddVertex("ee");
 
             graph2.AddUndirectedEdge(aa, bb, 5);
             graph2.AddUndirectedEdge(aa, cc, 5);
             graph2.AddUndirectedEdge(aa, dd, 5);
 
-            //graph2.AddUndirectedEdge(bb, cc, 5);
-            //graph2.AddUndirectedEdge(cc, dd, 5);
-            //graph2.AddUndirectedEdge(dd, bb, 5);
+            graph2.AddUndirectedEdge(bb, cc, 5);
+            graph2.AddUndirectedEdge(cc, dd, 5);
+            graph2.AddUndirectedEdge(dd, bb, 5);
 
             Console.WriteLine(graph2.ClusteringCoefficientUndirected(aa));
         }

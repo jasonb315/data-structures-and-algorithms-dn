@@ -74,7 +74,7 @@ namespace MyGraph.Classes
         /// <returns>In the form of: [(vertex which points to target, weight),...]</returns>
         public List<Tuple<Vertex<T>, int>> InDegree(Vertex<T> a)
         {
-            Console.WriteLine(" GetNeighborsPointingTo()");
+            Console.WriteLine(" InDegree()");
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
 
             foreach (var adj in AdjacencyList)
@@ -93,6 +93,7 @@ namespace MyGraph.Classes
             {
                 Console.WriteLine($" Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
             }
+
             Console.WriteLine();
             return neighbors;
         }
@@ -104,7 +105,7 @@ namespace MyGraph.Classes
         /// <returns>In the form of: [(vertex pointed to from target, weight),...]</returns>
         public List<Tuple<Vertex<T>, int>> OutDegree(Vertex<T> a)
         {
-            Console.WriteLine(" GetNeighborsPointingFrom()");
+            Console.WriteLine(" OutDegree()");
 
             // Data format: Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
@@ -121,6 +122,7 @@ namespace MyGraph.Classes
             {
                 Console.WriteLine($" Vertex: {item.Item1.Data.ToString()}, Weight: {item.Item2}");
             }
+
             Console.WriteLine();
             return neighbors;
         }
@@ -132,7 +134,7 @@ namespace MyGraph.Classes
         /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
         public List<Tuple<Vertex<T>, int>> GetNeighborsDirected(Vertex<T> a)
         {
-            Console.WriteLine("GetNeighbors()");
+            Console.WriteLine("GetNeighborsDirected()");
 
             // ! return identical datasets in Undirected graphs. Useful?
             List<Tuple<Vertex<T>, int>> pointingTo = InDegree(a);
@@ -155,6 +157,11 @@ namespace MyGraph.Classes
             return edgeCollection;
         }
 
+        /// <summary>
+        ///     The output is the same as OutDegree, except that the meaning of the returned.
+        /// </summary>
+        /// <param name="a">Target Vertex</param>
+        /// <returns>Neighbors sans undirected duplicates</returns>
         public List<Tuple<Vertex<T>, int>> GetNeighborsUndirected(Vertex<T> a)
         {
             // ! The output is the same as OutDegree, except that the meaning of the returned
@@ -175,13 +182,16 @@ namespace MyGraph.Classes
             return decimal.Divide(actualNeighbors, maxNeighbors);
         }
 
+        /// <summary>
+        ///     From a set of vertices that share connection to a vertex, count the connections among them to eachother.
+        /// </summary>
+        /// <param name="t">List of neighboring nodes</param>
+        /// <returns>int count of mutual connections among neighbors only</returns>
         private int NeighborMutualEdgeCount(List<Tuple<Vertex<T>, int>> t)
         {
             // IN: outdegree of ClusteringCoefficientUndirected target
             //  in the form of: [(vertex pointed to from target, weight),...]
-
             int mutualConnectionCount = 0;
-
             // outdegree set of target loop
             foreach (var firstOrderOrbit in t)
             {
@@ -200,13 +210,16 @@ namespace MyGraph.Classes
                         }
                     }
                 }
-
                 visited.Add(firstOrderOrbit.Item1);
-
             }
             return mutualConnectionCount;
         }
 
+        /// <summary>
+        ///     Checks conditions and calls for calcultion of max possible connections in a cluster of n Vertices
+        /// </summary>
+        /// <param name="a">target Vertex</param>
+        /// <returns></returns>
         public int MaxNeighborEdge(Vertex<T> a)
         {
             // mutual connections counted by outDegree
@@ -218,11 +231,18 @@ namespace MyGraph.Classes
             return MaxNeighborEdgeCalculation(1, 3, neighbors.Count);
         }
 
-            private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
+        /// <summary>
+        ///     Recursive calculation of maximum connections given n Vertices.
+        /// </summary>
+        /// <param name="tail">trailing scale index</param>
+        /// <param name="lead">lleading scale index</param>
+        /// <param name="i">scale mapping itteration counter</param>
+        /// <returns>int maximum connection count</returns>
+        private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
             {
                 if (i == 3) { return lead; }
 
-                return MaxNeighborEdgeCalculation(lead, (lead-tail+1+lead), i--);
+                return MaxNeighborEdgeCalculation(lead, (lead*2-tail+1), i--);
             }
 
         // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
