@@ -158,30 +158,53 @@ namespace MyGraph.Classes
         public List<Tuple<Vertex<T>, int>> GetNeighborsUndirected(Vertex<T> a)
         {
             // ! The output is the same as OutDegree, except that the meaning of the returned
-            //   data has changed, which becomes implicit where it's called.
+            //   data has changed, which becomes implicit where this method is called.
             return OutDegree(a);
         }
 
         public decimal ClusteringCoefficientUndirected(Vertex<T> a)
         {
-            int actualNeighbors = NeighborMutualEdgeCount(GetNeighborsUndirected(a));
+            int actualNeighbors = NeighborMutualEdgeCount(GetNeighborsUndirected(a))/2;
             int maxNeighbors = MaxNeighborEdge(a);
             return decimal.Divide(actualNeighbors, maxNeighbors);
         }
 
         private int NeighborMutualEdgeCount(List<Tuple<Vertex<T>, int>> t)
         {
-            List<Vertex<T>> visited = new List<Vertex<T>>();
+            // IN: outdegree of ClusteringCoefficientUndirected target
+            //  in the form of: [(vertex pointed to from target, weight),...]
+
             int mutualConnectionCount = 0;
 
-            foreach (var tuple in t)
+            // outdegree set of target loop
+            foreach (var firstOrderOrbit in t)
             {
-                visited.Add(tuple.Item1);
-                // check for current vertex in adjlist:list for 
-                foreach (var item in collection)
-                {
+                List<Vertex<T>> visited = new List<Vertex<T>>();
 
+                // ? can you remove from a list being itterated through?
+                // error handling?
+                List<Tuple<Vertex<T>, int>> currentNeighbors = GetNeighborsUndirected(firstOrderOrbit.Item1);
+                foreach (var remoteOrbit in currentNeighbors)
+                {
+                    foreach (var possibleReciprocal in t)
+                    {
+                        if (!visited.Contains(possibleReciprocal.Item1))
+                        {
+                            if (remoteOrbit.Item1 == possibleReciprocal.Item1)
+                            {
+                                mutualConnectionCount++;
+                            }
+                        }
+                    }
                 }
+                //t.Remove(firstOrderOrbit); err: cannot modify list len being enumerated
+                visited.Add(firstOrderOrbit.Item1);
+
+                // meh..? reusable.
+                //IQueryable<Tuple<Vertex<T>, int>> innerJoin = t.AsQueryable().Intersect(currentNeighbors);
+                //mutualConnectionCount += innerJoin.Count();
+                //visited.Add(tuple.Item1);
+                //t.Remove(tuple);
             }
             return mutualConnectionCount;
         }
