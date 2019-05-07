@@ -71,7 +71,7 @@ namespace MyGraph.Classes
         ///     Reports all the vertices that point to a given vertex.
         /// </summary>
         /// <param name="a">Key Vertex</param>
-        /// <returns>In the form of: List<Tuple<Vertex<T></returns>
+        /// <returns>In the form of: [(vertex which points to target, weight),...]</returns>
         public List<Tuple<Vertex<T>, int>> InDegree(Vertex<T> a)
         {
             Console.WriteLine(" GetNeighborsPointingTo()");
@@ -101,13 +101,15 @@ namespace MyGraph.Classes
         ///     Reports all the vertices that are pointed to from a given vertex.
         /// </summary>
         /// <param name="a">Key Vertex</param>
-        /// <returns>In the form of: List<Tuple<Vertex<T></returns>
+        /// <returns>In the form of: [(vertex pointed to from target, weight),...]</returns>
         public List<Tuple<Vertex<T>, int>> OutDegree(Vertex<T> a)
         {
             Console.WriteLine(" GetNeighborsPointingFrom()");
 
-            //Data format: Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList
+            // Data format: Dictionary<Vertex<T>, List<Edge<T>>> AdjacencyList
             List<Tuple<Vertex<T>, int>> neighbors = new List<Tuple<Vertex<T>, int>>();
+            
+            // converts adjacency list to same data structure as InDegree return
             foreach (var edge in AdjacencyList[a])
             {
                 Tuple<Vertex<T>,int> connection = new Tuple<Vertex<T>,int>(edge.Vertex, edge.Weight);
@@ -125,67 +127,82 @@ namespace MyGraph.Classes
 
         /// <summary>
         ///     Gathers all connections regardless of direction, from a key vertex.
-        ///     Not for use with undirected graphs with mutual edges: produces duplicates.
         /// </summary>
         /// <param name="a">Vertex searching for</param>
         /// <returns>List<Tuple<Vertex<T> list of adjacent vertex in key value tuples: vertex, weight</returns>
-        public List<Tuple<Vertex<T>, int>> GetNeighbors(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> GetNeighborsDirected(Vertex<T> a)
         {
             Console.WriteLine("GetNeighbors()");
+
+            // ! return identical datasets in Undirected graphs. Useful?
             List<Tuple<Vertex<T>, int>> pointingTo = InDegree(a);
             List<Tuple<Vertex<T>, int>> pointedToFrom = OutDegree(a);
 
             // do not mutate collected lists:
-            List<Tuple<Vertex<T>, int>> pointing = new List<Tuple<Vertex<T>, int>>();
+            List<Tuple<Vertex<T>, int>> edgeCollection = new List<Tuple<Vertex<T>, int>>();
 
             foreach (var edge in pointedToFrom)
             {
-                pointing.Add(edge);
+                edgeCollection.Add(edge);
             }
             Console.WriteLine();
             foreach (var edge in pointingTo)
             {
-                pointing.Add(edge);
+                edgeCollection.Add(edge);
             }
             Console.WriteLine();
 
-            return pointing;
+            return edgeCollection;
         }
 
-        public decimal ClusteringCoefficient(Vertex<T> a)
+        public List<Tuple<Vertex<T>, int>> GetNeighborsUndirected(Vertex<T> a)
         {
-            
-
+            // ! The output is the same as OutDegree, except that the meaning of the returned
+            //   data has changed, which becomes implicit where it's called.
+            return OutDegree(a);
         }
 
-        public int MaxNeighborEdge()
+        public decimal ClusteringCoefficientUndirected(Vertex<T> a)
         {
-            List<Tuple<Vertex<T>, int>> neighbors = GetNeighbors(a);
-
-            
-            int edgeScaleA = 1;
-            int edgeScaleB = 3;
-
-            if (neighbors.Count < 3) { return 0; }
-            if (neighbors.Count == 3) { return 1; }
-
-            int maxNeighbors = MaxNeighborEdgeCalculation(1, 3, neighbors.Count);
-            int actualNeighbors = ActualNeighborEdge();
-
+            int actualNeighbors = NeighborMutualEdgeCount(GetNeighborsUndirected(a));
+            int maxNeighbors = MaxNeighborEdge(a);
+            return decimal.Divide(actualNeighbors, maxNeighbors);
         }
 
-        private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
+        private int NeighborMutualEdgeCount(List<Tuple<Vertex<T>, int>> t)
         {
-            if (i == 3) { return lead; }
+            List<Vertex<T>> visited = new List<Vertex<T>>();
+            int mutualConnectionCount = 0;
 
-            return MaxNeighborEdgeCalculation(lead, (lead-tail+1+lead), i--);
+            foreach (var tuple in t)
+            {
+                visited.Add(tuple.Item1);
+                // check for current vertex in adjlist:list for 
+                foreach (var item in collection)
+                {
+
+                }
+            }
+            return mutualConnectionCount;
         }
 
-        public int ActualNeighborEdge()
+        public int MaxNeighborEdge(Vertex<T> a)
         {
-            int actualNeighbors = 0;
+            // mutual connections counted by outDegree
+            List<Tuple<Vertex<T>, int>> neighbors = GetNeighborsUndirected(a);
 
+            if (neighbors.Count <= 1) { return 0; }
+            if (neighbors.Count == 2) { return 1; }
+
+            return MaxNeighborEdgeCalculation(1, 3, neighbors.Count);
         }
+
+            private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
+            {
+                if (i == 3) { return lead; }
+
+                return MaxNeighborEdgeCalculation(lead, (lead-tail+1+lead), i--);
+            }
 
         // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
         // ! Comparison of output from programatic determination of type vs count can be used to calculate proportions of connection types.

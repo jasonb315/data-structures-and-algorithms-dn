@@ -33,7 +33,7 @@ namespace MyGraph
             //graph.GetNeighborsPointingTo(a);
             //graph.GetNeighborsPointingFrom(a);
             //both run by:
-            graph.GetNeighbors(a);
+            graph.GetNeighborsDirected(a);
 
 
             var j = graph.AddVertex("A");
