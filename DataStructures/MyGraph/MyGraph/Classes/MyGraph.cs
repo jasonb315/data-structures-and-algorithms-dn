@@ -164,7 +164,7 @@ namespace MyGraph.Classes
         /// <returns>Neighbors sans undirected duplicates</returns>
         public List<Tuple<Vertex<T>, int>> GetNeighborsUndirected(Vertex<T> a)
         {
-            // ! The output is the same as OutDegree, except that the meaning of the returned
+            // ! Returns the output of OutDegree, except that the meaning of the returned
             //   data has changed, which becomes implicit where this method is called.
             return OutDegree(a);
         }
@@ -177,9 +177,12 @@ namespace MyGraph.Classes
         /// <returns>Value from 0-1, 0 being no cluster interconnection and 1 being completely interconnected</returns>
         public decimal ClusteringCoefficientUndirected(Vertex<T> a)
         {
-            int actualNeighbors = NeighborMutualEdgeCount(GetNeighborsUndirected(a))/2;
-            int maxNeighbors = MaxNeighborEdge(a);
-            return decimal.Divide(actualNeighbors, maxNeighbors);
+            // Mutual connections count for 2 from loop nest foldover? "My code works, WHY" mutual edges suspected.
+            int neighborCorrelation = (NeighborMutualEdgeCount(GetNeighborsUndirected(a))/2);
+
+            int maxNeighborCorrelation = MaxNeighborEdge(a);
+
+            return decimal.Divide(neighborCorrelation, maxNeighborCorrelation);
         }
 
         /// <summary>
@@ -192,6 +195,9 @@ namespace MyGraph.Classes
             // IN: outdegree of ClusteringCoefficientUndirected target
             //  in the form of: [(vertex pointed to from target, weight),...]
             int mutualConnectionCount = 0;
+
+            //List<Tuple<Vertex<T>,int>> newList = new List<Tuple<Vertex<T>, int>> (t);
+
             // outdegree set of target loop
             foreach (var firstOrderOrbit in t)
             {
@@ -237,22 +243,23 @@ namespace MyGraph.Classes
         /// <param name="tail">trailing scale index</param>
         /// <param name="lead">lleading scale index</param>
         /// <param name="i">scale mapping itteration counter</param>
-        /// <returns>int maximum connection count</returns>
+        /// <returns>int maximum mutual connection count</returns>
         private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
-            {
-                if (i == 3) { return lead; }
-
-                return MaxNeighborEdgeCalculation(lead, (lead*2-tail+1), i--);
-            }
+        {
+            // this method is unecessarily complicated, but looks cool.
+            if (i == 3) { return lead; }
+            // seriously, refactor this.
+            return MaxNeighborEdgeCalculation(lead, (lead*2-tail+1), i--);
+        }
 
         // ! Inner and outer joins from 'to' and 'from' neighbor algorithym outputs can be used to determine graph type programatically.
         // ! Comparison of output from programatic determination of type vs count can be used to calculate proportions of connection types.
 
         /// <summary>
-        ///     Traversal outward from a given Vertex depth first
+        ///     Traversal outward from a given Vertex breadth first
         /// </summary>
         /// <returns>List<Vertex<T>> list of vertex depth first</returns>
-        public List<Vertex<T>> DepthFirst(Vertex<T> a)
+        public List<Vertex<T>> BreadthFirst(Vertex<T> a)
         {
             Queue<Vertex<T>> inLine = new Queue<Vertex<T>>();
             List<Vertex<T>> visited = new List<Vertex<T>>();
@@ -282,6 +289,51 @@ namespace MyGraph.Classes
             }
 
             return visited;
+        }
+
+        /// <summary>
+        ///     Traversal outward from a given Vertex depth first
+        /// </summary>
+        /// <param name="a">target Vertex</param>
+        /// <returns>List<Vertex<T>> of vertices</returns>
+        public List<Vertex<T>> DepthFirst(Vertex<T> a)
+        {
+            Stack<Vertex<T>> stack = new Stack<Vertex<T>>();
+            List<Vertex<T>> visited = new List<Vertex<T>>();
+            stack.Push(a);
+            return DepthFirst(stack, visited);
+        }
+
+        /// <summary>
+        ///     Helper: Traversal outward from a given Vertex depth first
+        /// </summary>
+        /// <param name="stack">stack for mobing backwards</param>
+        /// <param name="visited">keeps track of vertices</param>
+        /// <returns>List<Vertex<T>> of vertices</returns>
+        private List<Vertex<T>> DepthFirst(Stack<Vertex<T>> stack, List<Vertex<T>> visited)
+        {
+            if(visited.Count == _size) { return visited; };
+            Vertex<T> current = stack.Pop();
+            if (!visited.Contains(current))
+            {
+                visited.Add(current);
+            }
+            List<Tuple<Vertex<T>, int>> neighbors = GetNeighborsUndirected(current);
+            bool back = true;
+            foreach (var item in neighbors)
+            {
+                if (!visited.Contains(item.Item1))
+                {
+                    stack.Push(item.Item1);
+                    back = false;
+                    break;
+                }
+            }
+            if (back)
+            {
+                stack.Pop();
+            }
+            return DepthFirst(stack, visited);
         }
 
         /// <summary>

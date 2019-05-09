@@ -51,7 +51,7 @@ namespace MyGraph
             graph1.AddUndirectedEdge(l, o, 5);
             graph1.AddUndirectedEdge(m, o, 5);
 
-            graph1.DepthFirst(j);
+            graph1.BreadthFirst(j);
 
             MyGraph<string> graph2 = new MyGraph<string>();
 
