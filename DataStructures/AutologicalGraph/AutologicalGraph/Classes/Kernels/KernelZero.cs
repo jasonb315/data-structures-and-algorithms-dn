@@ -13,7 +13,7 @@ namespace AutoGraph.Classes.Kernels
             if(shell.cluster.size < 10)
             {
                 Vertex newVertex = shell.cluster.AddVertex();
-                shell.cluster.UndirectedEdge(newVertex, shell, 5);
+                shell.cluster.DirectedEdge(shell, newVertex, 5);
             }
         }
 
