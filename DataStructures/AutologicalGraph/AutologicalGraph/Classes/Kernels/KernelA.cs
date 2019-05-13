@@ -6,11 +6,16 @@ namespace AutoGraph.Classes.Kernels
 {
     public class KernelA : BaseKernel
     {
-        public override Vertex Shell { get; set; }
+        public override Vertex shell { get; set; }
 
-        public override string Propagation()
+        public override void Run()
         {
-            return "dataA";
+
+        }
+
+        public override void LifeCycle()
+        {
+            LifeCycle();
         }
     }
 }

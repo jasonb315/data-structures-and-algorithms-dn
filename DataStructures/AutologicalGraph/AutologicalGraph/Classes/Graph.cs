@@ -89,20 +89,21 @@ namespace AutoGraph.Classes
             };
         }
 
-        public void AddVertex(int t)
+        public Vertex AddVertex()
         {
             BaseKernel k = new KernelA();
-            //if(t == 1) { k = new KernelA(); }
-            if(t == 2) { k = new KernelB(); }
-
             Vertex v = new Vertex(k);
             // register
-            RegisterKey(v);
             AllVertices.Add(v);
+            RegisterKey(v);
             size++;
 
             // dependent on new size:
             MatrixEntry(v);
+
+
+
+            return v;
         }
 
         public void DirectedEdge(Vertex pointing, Vertex pointed, int weight)
@@ -117,11 +118,6 @@ namespace AutoGraph.Classes
         {
             DirectedEdge(a, b, weight);
             DirectedEdge(b, a, weight);
-        }
-
-        public void Genesis(int n)
-        {
-            AddVertex(n);
         }
 
 
@@ -158,3 +154,15 @@ namespace AutoGraph.Classes
             // ...
     }
 }
+
+// Kernel scripts:
+// extend one
+// extend two
+// extend three
+// extend k
+// concurrent extension
+// extended Kernel type (abstract up?)
+// vertex data entry
+// fs in out
+// 
+

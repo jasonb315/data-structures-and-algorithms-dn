@@ -15,13 +15,7 @@ namespace AutoGraph.Classes
         public Vertex(BaseKernel k)
         {
             K = k;
+            K.Run();
         }
-
-        // the Vertex propagates, the Kernel performs propagation.
-        public void Propagate()
-        {
-            // trigger Kernel methods
-        }
-
     }
 }

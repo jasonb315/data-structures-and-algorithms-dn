@@ -8,25 +8,12 @@ namespace AutoGraph.Classes
     abstract public class BaseKernel
     {
         // assigned the Vertex contining this
-        public virtual Vertex Shell { get; set; }
+        public virtual Vertex shell { get; set; }
 
-        // expansion methods: conditional to vertex/graph analysis methods
+        // intermediary function for instantiation methods
+        public abstract void Run();
 
-        // the Vertex propagates, the Kernel performs propagation.
-        public virtual string Propagation()
-        {
-            // should 
-            return "data";
-        }
-
-        public virtual void LifeCycle()
-        {
-            // relational evaluation of Shell in matrix
-                // possibly propagation?
-            
-            // cessation condition
-            LifeCycle();
-        }
+        public abstract void LifeCycle();
 
     }
 }
