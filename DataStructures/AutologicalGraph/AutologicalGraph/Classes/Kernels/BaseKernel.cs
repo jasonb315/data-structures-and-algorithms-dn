@@ -13,7 +13,7 @@ namespace AutoGraph.Classes
         // intermediary function for instantiation methods
         public abstract void Run();
 
-        public abstract void LifeCycle();
+        //public abstract void LifeCycle();
 
     }
 }

@@ -91,8 +91,12 @@ namespace AutoGraph.Classes
 
         public Vertex AddVertex()
         {
-            BaseKernel k = new KernelA();
+            BaseKernel k = new KernelZero();
             Vertex v = new Vertex(k);
+            v.cluster = this;
+            k.shell = v;
+
+
             // register
             AllVertices.Add(v);
             RegisterKey(v);
@@ -101,7 +105,7 @@ namespace AutoGraph.Classes
             // dependent on new size:
             MatrixEntry(v);
 
-
+            v.K.Run();
 
             return v;
         }
