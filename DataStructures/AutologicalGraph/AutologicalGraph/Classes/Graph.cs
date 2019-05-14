@@ -236,6 +236,32 @@ namespace AutoGraph.Classes
             return inUnique.Count() + outUnique.Count() + common.Count();
         }
 
+        public int IslandCount()
+        {
+            int count = 0;
+            foreach (var v in AllVertices)
+            {
+                if (NeighborCount(v) == 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public List<Vertex> IslandSet()
+        {
+            List<Vertex> islands = new List<Vertex>();
+            foreach (var v in AllVertices)
+            {
+                if (NeighborCount(v) == 0)
+                {
+                    islands.Add(v);
+                }
+            }
+            return islands;
+        }
+
         public List<Vertex> NeighborSet(Vertex v)
         {
             List<Vertex> indegree = InDegreeVertices(v);
@@ -250,7 +276,6 @@ namespace AutoGraph.Classes
 
             return common.Concat(inUnique).Concat(outUnique).ToList();
         }
-
 
         public int MaxConnections(int v)
         {
@@ -283,17 +308,13 @@ namespace AutoGraph.Classes
                 foreach (var neighbor in subset.Value)
                 {
                     count++;
-                    //if (connectome[neighbor].Contains(subset.Key))
-                    //{
-                        connectome[neighbor].Remove(subset.Key);
-                    //}
+                    connectome[neighbor].Remove(subset.Key);
                 }
             }
             return count;
         }
 
-        // this is horrendiously expensive.
-        public decimal ClusteringCoefficientUndirected(Vertex v)
+        public decimal NondirectionalClusteringCoefficient(Vertex v)
         {
             List<Vertex> n = NeighborSet(v);
             return decimal.Divide(ConnectionsBetweenCount(n), MaxConnections(n.Count()));

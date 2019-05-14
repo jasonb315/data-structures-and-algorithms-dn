@@ -69,6 +69,29 @@ namespace AutoGraph
 
             Console.WriteLine($"neighbor count: {m.NeighborCount(A)}");
             Console.WriteLine($"Max Connections: {m.MaxConnections(7)}");
+
+            Console.WriteLine("-----------------------");
+
+            Graph graph2 = new Graph();
+            var aa = graph2.AddVertex();
+            var bb = graph2.AddVertex();
+            var cc = graph2.AddVertex();
+            var dd = graph2.AddVertex();
+            var ee = graph2.AddVertex();
+
+            graph2.UndirectedEdge(aa, bb, 5);
+            graph2.UndirectedEdge(aa, cc, 5);
+            graph2.UndirectedEdge(aa, dd, 5);
+            graph2.UndirectedEdge(aa, ee, 5);
+
+            graph2.UndirectedEdge(bb, cc, 5);
+            graph2.UndirectedEdge(bb, dd, 5);
+            graph2.UndirectedEdge(cc, dd, 5);
+            graph2.UndirectedEdge(cc, ee, 5);
+            graph2.UndirectedEdge(dd, ee, 5);
+            graph2.UndirectedEdge(ee, bb, 5);
+
+            Console.WriteLine(graph2.NondirectionalClusteringCoefficient(aa));
         }
     }
 }
