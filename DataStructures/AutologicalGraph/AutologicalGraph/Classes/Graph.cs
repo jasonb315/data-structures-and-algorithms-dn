@@ -51,7 +51,7 @@ namespace AutoGraph.Classes
 
                 // spacing between vertex index and connection row
                 if (j <= 10) { output.Append("  "); }
-                else if(j < 101) { output.Append(" "); }
+                else if(j < 100) { output.Append(" "); }
                 output.Append($" [{j-1}] ");
 
                 output.Append("[ ");
@@ -63,6 +63,37 @@ namespace AutoGraph.Classes
                 output.AppendLine("\n");
             }
 
+            Console.WriteLine(output.ToString());
+        }
+
+        public void PrintVertices()
+        {
+            StringBuilder output = new StringBuilder();
+            for (int i = 0; i < AllVertices.Count; i++)
+            {
+                output.Append($"V[{i}]:{AllVertices[i].ID} K: {AllVertices[i].K}");
+                output.Append("\n");
+            }
+            Console.WriteLine(output.ToString());
+        }
+
+        public void PrintEdges()
+        {
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < AllVertices.Count; i++)
+            {
+                output.Append($"V[{i}]: ");
+                for (int j = 0; j < AllVertices.Count; j++)
+                {
+                    if (Matrix[j][i] != 0)
+                    {
+                        output.Append($"(V[{j}]:");
+                        output.Append($"{Matrix[j][i]}) ");
+                    }
+                }
+                output.Append("\n");
+            }
             Console.WriteLine(output.ToString());
         }
 
@@ -85,8 +116,74 @@ namespace AutoGraph.Classes
             // new col above new row
             if(size > 1)
             {
-                for (int i=0 ; i<Matrix.Count-1 ; i++) { Matrix[i].Add(0); };
-            };
+                for (int i=0 ; i<Matrix.Count-1 ; i++)
+                {
+                    Matrix[i].Add(0);
+                }
+            }
+        }
+
+        public int OutDegreeCount(Vertex v)
+        {
+            int count = 0;
+            foreach (var row in Matrix)
+            {
+                if(row[MatrixKey[v.ID]] != 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public List<Vertex> OutDegreeVertices(Vertex v)
+        {
+            List<Vertex> outVerts = new List<Vertex>();
+            int intersection = 0;
+
+            foreach (var row in Matrix)
+            {
+                if (row[MatrixKey[v.ID]] != 0)
+                {
+                    outVerts.Add(AllVertices[intersection]);
+                }
+                intersection++;
+            }
+            return outVerts;
+        }
+
+        public int InDegreeCount(Vertex v)
+        {
+            int count = 0;
+            foreach (var col in Matrix[MatrixKey[v.ID]])
+            {
+                if(col != 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public List<Vertex> InDegreeVertices(Vertex v)
+        {
+            List<Vertex> inVerts = new List<Vertex>();
+            int intersection = 0;
+
+            foreach (var col in Matrix[MatrixKey[v.ID]])
+            {
+                if (col != 0)
+                {
+                    inVerts.Add(AllVertices[intersection]);
+                }
+                intersection++;
+            }
+            return inVerts;
+        }
+
+        public int NeighborEdgeCount(Vertex v)
+        {
+            return InDegreeCount(v) + OutDegreeCount(v);
         }
 
         public Vertex AddVertex()
@@ -105,7 +202,7 @@ namespace AutoGraph.Classes
             // dependent on new size:
             MatrixEntry(v);
 
-            v.K.Run();
+            //v.K.Run();
 
             return v;
         }
@@ -124,38 +221,43 @@ namespace AutoGraph.Classes
             DirectedEdge(b, a, weight);
         }
 
+        //private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
+        //{
+        //    if (i == 3) { return lead; }
+        //    return MaxNeighborEdgeCalculation(lead, (lead * 2 - tail + 1), i--);
+        //}
+
 
         // !! Vertex Kernals run Graph methods for Propagation decisions:
 
         // graph network methods
 
-            // Print graph; vertices; edges
-            // count edges direct
-            // count edges mutual symmetrical
-            // count edges mutual asymmetrical
-            // Assortativity
-            // Characteristic path length
-            // Effective connectivity
-            // Path Length
-            // Reachability matrix
-            // Dikstras list affinity
-            // Prims!! list affinity
-            // Floyd
-            // Warshall
-            
+        // count edges direct
+        // count edges mutual symmetrical
+        // count edges mutual asymmetrical
+        // Assortativity
+        // Characteristic path length
+        // Effective connectivity
+        // Path Length
+        // Reachability matrix
+        // Dikstras list affinity
+        // Prims!! list affinity
+        // Floyd
+        // Warshall
+
 
         // graph vertex methods
-            // Centrality
-            // Degree
-            // Diameter
-            // Distance
-            // Neighbors
-            // Stregnth
-            // Clustering coefficient
-            // Kernel reassignment
-            // Kernel swap?
+        // Centrality
+        // Degree
+        // Diameter
+        // Distance
+        // Neighbors
+        // Stregnth
+        // Clustering coefficient
+        // Kernel reassignment
+        // Kernel swap?
 
-            // ...
+        // ...
     }
 }
 
