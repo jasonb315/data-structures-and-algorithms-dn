@@ -1,6 +1,7 @@
 ﻿using AutoGraph.Classes.Kernels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AutoGraph.Classes
@@ -123,6 +124,41 @@ namespace AutoGraph.Classes
             }
         }
 
+        public Vertex AddVertex()
+        {
+            BaseKernel k = new KernelZero();
+            Vertex v = new Vertex(k);
+            v.cluster = this;
+            k.shell = v;
+
+
+            // register
+            AllVertices.Add(v);
+            RegisterKey(v);
+            size++;
+
+            // dependent on new size:
+            MatrixEntry(v);
+
+            //v.K.Run();
+
+            return v;
+        }
+
+        public void DirectedEdge(Vertex pointing, Vertex pointed, int weight)
+        {
+            // use guid of inputs to grab matrix location
+            int p1 = MatrixKey[pointing.ID];
+            int p2 = MatrixKey[pointed.ID];
+            Matrix[p2][p1] = weight;
+        }
+
+        public void UndirectedEdge(Vertex a, Vertex b, int weight)
+        {
+            DirectedEdge(a, b, weight);
+            DirectedEdge(b, a, weight);
+        }
+
         public int OutDegreeCount(Vertex v)
         {
             int count = 0;
@@ -181,58 +217,93 @@ namespace AutoGraph.Classes
             return inVerts;
         }
 
-        public int NeighborEdgeCount(Vertex v)
+        public int DirectedEdgeCount(Vertex v)
         {
             return InDegreeCount(v) + OutDegreeCount(v);
         }
 
-        public Vertex AddVertex()
+        public int NeighborCount(Vertex v)
         {
-            BaseKernel k = new KernelZero();
-            Vertex v = new Vertex(k);
-            v.cluster = this;
-            k.shell = v;
+            List<Vertex> indegree = InDegreeVertices(v);
+            List<Vertex> outdegree = OutDegreeVertices(v);
 
+            var inUnique = indegree.Except(outdegree);
 
-            // register
-            AllVertices.Add(v);
-            RegisterKey(v);
-            size++;
+            var outUnique = indegree.Except(indegree);
 
-            // dependent on new size:
-            MatrixEntry(v);
+            var common = indegree.Intersect(outdegree);
 
-            //v.K.Run();
-
-            return v;
+            return inUnique.Count() + outUnique.Count() + common.Count();
         }
 
-        public void DirectedEdge(Vertex pointing, Vertex pointed, int weight)
+        public List<Vertex> NeighborSet(Vertex v)
         {
-            // use guid of inputs to grab matrix location
-            int p1 = MatrixKey[pointing.ID];
-            int p2 = MatrixKey[pointed.ID];
-            Matrix[p2][p1] = weight;
+            List<Vertex> indegree = InDegreeVertices(v);
+            List<Vertex> outdegree = OutDegreeVertices(v);
+
+            // LEFT
+            var inUnique = indegree.Except(outdegree);
+            // RIGHT
+            var outUnique = indegree.Except(indegree);
+            // SHARED EDGE
+            var common = indegree.Intersect(outdegree);
+
+            return common.Concat(inUnique).Concat(outUnique).ToList();
         }
 
-        public void UndirectedEdge(Vertex a, Vertex b, int weight)
+
+        public int MaxConnections(int v)
         {
-            DirectedEdge(a, b, weight);
-            DirectedEdge(b, a, weight);
+            if (v <= 1) { return 0; }
+            int past = 1;
+            int tail = 3;
+            int lead = 6;
+            if(v == 2) { return past; }
+            if(v == 3) { return tail; }
+            if(v == 4) { return lead; }
+
+            while(v-- > 4)
+            {
+                int next = lead * 2 - tail + 1;
+                past = tail;
+                tail = lead;
+                lead = next;
+            }
+            return lead;
         }
 
-        //private int MaxNeighborEdgeCalculation(int tail, int lead, int i)
-        //{
-        //    if (i == 3) { return lead; }
-        //    return MaxNeighborEdgeCalculation(lead, (lead * 2 - tail + 1), i--);
-        //}
+        public int ConnectionsBetweenCount(List<Vertex> set)
+        {
+            Dictionary<Vertex, List<Vertex>> connectome = new Dictionary<Vertex, List<Vertex>>();
+            foreach (var v in set){connectome[v] = NeighborSet(v).Intersect(set).ToList(); }
+            int count = 0;
+
+            foreach (var subset in connectome)
+            {
+                foreach (var neighbor in subset.Value)
+                {
+                    count++;
+                    //if (connectome[neighbor].Contains(subset.Key))
+                    //{
+                        connectome[neighbor].Remove(subset.Key);
+                    //}
+                }
+            }
+            return count;
+        }
+
+        // this is horrendiously expensive.
+        public decimal ClusteringCoefficientUndirected(Vertex v)
+        {
+            List<Vertex> n = NeighborSet(v);
+            return decimal.Divide(ConnectionsBetweenCount(n), MaxConnections(n.Count()));
+        }
 
 
         // !! Vertex Kernals run Graph methods for Propagation decisions:
 
         // graph network methods
 
-        // count edges direct
         // count edges mutual symmetrical
         // count edges mutual asymmetrical
         // Assortativity
@@ -253,7 +324,6 @@ namespace AutoGraph.Classes
         // Distance
         // Neighbors
         // Stregnth
-        // Clustering coefficient
         // Kernel reassignment
         // Kernel swap?
 
