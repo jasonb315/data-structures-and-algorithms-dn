@@ -17,3 +17,5 @@ namespace AutoGraph.Classes
 
     }
 }
+
+// I'd imagine switch cases will be used here.

@@ -17,9 +17,9 @@ namespace AutoGraph.Classes
         public int size = 0;
 
         // adjacency matrix
-        List<List<int>> Matrix = new List<List<int>>();
+        public List<List<int>> Matrix = new List<List<int>>();
         // vertex-guid to matrix position translation
-        Dictionary<Guid, int> MatrixKey = new Dictionary<Guid, int>();
+        public Dictionary<Guid, int> MatrixKey = new Dictionary<Guid, int>();
 
         public void PrintMatrix()
         {
@@ -236,6 +236,21 @@ namespace AutoGraph.Classes
             return inUnique.Count() + outUnique.Count() + common.Count();
         }
 
+        public List<Vertex> NeighborSet(Vertex v)
+        {
+            List<Vertex> indegree = InDegreeVertices(v);
+            List<Vertex> outdegree = OutDegreeVertices(v);
+
+            // LEFT
+            var inUnique = indegree.Except(outdegree);
+            // RIGHT
+            var outUnique = indegree.Except(indegree);
+            // SHARED EDGE
+            var common = indegree.Intersect(outdegree);
+
+            return common.Concat(inUnique).Concat(outUnique).ToList();
+        }
+
         public int IslandCount()
         {
             int count = 0;
@@ -262,19 +277,27 @@ namespace AutoGraph.Classes
             return islands;
         }
 
-        public List<Vertex> NeighborSet(Vertex v)
+        // untested
+        public List<Vertex> NeighborsWithinK(Vertex v, int k)
         {
-            List<Vertex> indegree = InDegreeVertices(v);
-            List<Vertex> outdegree = OutDegreeVertices(v);
+            if (k < 1) { return null; }
 
-            // LEFT
-            var inUnique = indegree.Except(outdegree);
-            // RIGHT
-            var outUnique = indegree.Except(indegree);
-            // SHARED EDGE
-            var common = indegree.Intersect(outdegree);
+            List<Vertex> visited = new List<Vertex>();
+            List<Vertex> currentOrigin = new List<Vertex>() { v };
+            List<Vertex> currentOrbit = new List<Vertex>();
 
-            return common.Concat(inUnique).Concat(outUnique).ToList();
+            for (int i = 0; i < k; i++)
+            {
+                foreach (var vert in currentOrigin)
+                {
+                    currentOrbit.Concat(NeighborSet(vert).Except(visited));
+                }
+                visited.Concat(currentOrigin);
+                currentOrigin.Clear();
+                currentOrigin.Concat(currentOrbit);
+                currentOrbit.Clear();
+            }
+            return visited;
         }
 
         public int MaxConnections(int v)
@@ -327,6 +350,7 @@ namespace AutoGraph.Classes
 
         // count edges mutual symmetrical
         // count edges mutual asymmetrical
+
         // Assortativity
         // Characteristic path length
         // Effective connectivity
@@ -343,7 +367,6 @@ namespace AutoGraph.Classes
         // Degree
         // Diameter
         // Distance
-        // Neighbors
         // Stregnth
         // Kernel reassignment
         // Kernel swap?

@@ -17,5 +17,10 @@ namespace AutoGraph.Classes
         {
             K = k;
         }
+
+        public int GetIndex()
+        {
+            return cluster.MatrixKey[ID];
+        }
     }
 }
