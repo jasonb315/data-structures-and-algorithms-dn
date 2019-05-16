@@ -543,13 +543,22 @@ namespace AGTest
         }
 
         [Fact]
-        public void IsSelfRefrences()
+        public void IsSelfRefrencesTrue()
         {
             Graph graph = new Graph();
             var A = graph.AddVertex();
             graph.UndirectedEdge(A, A, 1);
 
             Assert.True(graph.IsSelfRefrence(A));
+        }
+
+        [Fact]
+        public void IsSelfRefrencesFalse()
+        {
+            Graph graph = new Graph();
+            var A = graph.AddVertex();
+
+            Assert.False(graph.IsSelfRefrence(A));
         }
 
         [Fact]
