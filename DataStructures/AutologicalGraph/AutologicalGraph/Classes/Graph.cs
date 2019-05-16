@@ -63,7 +63,7 @@ namespace AutoGraph.Classes
                 output.Append("]").Append($" -- {AllVertices[j-1].K.GetType()}");
                 output.AppendLine("\n");
             }
-
+            
             Console.WriteLine(output.ToString());
         }
 
@@ -222,33 +222,30 @@ namespace AutoGraph.Classes
             return InDegreeCount(v) + OutDegreeCount(v);
         }
 
-        public int NeighborCount(Vertex v)
+        public int MutualEdgeCount(Vertex v)
         {
             List<Vertex> indegree = InDegreeVertices(v);
             List<Vertex> outdegree = OutDegreeVertices(v);
 
-            var inUnique = indegree.Except(outdegree);
+            return indegree.Intersect(outdegree).Count();
+        }
 
-            var outUnique = indegree.Except(indegree);
+        //write unirected edge count method
 
-            var common = indegree.Intersect(outdegree);
+        public int NeighborCount(Vertex v)
+        {
+            int indegree = InDegreeCount(v);
+            int outdegree = OutDegreeCount(v);
 
-            return inUnique.Count() + outUnique.Count() + common.Count();
+            return indegree + outdegree - MutualEdgeCount(v);
         }
 
         public List<Vertex> NeighborSet(Vertex v)
         {
-            List<Vertex> indegree = InDegreeVertices(v);
-            List<Vertex> outdegree = OutDegreeVertices(v);
+            List<Vertex> indegreeSet = InDegreeVertices(v);
+            List<Vertex> outdegreeSet = OutDegreeVertices(v);
 
-            // LEFT
-            var inUnique = indegree.Except(outdegree);
-            // RIGHT
-            var outUnique = indegree.Except(indegree);
-            // SHARED EDGE
-            var common = indegree.Intersect(outdegree);
-
-            return common.Concat(inUnique).Concat(outUnique).ToList();
+            return indegreeSet.Concat(outdegreeSet.Except(indegreeSet)).ToList();
         }
 
         public int IslandCount()
@@ -277,10 +274,9 @@ namespace AutoGraph.Classes
             return islands;
         }
 
-        // untested
         public List<Vertex> NeighborsWithinK(Vertex v, int k)
         {
-            if (k < 1) { return null; }
+            if (k < 1) { Console.WriteLine("null"); return null; }
 
             List<Vertex> visited = new List<Vertex>();
             List<Vertex> currentOrigin = new List<Vertex>() { v };
@@ -290,27 +286,55 @@ namespace AutoGraph.Classes
             {
                 foreach (var vert in currentOrigin)
                 {
-                    currentOrbit.Concat(NeighborSet(vert).Except(visited));
+                    foreach (var ver in NeighborSet(vert))
+                    {
+                        if (!visited.Contains(ver))
+                        {
+                            currentOrbit.Add(ver);
+                        }
+                    }
                 }
-                visited.Concat(currentOrigin);
+                foreach (var vert in currentOrigin)
+                {
+                    if (!visited.Contains(vert))
+                    {
+                        visited.Add(vert);
+                    }
+                    
+                }
                 currentOrigin.Clear();
-                currentOrigin.Concat(currentOrbit);
+                foreach (var vert in currentOrbit)
+                {
+                    if (!visited.Contains(vert))
+                    {
+                        currentOrigin.Add(vert);
+                    }
+                }
                 currentOrbit.Clear();
             }
+            foreach (var vert in currentOrigin)
+            {
+                if (!visited.Contains(vert))
+                {
+                    visited.Add(vert);
+                }
+            }
+
+            visited.Remove(v);
             return visited;
         }
 
-        public int MaxConnections(int v)
+        public int MaxConnections(int n)
         {
-            if (v <= 1) { return 0; }
+            if (n <= 1) { return 0; }
             int past = 1;
             int tail = 3;
             int lead = 6;
-            if(v == 2) { return past; }
-            if(v == 3) { return tail; }
-            if(v == 4) { return lead; }
+            if(n == 2) { return past; }
+            if(n == 3) { return tail; }
+            if(n == 4) { return lead; }
 
-            while(v-- > 4)
+            while(n-- > 4)
             {
                 int next = lead * 2 - tail + 1;
                 past = tail;
@@ -318,6 +342,64 @@ namespace AutoGraph.Classes
                 lead = next;
             }
             return lead;
+        }
+
+        public bool IsSelfRefrence(Vertex v)
+        {
+            int p = MatrixKey[v.ID];
+            if(Matrix[p][p] != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void PurgeSelfRefrence(Vertex v)
+        {
+            int p = MatrixKey[v.ID];
+            Matrix[p][p] = 0;
+        }
+
+        public int PurgeSelfReferences()
+        {
+            int count = 0;
+            for (int i = 0; i < Matrix.Count; i++)
+            {
+                for (int j = 0; j < Matrix.Count; j++)
+                {
+                    if (Matrix[i][j] != 0)
+                    {
+                        count++;
+                        Matrix[i][j] = 0;
+                    }
+                }
+            }
+            return count;
+        }
+
+        public int FullConnectSet(List<Vertex> set, int strength)
+        {
+            int count = 0;
+            Dictionary<Vertex, List<Vertex>> connectome = new Dictionary<Vertex, List<Vertex>>();
+            foreach (var v in set)
+            {
+                List<Vertex> copy = new List<Vertex>(set);
+                connectome[v] = copy;
+                connectome[v].Remove(v);
+            }
+            foreach (var subset in connectome)
+            {
+                foreach (var neighbor in subset.Value)
+                {
+                    count++;
+                    UndirectedEdge(subset.Key, neighbor, strength);
+                    connectome[neighbor].Remove(subset.Key);
+                }
+            }
+            return count;
         }
 
         public int ConnectionsBetweenCount(List<Vertex> set)
@@ -344,6 +426,7 @@ namespace AutoGraph.Classes
         }
 
 
+
         // !! Vertex Kernals run Graph methods for Propagation decisions:
 
         // graph network methods
@@ -361,6 +444,7 @@ namespace AutoGraph.Classes
         // Floyd
         // Warshall
 
+        // oh God, traversal methods.. vertex data as procedural steps
 
         // graph vertex methods
         // Centrality
