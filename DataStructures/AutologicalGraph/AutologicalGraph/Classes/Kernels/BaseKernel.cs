@@ -11,9 +11,9 @@ namespace AutoGraph.Classes
         public virtual Vertex shell { get; set; }
 
         // intermediary function for instantiation methods
-        public abstract void Run();
+        public abstract void Run(Dictionary<int, object[]> strand, int step);
 
-        //public abstract void LifeCycle();
+
 
     }
 }

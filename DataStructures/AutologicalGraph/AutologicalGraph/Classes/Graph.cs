@@ -8,9 +8,6 @@ namespace AutoGraph.Classes
 {
     public class Graph
     {
-        // Informational and action evaluation methods; relationship tracking;
-        // sits between Kernal evaluations and vertex behaviors.
-
         // registry
         public List<Vertex> AllVertices = new List<Vertex>();
         // registry count
@@ -23,6 +20,7 @@ namespace AutoGraph.Classes
 
         public void PrintMatrix()
         {
+            Console.WriteLine("MATRIX");
             StringBuilder output = new StringBuilder();
 
             // label
@@ -69,6 +67,7 @@ namespace AutoGraph.Classes
 
         public void PrintVertices()
         {
+            Console.WriteLine("VERTICES");
             StringBuilder output = new StringBuilder();
             for (int i = 0; i < AllVertices.Count; i++)
             {
@@ -80,6 +79,7 @@ namespace AutoGraph.Classes
 
         public void PrintEdges()
         {
+            Console.WriteLine("EDGES:");
             StringBuilder output = new StringBuilder();
 
             for (int i = 0; i < AllVertices.Count; i++)
@@ -89,7 +89,7 @@ namespace AutoGraph.Classes
                 {
                     if (Matrix[j][i] != 0)
                     {
-                        output.Append($"(V[{j}]:");
+                        output.Append($"(v[{j}]:");
                         output.Append($"{Matrix[j][i]}) ");
                     }
                 }
@@ -130,7 +130,6 @@ namespace AutoGraph.Classes
             Vertex v = new Vertex(k);
             v.cluster = this;
             k.shell = v;
-
 
             // register
             AllVertices.Add(v);

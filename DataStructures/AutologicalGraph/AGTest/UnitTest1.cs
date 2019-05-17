@@ -503,31 +503,21 @@ namespace AGTest
             Assert.Equal(b, result);
         }
 
-        [Fact]
-        public void FullConnectSetA()
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(2, 1)]
+        [InlineData(3, 3)]
+        [InlineData(4, 6)]
+        [InlineData(5, 10)]
+        public void FullConnectSet(int a, int b)
         {
             Graph graph = new Graph();
-            var A = graph.AddVertex();
-            var B = graph.AddVertex();
-            var C = graph.AddVertex();
-            var D = graph.AddVertex();
-            List<Vertex> set = new List<Vertex> { A, B, C, D };
-            int count = graph.FullConnectSet(set, 1);
-            Assert.Equal(6, count);
-        }
-
-        [Fact]
-        public void FullConnectSetB()
-        {
-            Graph graph = new Graph();
-            var A = graph.AddVertex();
-            var B = graph.AddVertex();
-            var C = graph.AddVertex();
-            var D = graph.AddVertex();
-            var E = graph.AddVertex();
-            List<Vertex> set = new List<Vertex> { A, B, C, D, E };
-            int count = graph.FullConnectSet(set, 1);
-            Assert.Equal(10, count);
+            for (int i = 0; i < a; i++)
+            {
+                graph.AddVertex();
+            }
+            int count = graph.FullConnectSet(graph.AllVertices, 1);
+            Assert.Equal(b, count);
         }
 
         [Fact]
