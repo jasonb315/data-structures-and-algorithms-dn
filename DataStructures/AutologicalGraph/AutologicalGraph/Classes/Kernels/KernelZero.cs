@@ -11,8 +11,12 @@ namespace AutoGraph.Classes.Kernels
         // KERNEL SWITCH
         public override void Run( Dictionary<int, object[]> strand, int step )
         {
+            if (shell.cluster.AllVertices.Count > 15) { return; }
+
             // termination
             if (!strand.ContainsKey(step)) { return; }
+
+            /// record: ~7657 vertices, 2.5 min: ~51 verts a second.
 
             // extract directive: [0]: Function [{>=1}] Props
             object[] ss = strand[step];
@@ -21,10 +25,14 @@ namespace AutoGraph.Classes.Kernels
             switch (ss[0])
             {
                 case "KbranchUndirected":
+                    Console.WriteLine("KbranchUndirected");
+
                     KbranchUndirected(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
                     break;
 
                 case "KcompleteCluster":
+                    Console.WriteLine("KcompleteCluster");
+
                     KcompleteCluster(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
                     break;
 

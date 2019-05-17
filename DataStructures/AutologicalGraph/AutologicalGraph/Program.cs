@@ -1,5 +1,6 @@
 ﻿using AutoGraph.Classes;
 using AutoGraph.Classes.Kernels;
+using AutologicalGraph.Classes.Strands;
 using System;
 using System.Collections.Generic;
 
@@ -94,11 +95,15 @@ namespace AutoGraph
             //graph2.UndirectedEdge(ee, bb, 5);
 
             //Console.WriteLine(graph2.NondirectionalClusteringCoefficient(aa));
-
+            Strand s = new Strand();
             Graph graph = new Graph();
             var zero = graph.AddVertex();
+            zero.K.Run(s.flowers, 0);
 
-            zero.K.
+            graph.PrintMatrix();
+            //graph.PrintVertices();
+            Console.WriteLine(graph.AllVertices.Count);
+
         }
     }
 }

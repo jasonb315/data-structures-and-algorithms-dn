@@ -8,9 +8,6 @@ namespace AutoGraph.Classes
 {
     public class Graph
     {
-        // Informational and action evaluation methods; relationship tracking;
-        // sits between Kernal evaluations and vertex behaviors.
-
         // registry
         public List<Vertex> AllVertices = new List<Vertex>();
         // registry count
@@ -130,7 +127,6 @@ namespace AutoGraph.Classes
             Vertex v = new Vertex(k);
             v.cluster = this;
             k.shell = v;
-
 
             // register
             AllVertices.Add(v);
