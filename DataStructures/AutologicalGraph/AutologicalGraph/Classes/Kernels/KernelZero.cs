@@ -8,18 +8,61 @@ namespace AutoGraph.Classes.Kernels
     {
         public override Vertex shell { get; set; }
 
-        public override void Run()
+        // KERNEL SWITCH
+        public override void Run( Dictionary<int, object[]> strand, int step )
         {
-            if(shell.cluster.size < 10)
+            // termination
+            if (!strand.ContainsKey(step)) { return; }
+
+            // extract directive: [0]: Function [{>=1}] Props
+            object[] ss = strand[step];
+
+            // select kernel method, pass arguments
+            switch (ss[0])
             {
-                Vertex newVertex = shell.cluster.AddVertex();
-                shell.cluster.DirectedEdge(shell, newVertex, 5);
+                case "KbranchUndirected":
+                    KbranchUndirected(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
+                    break;
+
+                case "KcompleteCluster":
+                    KcompleteCluster(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
+                    break;
+
+                default:
+                    Console.WriteLine("Kernel switch: default case");
+                    break;
             }
         }
 
-        //public override void LifeCycle()
-        //{
-        //    LifeCycle();
-        //}
+        // KERNEL METHODS
+        public void KbranchUndirected(Dictionary<int, object[]> strand, int step, int children, int weight)
+        {
+            if(children == 0 || weight == 0) { return; }
+            for (int i = 0; i < children; i++)
+            {
+                Vertex v = shell.cluster.AddVertex();
+                shell.cluster.UndirectedEdge(shell, v, 1);
+                v.K.Run(strand, step++);
+            }
+        }
+
+        public void KcompleteCluster(Dictionary<int, object[]> strand, int step, int children, int weight)
+        {
+            if (children == 0 || weight == 0) { return; }
+            List<Vertex> batch = new List<Vertex>();
+            for (int i = 0; i < children; i++)
+            {
+                Vertex v = shell.cluster.AddVertex();
+                shell.cluster.UndirectedEdge(shell, v, weight);
+                batch.Add(v);
+                v.K.Run(strand, step++);
+            }
+            shell.cluster.FullConnectSet(batch, weight);
+        }
+        
     }
 }
+
+//null
+//branch k
+//

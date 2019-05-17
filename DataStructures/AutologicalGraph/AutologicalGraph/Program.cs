@@ -96,12 +96,9 @@ namespace AutoGraph
             //Console.WriteLine(graph2.NondirectionalClusteringCoefficient(aa));
 
             Graph graph = new Graph();
-            var A = graph.AddVertex();
-            var B = graph.AddVertex();
-            var C = graph.AddVertex();
-            var D = graph.AddVertex();
-            List<Vertex> set = new List<Vertex> { A, B, C, D };
-            graph.FullConnectSet(set, 1);
+            var zero = graph.AddVertex();
+
+            zero.K.
         }
     }
 }
