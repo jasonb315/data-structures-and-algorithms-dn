@@ -13,7 +13,8 @@ namespace AutoGraph.Classes.Kernels
         {
             if (shell.cluster.AllVertices.Count > 15) { return; }
 
-            // termination
+            // termination //!
+            step++;
             if (!strand.ContainsKey(step)) { return; }
 
             /// record: ~7657 vertices, 2.5 min: ~51 verts a second.
@@ -25,14 +26,10 @@ namespace AutoGraph.Classes.Kernels
             switch (ss[0])
             {
                 case "KbranchUndirected":
-                    Console.WriteLine("KbranchUndirected");
-
                     KbranchUndirected(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
                     break;
 
                 case "KcompleteCluster":
-                    Console.WriteLine("KcompleteCluster");
-
                     KcompleteCluster(strand, step, Convert.ToInt32(ss[1]), Convert.ToInt32(ss[2]));
                     break;
 
