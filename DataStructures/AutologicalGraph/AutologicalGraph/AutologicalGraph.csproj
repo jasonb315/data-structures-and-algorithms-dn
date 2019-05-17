@@ -5,9 +5,4 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Classes\Drivers\" />
-    <Folder Include="Classes\Generators\" />
-  </ItemGroup>
-
 </Project>

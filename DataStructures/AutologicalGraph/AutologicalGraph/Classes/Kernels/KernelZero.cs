@@ -17,7 +17,7 @@ namespace AutoGraph.Classes.Kernels
             step++;
             if (!strand.ContainsKey(step)) { return; }
 
-            /// record: ~7657 vertices, 2.5 min: ~51 verts a second.
+            /// record: ~7657 vertices, ~2.5 min: ~51 verts a second.
 
             // extract directive: [0]: Function [{>=1}] Props
             object[] ss = strand[step];
@@ -34,7 +34,8 @@ namespace AutoGraph.Classes.Kernels
                     break;
 
                 default:
-                    Console.WriteLine("Kernel switch: default case");
+                    Console.WriteLine("STRAND COMPLETE");
+                    Console.WriteLine();
                     break;
             }
         }
@@ -68,6 +69,3 @@ namespace AutoGraph.Classes.Kernels
     }
 }
 
-//null
-//branch k
-//

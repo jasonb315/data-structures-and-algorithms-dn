@@ -7,25 +7,24 @@ namespace AutologicalGraph.Classes.Strands
     // singleton
     public class Strand
     {
-        public Dictionary<int, object[]> flowers = new Dictionary<int, object[]>();
+        public Dictionary<int, object[]> flower = new Dictionary<int, object[]>();
 
         // FORMAT
         // {strand}.Add(n, new object[] { prop, ... });
         public Strand()
         {
+            int n = 1;
             // flowers
-            flowers.Add(1, new object[] { "KbranchUndirected", 1, 1 });
-            flowers.Add(2, new object[] { "KbranchUndirected", 1, 1 });
-            flowers.Add(3, new object[] { "KbranchUndirected", 1, 1 });
-            flowers.Add(4, new object[] { "KbranchUndirected", 1, 1 });
-            flowers.Add(5, new object[] { "KcompleteCluster", 5, 7 });
-            flowers.Add(6, new object[] { null });
-            //flowers.Add(1, new object[] { "KbranchUndirected", 2, 1 });
-            //flowers.Add(2, new object[] { "KbranchUndirected", 2, 1 });
-            //flowers.Add(3, new object[] { "KbranchUndirected", 2, 1 });
-            //flowers.Add(4, new object[] { "KbranchUndirected", 2, 1 });
-            //flowers.Add(5, new object[] { "KbranchUndirected", 2, 1 });
-            //flowers.Add(6, new object[] { "KbranchUndirected", 1, 1 });
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KbranchUndirected", 1, 1 }); n++;
+            flower.Add(n, new object[] { "KcompleteCluster", 3, 7 }); n++;
+            flower.Add(n, new object[] { null });
         }
     }
 }
