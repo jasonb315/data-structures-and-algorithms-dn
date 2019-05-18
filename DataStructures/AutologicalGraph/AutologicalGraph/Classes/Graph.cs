@@ -12,7 +12,6 @@ namespace AutoGraph.Classes
         public List<Vertex> AllVertices = new List<Vertex>();
         // registry count
         public int size = 0;
-
         // adjacency matrix
         public List<List<int>> Matrix = new List<List<int>>();
         // vertex-guid to matrix position translation
@@ -23,11 +22,6 @@ namespace AutoGraph.Classes
             Console.WriteLine("MATRIX");
             StringBuilder output = new StringBuilder();
 
-            // label
-            //output.Append('*', 3).Append(" ADJ MATRIX ").Append('*', 3).Append("\n");
-            //output.AppendLine("\n");
-
-            // graph header
             output.Append("XXXXXXXX-GUID-XXXX-XXXX-XXXXXXXXXXXX       ");
             output.Append("[ ");
 
@@ -45,7 +39,6 @@ namespace AutoGraph.Classes
 
             foreach (var row in Matrix)
             {
-                // TODO: add kernal type post row to output for visual association
                 output.Append($"{AllVertices[j++].ID}");
 
                 // spacing between vertex index and connection row
@@ -424,10 +417,6 @@ namespace AutoGraph.Classes
             return decimal.Divide(ConnectionsBetweenCount(n), MaxConnections(n.Count()));
         }
 
-
-
-        // !! Vertex Kernals run Graph methods for Propagation decisions:
-
         // graph network methods
 
         // count edges mutual symmetrical
@@ -443,8 +432,6 @@ namespace AutoGraph.Classes
         // Floyd
         // Warshall
 
-        // oh God, traversal methods.. vertex data as procedural steps
-
         // graph vertex methods
         // Centrality
         // Degree
@@ -458,14 +445,4 @@ namespace AutoGraph.Classes
     }
 }
 
-// Kernel scripts:
-// extend one
-// extend two
-// extend three
-// extend k
-// concurrent extension
-// extended Kernel type (abstract up?)
-// vertex data entry
-// fs in out
-// 
 
