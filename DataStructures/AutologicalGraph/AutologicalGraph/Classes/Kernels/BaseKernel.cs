@@ -12,10 +12,5 @@ namespace AutoGraph.Classes
 
         // intermediary function for instantiation methods
         public abstract void Run(Dictionary<int, object[]> strand, int step);
-
-
-
     }
 }
-
-// I'd imagine switch cases will be used here.

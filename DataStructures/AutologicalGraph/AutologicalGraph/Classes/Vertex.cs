@@ -6,12 +6,9 @@ namespace AutoGraph.Classes
 {
     public class Vertex
     {
-        public Guid ID = Guid.NewGuid(); //globally unique identifier
+        public Guid ID = Guid.NewGuid();
         public BaseKernel K { get; set; }
         public Graph cluster { get; set; }
-
-        // k-way fractal extends uniclass root
-        // public object Data { get; set; }
 
         public Vertex(BaseKernel k)
         {

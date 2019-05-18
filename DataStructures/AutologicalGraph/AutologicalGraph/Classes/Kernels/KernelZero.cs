@@ -11,13 +11,14 @@ namespace AutoGraph.Classes.Kernels
         // KERNEL SWITCH
         public override void Run( Dictionary<int, object[]> strand, int step )
         {
-            if (shell.cluster.AllVertices.Count > 15) { return; }
+            /// record: ~7657 vertices, ~2.5 min: ~51 verts a second.
+            // safety = record/2
+            if (shell.cluster.AllVertices.Count > 3828) { return; }
 
-            // termination //!
             step++;
+            // loop termination
             if (!strand.ContainsKey(step)) { return; }
 
-            /// record: ~7657 vertices, ~2.5 min: ~51 verts a second.
 
             // extract directive: [0]: Function [{>=1}] Props
             object[] ss = strand[step];
@@ -34,8 +35,6 @@ namespace AutoGraph.Classes.Kernels
                     break;
 
                 default:
-                    Console.WriteLine("STRAND COMPLETE");
-                    Console.WriteLine();
                     break;
             }
         }
@@ -43,25 +42,23 @@ namespace AutoGraph.Classes.Kernels
         // KERNEL METHODS
         public void KbranchUndirected(Dictionary<int, object[]> strand, int step, int children, int weight)
         {
-            if(children == 0 || weight == 0) { return; }
             for (int i = 0; i < children; i++)
             {
                 Vertex v = shell.cluster.AddVertex();
                 shell.cluster.UndirectedEdge(shell, v, 1);
-                v.K.Run(strand, step++);
+                v.K.Run(strand, step);
             }
         }
 
         public void KcompleteCluster(Dictionary<int, object[]> strand, int step, int children, int weight)
         {
-            if (children == 0 || weight == 0) { return; }
             List<Vertex> batch = new List<Vertex>();
             for (int i = 0; i < children; i++)
             {
                 Vertex v = shell.cluster.AddVertex();
                 shell.cluster.UndirectedEdge(shell, v, weight);
                 batch.Add(v);
-                v.K.Run(strand, step++);
+                v.K.Run(strand, step);
             }
             shell.cluster.FullConnectSet(batch, weight);
         }
