@@ -6,6 +6,19 @@ person = 'Jason Burns'
 ```
 ------------------------------
 
+This repo contains my data structure assignments from advanced dotnet. There's a [Linked List](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/LinkedList), [Tree](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/BinaryTree), [Stacks and Queues](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues), but the real growth for me here is with graphs:
+
+## Adjacency List
+
+[go to code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/MyGraph)
+
+
+## Adjacency Matrix
+
+[go to code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/AutologicalGraph)
+
+
+
 
 
 <!-- <a id="contents"></a>
