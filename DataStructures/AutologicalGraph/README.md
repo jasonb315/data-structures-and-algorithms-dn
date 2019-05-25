@@ -4,7 +4,7 @@ Programatic generation:
 
 ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/WB00.jpg)
 
-This setup includes an adjacency matrix, in which each Vertex is passed a Kernel that recieves a Strand object to run, which is a Dictionary of actions and peramaters.
+This setup includes an adjacency matrix, in which each Vertex is passed a Kernel that recieves a Strand object to run, which is a Dictionary of actions and parameters.
 
 ```
 public void Flower()
@@ -57,7 +57,6 @@ public class Vertex
         }
     }
 ```
-
 
 Note that each Kernel contains a refrence to it's Vertex shell, and each Vertex contains a refrence to the graph it's inside, so that the process of vertex and edge generation is distributed across Vertices and each Vertex acts based on the entire graph. This qualifies the datastructure as a "holograph", in which each piece contains the whole. So a single seed vertex can generate a shape given the strand:
 
