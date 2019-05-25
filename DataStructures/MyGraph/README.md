@@ -22,7 +22,9 @@ In mathematics, graph theory is the study of graphs, which are mathematical stru
 | OutDegree | Reports all the vertices that are pointed to from a given vertex. | O(n) | O(n) | ```MyGraph.OutDegree(vert1)``` |
 | GetNeighbors | Gathers all connections regardless of direction, from a key vertex. Undirected graphs produce duplicates | O(n) | O(n) | ```MyGraph.GetNeighbors(vert1)``` |
 | DepthFirst | Traversal outward from a given Vertex depth first | O(n<sup>2</sup>) | O(n) | ```MyGraph.DepthFirst(vert1)``` |
+| BreadthFirst | Traversal outward from a given Vertex breadth first | O(n<sup>2</sup>) | O(n) | ```MyGraph.DepthFirst(vert1)``` |
 | Size | Get the quantity of vertices. | O(1) | O(1) | ```MyGraph.Size()``` |
+| ClusteringCoefficientUndirected | Measures the "cliquishness" of a nodes neighbors. | O(n<sup>3</sup>) | O(n<sup>2</sup>) | ```MyGraph.Print()``` |
 | Print | Prints out the AdjacencyList. | O(n<sup>2</sup>) | O(1) | ```MyGraph.Print()``` |
 
 ![Graph](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/GraphNeighbors.JPG) <br>
