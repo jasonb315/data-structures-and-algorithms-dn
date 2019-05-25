@@ -188,7 +188,7 @@ namespace BinaryTree.Classes
         ///     recursive walk down tree with operation
         /// </summary>
         /// <param name="node">current node</param>
-        private void PostOrderWalk(BTNode<T> node)
+        public void PostOrderWalk(BTNode<T> node)
         {
             if (node.Left != null)
             {
@@ -226,6 +226,67 @@ namespace BinaryTree.Classes
                 rList.Add(popNode.Data);
             }
             return rList;
+        }
+
+        public bool IsAncestor(T A, T B, BTNode<T> root)
+        {
+            // A is ancestor of B?
+            // Start at defined root node.
+
+            Queue<BTNode<T>> queue = new Queue<BTNode<T>>();
+            BTNode<T> newRoot = root;
+            bool foundNewRoot = false;
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                BTNode<T> popNode = queue.Dequeue();
+                if (popNode.Data.ToString() == A.ToString())
+                {
+                    newRoot = popNode;
+                    break;
+                }
+                else
+                {
+                    if (popNode.Left != null)
+                    {
+                        queue.Enqueue(popNode.Left);
+                    }
+                    if (popNode.Right != null)
+                    {
+                        queue.Enqueue(popNode.Right);
+                    }
+                }
+            }
+            if (foundNewRoot == false)
+            {
+                Console.WriteLine("Parent node not child of target root.");
+                return false;
+            }
+            queue.Clear();
+            queue.Enqueue(newRoot);
+
+            while (queue.Count > 0)
+            {
+                BTNode<T> popNode = queue.Dequeue();
+                if (popNode.Data.ToString() == B.ToString())
+                {
+                    return true;
+                }
+                else
+                {
+                    if (popNode.Left != null)
+                    {
+                        queue.Enqueue(popNode.Left);
+                    }
+                    if (popNode.Right != null)
+                    {
+                        queue.Enqueue(popNode.Right);
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
