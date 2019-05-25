@@ -29,12 +29,3 @@ In mathematics, graph theory is the study of graphs, which are mathematical stru
 
 ![Graph](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/GraphNeighbors.JPG) <br>
 
-------------------------------
-
-## Change Log
-
-1.1.0 4MAY2019 Initial publish with base methods
-
-1.1.0 5MAY2019 Neighbor methods added
-
-------------------------------
