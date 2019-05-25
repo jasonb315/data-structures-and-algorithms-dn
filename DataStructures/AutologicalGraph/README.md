@@ -65,4 +65,4 @@ generated as shown in step five on the lower whiteboard
 
 ***
 
-Further iterations of this project are happening in a private repository under [Neuresthetics](https://github.com/Neuresthetics), with corrected and expanded logic for handling patterned cluster generation, stack efficiency, and terminological exactness.
+This project stands as my Code Fellows capstone project. Further iterations of this project are happening in a private repository under [Neuresthetics](https://github.com/Neuresthetics), with corrected and expanded logic for handling patterned cluster generation, stack efficiency, and terminological exactness.
