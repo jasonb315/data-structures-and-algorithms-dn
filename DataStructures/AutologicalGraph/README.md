@@ -61,7 +61,7 @@ public class Vertex
 Note that each Kernel contains a refrence to it's Vertex shell, and each Vertex contains a refrence to the graph it's inside, so that the process of vertex and edge generation is distributed across Vertices and each Vertex acts based on the entire graph. This qualifies the datastructure as a "holograph", in which each piece contains the whole. So a single seed vertex can generate a shape given the strand:
 
 ![seeded run](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/FirstChainRun.JPG)
-generated as shown in step five on the lower whiteboard
+generated as shown in step five on the whiteboard above.
 
 ***
 
