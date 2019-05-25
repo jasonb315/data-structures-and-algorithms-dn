@@ -5,9 +5,12 @@ cohort = 'seattle-dn-401d7'
 person = 'Jason Burns'
 ```
 ------------------------------
-<a id="contents"></a>
 
-### Contents <br>
+
+
+<!-- <a id="contents"></a>
+
+### Contents <br> -->
 
 <!-- ##### Data Structures <br>
 
@@ -17,7 +20,7 @@ person = 'Jason Burns'
 
 1. [selection_sort](#selection_sort) -->
 
-#### Algorithms/Challenges
+<!-- #### Algorithms/Challenges
 
 1. [binary_search](#binary_search)
 
@@ -37,10 +40,10 @@ person = 'Jason Burns'
 
 1. [BinaryTree](#BinaryTree)
 
-1. [stack_queue](#stack_queue)
+1. [stack_queue](#stack_queue) -->
 
 
-------------------------------
+<!-- ------------------------------
 
 <a id="binary_search"></a>
 
@@ -125,13 +128,13 @@ tree data structure in which each node has at most two children
 ### Description
 Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 
-[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues)
+[See code](https://github.com/jasonb315/data-structures-and-algorithms-dn/tree/master/DataStructures/StacksAndQueues) -->
 
 <!--
 ![name](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/[name].jpg)
 -->
 
-------------------------------
+<!-- ------------------------------
 
 ## Change Log
 
@@ -147,15 +150,15 @@ Stacks are like lunchtrays (FILO), and queues are like waiting lines(FIFO).
 
 2.0 13APR2019 *readme overhaul*
 
-------------------------------
+------------------------------ -->
 
-## Thankyou
+<!-- ## Thankyou
 
 Wikipedia
 
 Stack Overflow
 
-Dan, and Ian.
+Dan, and Ian. -->
 
 <!-- 
 ## Methods
