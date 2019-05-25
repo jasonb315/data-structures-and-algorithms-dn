@@ -1,5 +1,7 @@
 # Adjacency Matrix
 
+Programatic generation:
+
 ![whiteboard](https://github.com/jasonb315/data-structures-and-algorithms-dn/blob/master/assets/WB00.jpg)
 
 This setup includes an adjacency matrix, in which each Vertex is passed a Kernel that recieves a Strand object to run, which is a Dictionary of actions and peramaters.
